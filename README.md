@@ -1,4 +1,4 @@
 Portfolio
 =========
 
-A personal portfolio
+A personal portfolio.
