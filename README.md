@@ -1,4 +1,4 @@
-portfolio
+Portfolio
 =========
 
 A personal portfolio
