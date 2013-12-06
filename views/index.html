@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Chaos Crusade</title>
+        
+        <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css" />
+        <link rel="stylesheet" href="lib/bootstrap/css/bootstrap-responsive.css" />
+        <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.css" />
+        <link rel="stylesheet" href="lib/durandal/css/durandal.css" />
+
+        <!--Css specific to the Site.-->
+        <link rel="stylesheet" href="css/app.css" type="text/css"/>
+
+    </head>
+    <body>
+        <div id="applicationHost"></div>
+
+        <script type="text/javascript" src="lib/sugar-1.4.js"></script>
+        <script type="text/javascript">
+            Array.sugarRevert('reduce', 'reduceRight');
+        </script>        
+        <script type="text/javascript" src="lib/require/require.js" data-main="app/main"></script>
+    </body>
+</html>
