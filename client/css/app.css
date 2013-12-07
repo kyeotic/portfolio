@@ -3,6 +3,10 @@
     margin: 10% 0 0 0;
 }
 
+body {
+    padding-bottom: 50px;
+}
+
 .splash .message {
     font-size: 5em;
     line-height: 1.5em;
