@@ -1,0 +1,21 @@
+<div class="row">
+	<div class="col-md-3">
+		<ul class="nav" role="navigation" data-bind="foreach: router.projects">
+			<li data-bind="css: { active: isActive }">
+				<a class="navbar-link" data-bind="attr: { href: hash }, text: title"></a>
+			</li>
+		</ul>
+	</div>
+
+	<!-- ko ifnot: staticView -->
+	<div class="col-md-9">
+		<p>
+			This is my project showcase
+		</p>
+	</div>
+	<!-- /ko -->
+
+	<!-- ko if: staticView -->
+	<div class="col-md-9" data-bind="compose: { view: staticView }"></div>
+	<!-- /ko -->
+</div>

@@ -7,18 +7,21 @@ var express = require('express'),
 var dir = __dirname + '/client/';
 
 //Configure
-app.configure(function() {    
+app.configure(function() {
     app.set('views', __dirname + '/views/');
     app.engine('.html', require("./app_modules/htmlEngine.js")());
     app.set('view engine', 'html');
+    app.use(express.compress());
     app.use(express.bodyParser());
     app.use(express.methodOverride());
     app.use(express['static'](dir));
     app.use(app.router); 
 });
 
-//Index Route
-app.get('/', function(req, res){        
+//Get a damn favicon
+
+//Send every route to Durandal
+app.get('/*', function(req, res){
     res.render('index');
 });
 
