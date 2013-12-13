@@ -1,5 +1,5 @@
 <div class="row">
-	<div class="col-md-3">
+	<div class="col-md-2">
 		<ul class="nav" role="navigation" data-bind="foreach: router.projects">
 			<li data-bind="css: { active: isActive }">
 				<a class="navbar-link" data-bind="attr: { href: hash }, text: title"></a>
@@ -8,7 +8,7 @@
 	</div>
 
 	<!-- ko ifnot: staticView -->
-	<div class="col-md-9">
+	<div class="col-md-10">
 		<p>
 			This is my project showcase
 		</p>
@@ -16,6 +16,6 @@
 	<!-- /ko -->
 
 	<!-- ko if: staticView -->
-	<div class="col-md-9" data-bind="compose: { view: staticView }"></div>
+	<div class="col-md-10" data-bind="compose: { view: staticView }"></div>
 	<!-- /ko -->
 </div>
