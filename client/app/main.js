@@ -1,24 +1,25 @@
 require.config({
     paths: {
-        'text': '../lib/require/text',
-        'durandal':'../lib/durandal/js',
-        'plugins' : '../lib/durandal/js/plugins',
-        'transitions' : '../lib/durandal/js/transitions',
-        'knockout': '../lib/knockout-2.3.0',
-        'bootstrap': '//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js',
-        'jquery': '//code.jquery.com/jquery-1.10.2.min',
-        'Q' : '../lib/q.min',
+        'text': '/lib/require/text',
+        'durandal':'/lib/durandal/js',
+        'plugins' : '/lib/durandal/js/plugins',
+        'transitions' : '/lib/durandal/js/transitions',
+        'knockout': '/lib/knockout-2.3.0',
+        'bootstrap': '/lib/bootstrap.min',
+        'jquery': '/lib/jquery-1.9.1',
+        'Q' : '/lib/q.min',
     },
     shim: {
-        'bootstrap': {
-            deps: ['jquery'],
-            exports: 'jQuery'
+        "bootstrap": {
+          deps: ["jquery"],
+          exports: "$.fn.popover"
         }
     },
+    enforceDefine: true,
     waitSeconds: 30
 });
 
-define(['durandal/system', 'durandal/app', 'durandal/viewLocator'],
+define(['durandal/system', 'durandal/app', 'durandal/viewLocator', 'bootstrap'],
 function(system, app, viewLocator) {
 
     //>>excludeStart("build", true);
