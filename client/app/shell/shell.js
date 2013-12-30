@@ -1,11 +1,11 @@
-define(['plugins/router', 'knockout', 'durandal/app'], 
-function (router, ko, app) {  
+define(['plugins/router', 'knockout', 'durandal/app', 'jquery'], 
+function (router, ko, app, $) {  
 	return {
-		title: app.title,
+		title: 'Home',
 		router: router,
 		activate: function() {
 			router.map([
-				{ route: '',			moduleId: 'home/index',			title: 'Home',		nav: true },
+				{ route: '',			moduleId: 'home/index',			title: 'Home',		nav: false },
 				{ route: 'projects',	moduleId: 'projects/index',		title: 'Projects',	nav: true },
 
 				//Project Children - this is done because Durandal doesn't yet support static views
@@ -16,6 +16,11 @@ function (router, ko, app) {
 
 			router.projects = router.routes.filter(function(x) {
 				return x.view;
+			});
+
+			//Ensure the mobile nav menu gets closed during navigation (it doesn't do this itself)
+			router.on('router:navigation:complete').then(function() {
+				$('#navbar-collapse-group').collapse('hide')
 			});
 
 			return router.activate({ pushState: true });

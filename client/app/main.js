@@ -6,13 +6,18 @@ require.config({
         'transitions' : '/lib/durandal/js/transitions',
         'knockout': '/lib/knockout-2.3.0',
         'bootstrap': '/lib/bootstrap.min',
+        'magnific': '/lib/magnific-popup',
         'jquery': '/lib/jquery-1.9.1',
         'Q' : '/lib/q.min',
     },
     shim: {
-        "bootstrap": {
-          deps: ["jquery"],
+        'bootstrap': {
+          deps: ['jquery'],
           exports: "$.fn.popover"
+        },
+        'magnific': {
+            deps: ['jquery'],
+            exports: '$.magnificPopup'
         }
     },
     enforceDefine: true,
