@@ -72,6 +72,8 @@ body {
 
 /* Project */
 
+.project-header { margin-top: 15px;}
+
 .nav-project {
     background-color: #1c1e22;
 }
