@@ -70,9 +70,19 @@ body {
             box-shadow: 0 1px 2px rgba(0,0,0,.05);
 }
 
+/* Home */
+
+.btn-home { 
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
 /* Project */
 
-.project-header { margin-top: 15px;}
+.project-header { 
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
 
 .nav-project {
     background-color: #1c1e22;
