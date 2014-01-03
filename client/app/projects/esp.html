@@ -1,33 +1,22 @@
 <div class="row">
 	<div class="col-md-8">
 		<h2>ESP</h2>
-
 		<p>
-			I joined ShiftWise, the company who developed and sold VMS, after it had been their primary product for several years. It was my first work on a large team. ESP was a vendor managed system (VMS) for contigent medical staffing, who primary purpose was to handle the miles of red tape associated with vetting a nurse with the requriements, licensing, and verification associated with federally regulated hosptials. It's developed started in ASP Web Forms 1.0, but portions of the softwae had been updated piecemeal over the decade of use before I started. All of the original developers had left the company, so work was often very slow, and requried unguided research on the existing implementation before begining. Initially, I was responsble for minor feature requests from client's.
+			I started at ShiftWise when the ESP project was about 8 years old. It was written in ASP.NET, running on top of SQL. It handled the staff matching for hospitals by taking care of the miles of red tape involved with determining whether a given nurse was legally qualified to fill a specific role. It was very well established when I started. The team I was on did minor maintenance and feature development for about a year before we got our first major project. ESP handled the timecards for nurses who worked in the positions it filled, but it had a very basic understanding of "work" in timecards. Our job was to overhaul the billing system to handle more complex line items.
 		</p>
-	</div>
-
-	<div class="col-md-4">
-		<img src="/images/affinity_ticket.jpg" class="img-rounded project-img" alt="The Ticket Inteface">
 	</div>
 </div>
 <div class="row">
 	<div class="col-md-8">
 		<p>
-			The first major project I worked on in ESP was overhauling the billing system to allow for much finer grained tracking of expenses and non-hourly billing (such as mileage and training costs). Coupled with the finer points of our client billing, which included integrating with various local tax policies, it was very in-depth. The project took about six months, but experienced very positive feedback immediatly upon launch.
+			The biggest challenge in development came at the beginning of the project. All of the original developers of the system were gone, and very little technical documentation existed for the billing system. It took several weeks of research in the code, coupled with discussions from our support staff, before we were able to even start development. I learned a lot during this project about working with and understanding legacy code.
 		</p>
-	</div>a
-	<div class="col-md-4">
-		<img src="/images/affinity_category.jpg" class="img-rounded project-img" alt="The Ticket Inteface">
 	</div>
 </div>
 <div class="row">
 	<div class="col-md-8">
-	<p>
-		The second major project in ESP involved allowing for a differentkind of contigent position: flexible work. Normal jobs had set start and end times, and the the entire job matching system (which inluded verifying eligible staff had the time unbooked to other jobs) relied on this static information. Flexible jobs were requests for work that had no set time, and allowed the staff applying to the job to offer their own start and end time. Once again, this required extensive refactoring of critical parts of the application. Though a few issues came up after the initial relese, we resolved them quickly and the overall feedback was very positive. Due to contractual obligations, I cannot discuss the specifics of this systems implementation, but it did not disrupt the normal workflow for contigent orders.
-	</p>
-	</div>
-	<div class="col-md-4">
-		<img src="/images/affinity_parts.jpg" class="img-rounded project-img" alt="The Ticket Inteface">
+		<p>
+			Since ESP was ShiftWise's primary application, and primary source of revenue, work in the billing system was very sensitive. Not only were we adding a large feature, we were refactoring a large portion as well. We went slowly, leaving plenty of time for heavy regression testing at the end. The project took about 6 months, but it was very well received overall. Our team continued with minor feature development and maintence of ESP after it's release.
+		</p>
 	</div>
 </div>

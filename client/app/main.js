@@ -24,7 +24,7 @@ require.config({
     waitSeconds: 30
 });
 
-define(['durandal/system', 'durandal/app', 'durandal/viewLocator', 'bootstrap'],
+define(['durandal/system', 'durandal/app', 'durandal/viewLocator', 'bootstrap', 'magnific'],
 function(system, app, viewLocator) {
 
     //>>excludeStart("build", true);
