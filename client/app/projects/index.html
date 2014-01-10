@@ -2,10 +2,14 @@
 
 <div class="row">
 	<div class="col-sm-2">
-		<ul class="nav nav-stacked nav-project" role="complementary" data-bind="foreach: router.navigationModel">
-			<li>
-				<a class="navbar-link btn-block" data-bind="attr: { href: hash }, text: title, css: { active: isActive }"></a>
-			</li>
+		<h4>Professional Work</h4>
+		<ul class="nav nav-stacked nav-project" role="complementary" data-bind="foreach: proProjects">
+			<li><a class="navbar-link btn-block" data-bind="attr: { href: hash }, text: title, css: { active: isActive }"></a></li>
+		</ul>
+
+		<h4>Personal Projects</h4>
+		<ul class="nav nav-stacked nav-project" role="complementary" data-bind="foreach: personalProjects">
+			<li><a class="navbar-link btn-block" data-bind="attr: { href: hash }, text: title, css: { active: isActive }"></a></li>
 		</ul>
 	</div>
 
