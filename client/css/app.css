@@ -72,6 +72,11 @@ body {
 
 /* Home */
 
+.navbar-collapse { 
+    min-height: 3.5em;
+    overflow:hidden;
+}
+
 .btn-home { 
     margin-right: 10px;
     margin-bottom: 10px;
