@@ -1,10 +1,11 @@
 define(['jquery', 'knockout', 'projects/index'], function($, ko, parent) {
-	return {
-		view: ko.computed(function() {
+	return function Static() {
+		var self = this;
+		self.view = ko.computed(function() {
 			var route = parent.router.activeInstruction();
 			return route ? 'projects/' + route.config.view : null;
-		}),
-		compositionComplete: function(view) {
+		});
+		self.compositionComplete = function(view) {
 			//This is necessary because magnific popup requires these atrributes
 			//They are already on the image, and I don't want to double them up in the source, this is easier
 			$('.image-link').each(function() {
@@ -17,6 +18,6 @@ define(['jquery', 'knockout', 'projects/index'], function($, ko, parent) {
 				type: 'image',
 				gallery: { enabled: true }
 			});
-		}
+		};
 	};
 });
