@@ -84,6 +84,10 @@ body {
 
 /* Project */
 
+.project-img {
+    padding-bottom: 10px;
+}
+
 .project-header { 
     margin-top: 15px;
     margin-bottom: 10px;
