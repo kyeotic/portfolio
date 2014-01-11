@@ -16,6 +16,7 @@ function (router, ko, app) {
 
 			//Personal Projects
 			{ route: 'jstestlite',		moduleId: 'static',	title: 'JS Test Lite',		nav: true, 	view: 'jstestlite.html',	type: 'personal' },
+			{ route: 'durandal-grid',	moduleId: 'static',	title: 'Durandal Grid',		nav: true, 	view: 'durandal-grid.html',	type: 'personal' },
 			{ route: 'chaos',			moduleId: 'static',	title: 'Chaos Crusade',		nav: true, 	view: 'chaos.html',			type: 'personal' }			
 		]).buildNavigationModel();
 
