@@ -6,7 +6,7 @@ function (router, ko, app, $) {
 		activate: function() {
 			router.map([
 					{ route: ['', 'home'],			moduleId: 'home/index',			title: 'Home',		nav: false },
-					{ route: 'projects*project',	moduleId: 'projects/index',		title: 'Projects',	nav: true,	hash: '#projects' },
+					{ route: 'projects*project',	moduleId: 'projects/index',		title: 'Portfolio',	nav: true,	hash: '#projects' },
 					{ route: 'resume',				moduleId: 'resume/index', 		title: 'Resume',	nav: true }
 				])
 				.buildNavigationModel()
