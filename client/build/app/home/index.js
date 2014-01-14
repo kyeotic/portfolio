@@ -1,0 +1,1 @@
+define(["plugins/router","knockout","durandal/app"],function(){return{}});
