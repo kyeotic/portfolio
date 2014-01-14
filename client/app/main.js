@@ -28,7 +28,7 @@ define(['durandal/system', 'durandal/app', 'durandal/viewLocator', 'bootstrap', 
 function(system, app, viewLocator) {
 
     //>>excludeStart("build", true);
-    system.debug(false);
+    system.debug(true);
     //>>excludeEnd("build");  
 
     //specify which plugins to install and their configuration

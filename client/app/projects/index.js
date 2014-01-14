@@ -1,5 +1,5 @@
-define(['plugins/router', 'knockout', 'durandal/app'], 
-function (router, ko, app) {
+define(['plugins/router', 'knockout', 'durandal/app', 'jquery'], 
+function (router, ko, app, $) {
 	var childRouter = router.createChildRouter()
 		.makeRelative({
 			moduleId: 'projects',
@@ -19,6 +19,16 @@ function (router, ko, app) {
 			{ route: 'sprintr',			moduleId: 'static',	title: 'Sprintr',			nav: true, 	view: 'sprintr.html',		type: 'personal' },
 			{ route: 'chaos',			moduleId: 'static',	title: 'Chaos Crusade',		nav: true, 	view: 'chaos.html',			type: 'personal' }			
 		]).buildNavigationModel();
+
+	//Scroll to the newly selected project
+	childRouter.on('router:navigation:composition-complete').then(function(instance, instruction) {
+		var container = $('html,body'),
+			scrollTo = $('#projectsContainer');
+
+		container.animate({
+		    scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop() - 50 //Nav offset
+		});
+	});
 
 	return {
 		router: childRouter,
