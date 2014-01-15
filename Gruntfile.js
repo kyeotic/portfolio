@@ -36,35 +36,28 @@ module.exports = function(grunt){
 		},
 		requirejs: {
 			build: {
-				options: {
-					include:['src/client/app/**/*.{js,html}', 'src/client/lib/durandal/**/*.js'],
-					loaderPluginExtensionMaps:{
-						'.html':'text'
+				options: {					
+					name: '../lib/require/almond-custom', //to deploy with require.js, use the build's name here instead
+					insertRequire: ['main'], //needed for almond, not require
+					baseUrl: 'src/client/app',
+					out: 'build/main-built.js',
+					mainConfigFile: 'src/client/app/main.js', //needed for almond, not require
+					wrap: true, //needed for almond, not require
+					paths: {
+						'text': '../lib/text',
+						'durandal': '../lib/durandal',
+						'plugins': '../lib/durandal/plugins',
+						'transitions': '../lib/durandal/transitions',
+						'knockout': '../lib/knockout-2.3.0',
+						'bootstrap': 'empty:',
+						'jquery': 'empty:'
 					},
-					rjs:{
-						name:'../lib/almond-custom', //to deploy with require.js, use the build's name here instead
-						insertRequire:['main'], //needed for almond,not require
-						baseUrl : 'src/client/app',
-						mainConfigFile:'src/client/app/main.js', //needed for almond,not require
-						wrap:true, //needed for almond,not require
-						paths : {
-							'text': '../lib/text',
-							'durandal': '../lib/durandal',
-							'plugins': '../lib/durandal/plugins',
-							'transitions': '../lib/durandal/transitions',
-							'knockout': '../lib/knockout-2.3.0',
-							'bootstrap': 'empty:',
-							'jquery': 'empty:'
-						},
-						inlineText: true,
-						optimize : 'none',
-						pragmas: {
-							build: true
-						},
-						stubModules : ['text'],
-						keepBuildDir: true,
-						out:'build/main-built.js'
-					}
+					inlineText: true,
+					optimize: 'none',
+					stubModules: ['text'],
+					//keepBuildDir: true, //If set, will not delete the build directory
+					//appDir: 'src/client/app',
+					//dir: 'build'					
 				}
 			}
 		},
