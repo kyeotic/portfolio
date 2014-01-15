@@ -8,32 +8,6 @@ module.exports = function(grunt){
 
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
-		htmlhint: {
-			build: {
-				options: {
-					'tag-pair': true,
-					'tagname-lowercase': true,
-					'attr-lowercase': true,
-					'attr-value-double-quotes': true,
-					'doctype-first': true,
-					'spec-char-escape': true,
-					'id-unique': true,
-					'head-script-disabled': true,
-					'style-disabled': true
-				},
-				src: ['src/views/index.html', 'src/client/app/**/*.html']
-			}
-		},
-		uglify: {
-			options: {
-				banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
-			},
-			build: {
-				files: {
-					'build/app.min.js': ['src/client/app/**/*.js', 'src/client/lib/durandal/**/*.js']
-				}
-			}
-		},
 		requirejs: {
 			build: {
 				options: {					
@@ -61,11 +35,41 @@ module.exports = function(grunt){
 				}
 			}
 		},
-		watch: {
-			html: {
-				files: ['src/views/index.html'],
-				tasks: ['htmlhint']
+		durandal: {
+			build: {
+				src: [
+					"src/client/app/**/*.*",
+					"src/client/lib/durandal/**/*.*"
+				],
+				options: {
+					name: '../lib/require/almond-custom',
+					baseUrl: "src/client/app/",
+					mainPath: "src/client/app/main.js",
+					out: "build/main-built.js",
+
+					paths: {
+						'text': '../lib/require/text',
+						'durandal':'../lib/durandal/js',
+						'plugins' : '../lib/durandal/js/plugins',
+						'transitions' : '../lib/durandal/js/transitions',
+						'knockout': '../lib/knockout-2.3.0',
+						'bootstrap': '../lib/bootstrap.min',
+						'magnific': '../lib/magnific-popup',
+						'jquery': '../lib/jquery-1.9.1',
+						'Q' : '../lib/q.min'
+					},
+
+					uglify2: {
+						compress: {
+							global_defs: {
+								DEBUG: true
+							}
+						}
+					}
+				}
 			}
+		},
+		watch: {
 		}
 	});
 
