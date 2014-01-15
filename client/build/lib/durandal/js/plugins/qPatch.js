@@ -1,0 +1,1 @@
+define(["durandal/system","durandal/app","Q"],function(t,e,n){var i=function(e){var e=e||{};e.debugMode&&(n.longStackSupport=!0),t.defer=function(t){var e=n.defer();t.call(e,e);var i=e.promise;return e.promise=function(){return i},e}};return{install:i}});

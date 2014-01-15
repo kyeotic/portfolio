@@ -1,0 +1,1 @@
+define(["durandal/app","durandal/system"],function(t,e){return{install:function(){t.log=e.log,t.guid=e.guid}}});

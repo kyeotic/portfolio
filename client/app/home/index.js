@@ -1,5 +1,5 @@
-define(['plugins/router', 'knockout', 'durandal/app'], 
-function (router, ko, app) {  
+define(['knockout', 'durandal/app'], 
+function (ko, app) {  
     return {
         
     };

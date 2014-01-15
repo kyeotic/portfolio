@@ -19,15 +19,17 @@ exports.config = function(weyland) {
                 wrap:true, //not needed for require
                 paths : {
                     'text': '../lib/require/text',
-                    'durandal': '../lib/durandal',
-                    'plugins': '../lib/durandal/plugins',
-                    'transitions': '../lib/durandal/transitions',
+                    'durandal':'../lib/durandal/js',
+                    'plugins' : '../lib/durandal/js/plugins',
+                    'transitions' : '../lib/durandal/js/transitions',
                     'knockout': '../lib/knockout-2.3.0',
                     'bootstrap': '../lib/bootstrap.min',
-                    'jquery': '../lib/jquery-1.9.1'
+                    'magnific': '../lib/magnific-popup',
+                    'jquery': '../lib/jquery-1.9.1',
+                    'Q' : '../lib/q.min'
                 },
                 inlineText: true,
-                optimize : 'none',
+                optimize : 'uglify',
                 pragmas: {
                     build: true
                 },
