@@ -1,28 +1,20 @@
 var fs = require('fs'),
-    port = process.env.PORT || 3000;
-
-var express = require('express'),
+    port = process.env.PORT || 3000,
+    express = require('express'),
     app = express();
-
-var dir = __dirname + '/client/';
 
 //Configure
 app.configure(function() {
-    app.set('views', __dirname + '/views/');
-    app.engine('.html', require("./app_modules/htmlEngine.js")());
-    app.set('view engine', 'html');
     app.use(express.compress());
     app.use(express.bodyParser());
     app.use(express.methodOverride());
-    app.use(express['static'](dir));
+    app.use(express['static'](__dirname + '/client/'));
     app.use(app.router); 
 });
 
-//Get a damn favicon
-
-//Send every route to Durandal
+//Support PushState by sending everything to Durandal
 app.get('/*', function(req, res){
-    res.render('index');
+    res.sendfile(__dirname + '/index.html');
 });
 
 //Start Listening
