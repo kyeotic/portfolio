@@ -7,6 +7,7 @@ module.exports = function(grunt){
 			'src/client/app/**/*.js', 
 			'src/client/lib/durandal/js/plugins/{knockoutActivity,knockoutCommands,knockoutExtensions,qPatch,envPatch}.js'
 		],
+		jsExclude: ['src/client/app/main-built.js'],
 		htmlIndex: ['src/index.html'],
 		html: ['src/client/app/**/*.html']
 	};
@@ -52,6 +53,7 @@ module.exports = function(grunt){
 				globals: {
 					jQuery: true
 				},
+				ignores: files.jsExclude
 			},
 			uses_defaults: files.js
 			/*
