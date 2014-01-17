@@ -1,1 +1,0 @@
-define(["knockout","durandal/app"],function(){return{}});
