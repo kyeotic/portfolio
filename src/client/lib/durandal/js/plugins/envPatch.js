@@ -4,5 +4,5 @@ define(['durandal/app', 'durandal/system'], function(app, system) {
 			app.log = system.log;
 	    	app.guid = system.guid;
 		}
-	}
-})
+	};
+});

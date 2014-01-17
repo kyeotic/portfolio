@@ -31,7 +31,8 @@ define(['knockout', 'jquery', 'Q'], function(ko, $, Q) {
 
             self.execute = function (arg1, arg2) {
                 // Needed for anchors since they don't support the disabled state
-                if (!self.canExecute()) return
+                if (!self.canExecute())
+                    return;
 
                 return executeDelegate.apply(this, [arg1, arg2]);
             };
@@ -96,7 +97,7 @@ define(['knockout', 'jquery', 'Q'], function(ko, $, Q) {
                         for (var command in commands) {
                             if (!isBindingHandler(command)) {
                                 continue;
-                            };
+                            }
 
                             ko.bindingHandlers[command].init(
                                 element,

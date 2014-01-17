@@ -1,7 +1,8 @@
 var fs = require('fs'),
     port = process.env.PORT || 3000,
     express = require('express'),
-    app = express();
+    app = express(),
+    index = app.settings.env === 'production' ? 'index.prod.html' : 'index.dev.html';
 
 //Configure
 app.configure(function() {
@@ -14,7 +15,7 @@ app.configure(function() {
 
 //Support PushState by sending everything to Durandal
 app.get('/*', function(req, res){
-    res.sendfile(__dirname + '/index.html');
+    res.sendfile(__dirname + '/client/app/' + index);
 });
 
 //Start Listening

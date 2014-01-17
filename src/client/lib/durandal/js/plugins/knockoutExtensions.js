@@ -24,7 +24,7 @@ define(['knockout', 'jquery'], function(ko, $) {
 				var valueUnwrapped = ko.unwrap(value);
 				var duration = ko.unwrap(allBindings().slideDuration) || 400;
 		 
-				if (valueUnwrapped == true)
+				if (valueUnwrapped === true)
 					$(element).slideDown(duration); // Make the element visible
 				else
 					$(element).slideUp(duration);   // Make the element invisible
@@ -36,7 +36,7 @@ define(['knockout', 'jquery'], function(ko, $) {
 				var handler = function(data, event) {
 					if (event.keyCode === 13) {
 						valueAccessor().call(data, data, event);
-					};
+					}
 				};
 				var newValueAccessor = function() {
 					return { keyup: handler };
@@ -70,7 +70,7 @@ define(['knockout', 'jquery'], function(ko, $) {
 		};
 
 		ko.observableArray.fn.subscribeArrayChanged = function(addCallback, deleteCallback) {
-			var previousValue = undefined;
+			var previousValue;
 			this.subscribe(function(_previousValue) {
 				previousValue = _previousValue.slice(0);
 			}, undefined, 'beforeChange');

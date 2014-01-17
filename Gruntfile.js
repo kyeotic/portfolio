@@ -3,38 +3,79 @@ module.exports = function(grunt){
 	require("matchdep").filterDev("grunt-*").forEach(grunt.loadNpmTasks);
 
 	var files = {
-		js: ['src/client/app/**/*.js', 'src/client/lib']
+		js: [
+			'src/client/app/**/*.js', 
+			'src/client/lib/durandal/js/plugins/{knockoutActivity,knockoutCommands,knockoutExtensions,qPatch,envPatch}.js'
+		],
+		htmlIndex: ['src/index.html'],
+		html: ['src/client/app/**/*.html']
 	};
 
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
-		requirejs: {
-			build: {
-				options: {					
-					name: '../lib/require/almond-custom', //to deploy with require.js, use the build's name here instead
-					insertRequire: ['main'], //needed for almond, not require
-					baseUrl: 'src/client/app',
-					out: 'build/main-built.js',
-					mainConfigFile: 'src/client/app/main.js', //needed for almond, not require
-					wrap: true, //needed for almond, not require
-					paths: {
-						'text': '../lib/text',
-						'durandal': '../lib/durandal',
-						'plugins': '../lib/durandal/plugins',
-						'transitions': '../lib/durandal/transitions',
-						'knockout': '../lib/knockout-2.3.0',
-						'bootstrap': 'empty:',
-						'jquery': 'empty:'
-					},
-					inlineText: true,
-					optimize: 'none',
-					stubModules: ['text'],
-					//keepBuildDir: true, //If set, will not delete the build directory
-					//appDir: 'src/client/app',
-					//dir: 'build'					
-				}
+		htmlhint: {
+			index: {
+				options: {
+					'tag-pair': true,
+					'tagname-lowercase': true,
+					'attr-lowercase': true,
+					'attr-value-double-quotes': true,
+					'doctype-first': true,
+					'spec-char-escape': true,
+					'id-unique': true,
+					'style-disabled': true
+				},
+				src: files.htmlIndex
+			},
+			app: {
+				options: {
+					'tag-pair': true,
+					'tagname-lowercase': true,
+					'attr-lowercase': true,
+					'attr-value-double-quotes': true,
+					'spec-char-escape': true,
+					'id-unique': true,
+					'style-disabled': true,
+					'img-alt-require': true
+				},
+				src: files.html
 			}
 		},
+		jshint: {
+			options: {
+				curly: false,
+				eqeqeq: true,
+				eqnull: true,
+				browser: true,
+				smarttabs: true,
+				"-W099": true, // allowed mixed tabs and spaces
+				globals: {
+					jQuery: true
+				},
+			},
+			uses_defaults: files.js
+			/*
+			with_overrides: {
+				options: {
+					curly: false,
+					undef: true,
+				},
+				files: {
+					src: ['']
+				},
+			}
+			*/
+		},
+		watch: {
+            html: {
+                files: files.html.concat(files.htmlIndex),
+                tasks: ['htmlhint']
+            },
+            jshint: {
+            	files: files.js,
+            	tasks: ['jshint']
+            }
+        },
 		durandal: {
 			build: {
 				src: [
@@ -45,7 +86,7 @@ module.exports = function(grunt){
 					name: '../lib/require/almond-custom',
 					baseUrl: "src/client/app/",
 					mainPath: "src/client/app/main.js",
-					out: "build/main-built.js",
+					out: "src/client/app/main-built.js",
 
 					paths: {
 						'text': '../lib/require/text',
@@ -58,7 +99,6 @@ module.exports = function(grunt){
 						'jquery': '../lib/jquery-1.9.1',
 						'Q' : '../lib/q.min'
 					},
-
 					uglify2: {
 						compress: {
 							global_defs: {
@@ -68,11 +108,9 @@ module.exports = function(grunt){
 					}
 				}
 			}
-		},
-		watch: {
 		}
 	});
 
-	grunt.registerTask('default', []);
+	grunt.registerTask('default', ['htmlhint', 'jshint', 'durandal']);
 
 };
