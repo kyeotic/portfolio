@@ -13,8 +13,9 @@ function (router, ko, app, $) {
 			{ route: 'affinity-web',	moduleId: 'static',	title: 'Affinity Web',		nav: true,	view: 'affinity-web.html',	type: 'pro' },
 			{ route: 'affinity',		moduleId: 'static',	title: 'Affinity',			nav: true,	view: 'affinity.html',		type: 'pro' },
 
-			//Personal Projects
+			//Personal Projects}
 			{ route: 'jstestlite',		moduleId: 'static',	title: 'JS Test Lite',		nav: true, 	view: 'jstestlite.html',	type: 'personal' },
+			{ route: 'portfolio',		moduleId: 'static',	title: 'Portfolio',			nav: true,	view: 'portfolio.html',		type: 'personal' },
 			{ route: 'durandal-grid',	moduleId: 'static',	title: 'Durandal Grid',		nav: true, 	view: 'durandal-grid.html',	type: 'personal' },
 			{ route: 'sprintr',			moduleId: 'static',	title: 'Sprintr',			nav: true, 	view: 'sprintr.html',		type: 'personal' },
 			{ route: 'chaos',			moduleId: 'static',	title: 'Chaos Crusade',		nav: true, 	view: 'chaos.html',			type: 'personal' }

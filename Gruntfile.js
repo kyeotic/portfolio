@@ -56,17 +56,6 @@ module.exports = function(grunt){
 				ignores: files.jsExclude
 			},
 			uses_defaults: files.js
-			/*
-			with_overrides: {
-				options: {
-					curly: false,
-					undef: true,
-				},
-				files: {
-					src: ['']
-				},
-			}
-			*/
 		},
 		watch: {
             html: {
