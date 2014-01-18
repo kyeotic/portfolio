@@ -17,3 +17,5 @@ npm-debug.log
 
 *.sublime-project
 *.sublime-workspace
+
+/src/client/app/main-built.js
