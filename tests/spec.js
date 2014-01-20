@@ -17,7 +17,7 @@ specFiles = fs.list('specs/')
         return 'tests/' + item.substring(0, item.length - 3);
     });
 
-console.log('\nRunning spec files:' + specFiles.map(function (s) { return '\n' + s; }));
+//console.log('\nRunning spec files:' + specFiles.map(function (s) { return '\n' + s; }));
 
 var runSpecs = { run: 0, failed: 0 };
 var checkForResults = function (message) {

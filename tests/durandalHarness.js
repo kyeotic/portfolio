@@ -1,5 +1,5 @@
-﻿define(['durandal/system', 'durandal/app', 'knockout', 'bootstrap', 'magnific'],
-function (system, app, ko) {
+﻿define(['durandal/system', 'durandal/app', 'knockout', 'shell/shell', 'bootstrap', 'magnific'],
+function (system, app, ko, shell) {
     app.configurePlugins({
         //Durandal plugins
         router: true,
@@ -11,7 +11,20 @@ function (system, app, ko) {
         qPatch: true,
         envPatch: true
     });
+
+    app.config = {
+        pushState: false
+    };    
     app.start().then(function () {
-        runTests(window.specFiles);
+
+        //Run the tests after bootstraping the app
+        var shellActivate = shell.activate;
+        shell.activate = function() {
+            return shellActivate().then(function() {
+                runTests(window.specFiles);
+            });
+        };
+
+        app.setRoot('shell/shell');
     });
 });

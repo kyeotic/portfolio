@@ -8,7 +8,7 @@ module.exports = function(grunt){
 			'src/client/lib/durandal/js/plugins/{knockoutActivity,knockoutCommands,knockoutExtensions,qPatch,envPatch}.js'
 		],
 		jsExclude: ['src/client/app/main-built.js'],
-		tests: ['tests/specs/*.js'],
+		tests: ['tests/**/*.js'],
 		htmlIndex: ['src/index.html'],
 		html: ['src/client/app/**/*.html']
 	};

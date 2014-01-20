@@ -97,10 +97,9 @@ jasmine.getEnv().execute();
     };
 
     proto.log = function (str, color) {
-        //TODO: Color coding isn't working, fix it
-        //var text = (color != undefined) ? ANSI.colorize_text(str, color) : str;
-        //console.log(text);
-        console.log(str);
+        var text = (color != undefined) ? ANSI.colorize_text(str, color) : str;
+        console.log(text);
+        //console.log(str);
     };
 
     jasmine.ConsoleReporter = ConsoleReporter;

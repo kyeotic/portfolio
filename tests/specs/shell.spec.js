@@ -2,10 +2,20 @@ define(['durandal/app', 'plugins/router', 'shell/shell'], function (app, router,
 	describe('shell', function () {
 		var async = new AsyncSpec(this);
 
-		it('expects to be loaded', function() {
+		it('should be loaded', function() {
 			expect(shell).toBeDefined();
-			//expect(1).toEqual(2);
 		});
+		it('should have a router', function() {
+			expect(shell.router).toBeDefined();
+		});		
+		it('should have an activated router', function() {
+			expect(shell.router.navigationModel).toBeDefined();
+		});
+		it('should have 2 nav routes', function() {
+			expect(shell.router.navigationModel().length).toEqual(2);
+		});
+
+		//These are different advanced test examples
 
 		/*
 		beforeEach(function () {

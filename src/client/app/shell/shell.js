@@ -18,10 +18,10 @@ function (router, ko, app, $) {
 			//Ensure the mobile nav menu gets closed during navigation (it doesn't do this itself)
 			router.on('router:navigation:complete').then(function() {
 				if (navCollapse.hasClass('in'))
-			navCollapse.collapse('hide');
+					navCollapse.collapse('hide');
 			});
 
-			return router.activate({ pushState: true });
+			return router.activate({ pushState: app.config.pushState });
 		}
 	};
 });
