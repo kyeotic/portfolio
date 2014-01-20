@@ -9,6 +9,7 @@
 		"grunt-contrib-watch":			"*",
 		"grunt-contrib-jshint":			"*",
 		"grunt-htmlhint":			    "*",
+		"grunt-exec":                   "*",
 		"grunt-durandal":				"*",
 		"matchdep":						"*"
 	} 

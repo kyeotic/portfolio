@@ -4,6 +4,7 @@ define(['durandal/app', 'plugins/router', 'shell/shell'], function (app, router,
 
 		it('expects to be loaded', function() {
 			expect(shell).toBeDefined();
+			//expect(1).toEqual(2);
 		});
 
 		/*

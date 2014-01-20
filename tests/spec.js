@@ -68,7 +68,9 @@ test.then(function () {
     console.log("Finished");
     console.log("-----------------");
     console.log('Specs: ' + runSpecs.run + ', Failed: ' + runSpecs.failed);
-}).then(phantom.exit);
+}).then(function() {
+    phantom.exit(runSpecs.failed == 0 ? 0 : 1);
+});
 
 test.fail(function(error) {
     console.log('An error occured', error);

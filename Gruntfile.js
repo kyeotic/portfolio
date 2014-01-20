@@ -8,6 +8,7 @@ module.exports = function(grunt){
 			'src/client/lib/durandal/js/plugins/{knockoutActivity,knockoutCommands,knockoutExtensions,qPatch,envPatch}.js'
 		],
 		jsExclude: ['src/client/app/main-built.js'],
+		tests: ['tests/specs/*.js'],
 		htmlIndex: ['src/index.html'],
 		html: ['src/client/app/**/*.html']
 	};
@@ -57,6 +58,12 @@ module.exports = function(grunt){
 			},
 			uses_defaults: files.js
 		},
+		exec: {
+			tests: {
+				cwd: 'tests',
+				command: 'phantomjs.exe spec.js'
+			}
+		},
 		watch: {
             html: {
                 files: files.html.concat(files.htmlIndex),
@@ -65,6 +72,10 @@ module.exports = function(grunt){
             jshint: {
             	files: files.js,
             	tasks: ['jshint']
+            },
+            tests: {
+            	files: files.js.concat(files.tests),
+            	tasks: ['exec']
             }
         },
 		durandal: {
