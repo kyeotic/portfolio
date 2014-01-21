@@ -15,7 +15,7 @@ define(['durandal/app', 'plugins/router', 'projects/index', 'Q'], function (app,
 					sub.off();
 					defer.resolve();
 				});
-
+				console.log(sub);
 				console.log(route);
 				router.navigate(route);
 				return defer.promise;

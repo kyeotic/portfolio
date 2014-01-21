@@ -5,7 +5,7 @@ setTimeout(function () {
 
 /*global phantom, require, runTests*/
 var fs = require('fs'),
-    Q = require('./q'),
+    Q = require('./lib/q'),
     page = require('webpage').create(),
     specFiles;
 
@@ -53,7 +53,7 @@ var chainTest = function (promise, test) {
             }, test);
         };
 
-        page.open('spec.html');
+        page.open('lib/spec.html');
 
         return defer.promise;
     });
