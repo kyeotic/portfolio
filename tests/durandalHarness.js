@@ -11,7 +11,7 @@ function (system, app, ko, shell) {
         qPatch: true,
         envPatch: true
     });
-
+    //Unfortunately phantom does not work with pushState
     app.config = {
         pushState: false
     };    

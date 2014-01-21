@@ -23,6 +23,9 @@ function (router, ko, app, $) {
 
 	var navCollapse = $('#navbar-collapse-group');
 
+	console.log('index loaded');
+	console.log(childRouter.navigationModel()[0].hash);
+
 	//Scroll to the newly selected project
 	childRouter.on('router:navigation:composition-complete').then(function(instance, instruction) {
 

@@ -48,7 +48,7 @@ function(system, app, viewLocator, shell) {
 
     app.title = 'Tyrsius';
     app.config = {
-        pushState: true
+        pushState: false
     };
     app.start().then(function () {
         //Replace 'viewmodels' in the moduleId with 'views' to locate the view.
