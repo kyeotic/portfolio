@@ -1,7 +1,7 @@
 ﻿//Safety Net, exit after two seconds
 setTimeout(function () {
     phantom.exit();
-}, 5000);
+}, 20000);
 
 /*global phantom, require, runTests*/
 var fs = require('fs'),

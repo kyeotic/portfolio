@@ -58,26 +58,21 @@ module.exports = function(grunt){
 			},
 			uses_defaults: files.js
 		},
+		spell: {
+			all: {
+				src: files.html,
+				options: {
+					lang: 'en',
+					ignore: ['complex expression']
+				}
+			}
+		},
 		exec: {
 			tests: {
 				cwd: 'tests',
 				command: 'phantomjs.exe spec.js'
 			}
 		},
-		watch: {
-            html: {
-                files: files.html.concat(files.htmlIndex),
-                tasks: ['htmlhint']
-            },
-            jshint: {
-            	files: files.js,
-            	tasks: ['jshint']
-            },
-            tests: {
-            	files: files.js.concat(files.tests),
-            	tasks: ['exec']
-            }
-        },
 		durandal: {
 			build: {
 				src: [
@@ -113,6 +108,7 @@ module.exports = function(grunt){
 		}
 	});
 
-	grunt.registerTask('default', ['htmlhint', 'jshint', 'durandal']);
+	grunt.registerTask('default', ['htmlhint', 'jshint', 'exec']);
+	grunt.registerTask('build', ['htmlhint', 'jshint', 'exec', 'durandal']);
 
 };
