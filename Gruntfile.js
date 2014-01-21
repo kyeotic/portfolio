@@ -1,6 +1,7 @@
 module.exports = function(grunt){
 
 	require("matchdep").filterDev("grunt-*").forEach(grunt.loadNpmTasks);
+	grunt.loadTasks('tasks');
 
 	var files = {
 		js: [
@@ -8,13 +9,16 @@ module.exports = function(grunt){
 			'src/client/lib/durandal/js/plugins/{knockoutActivity,knockoutCommands,knockoutExtensions,qPatch,envPatch}.js'
 		],
 		jsExclude: ['src/client/app/main-built.js'],
-		tests: ['tests/**/*.js'],
+		tests: ['tests/specs/**/*.js'],
 		htmlIndex: ['src/index.html'],
 		html: ['src/client/app/**/*.html']
 	};
 
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
+		tests: {
+			src: files.tests
+		},
 		htmlhint: {
 			index: {
 				options: {
@@ -67,6 +71,20 @@ module.exports = function(grunt){
 				}
 			}
 		},
+		watch: {
+			html: {
+				files: files.html.concat(files.htmlIndex),
+				tasks: ['htmlhint']
+			},
+			jshint: {
+				files: files.js,
+				tasks: ['jshint']
+			},
+			tests: {
+				files: files.js.concat(files.tests).concat(['tasks/tests.js']),
+				tasks: ['tests']
+			}
+		},
 		exec: {
 			tests: {
 				cwd: 'tests',
@@ -110,5 +128,4 @@ module.exports = function(grunt){
 
 	grunt.registerTask('default', ['htmlhint', 'jshint', 'exec']);
 	grunt.registerTask('build', ['htmlhint', 'jshint', 'exec', 'durandal']);
-
 };
