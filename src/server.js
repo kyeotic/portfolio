@@ -4,6 +4,8 @@ var fs = require('fs'),
     app = express(),
     index = app.settings.env === 'production' ? 'index.prod.html' : 'index.dev.html';
 
+require('newrelic');
+
 //Configure
 app.configure(function() {
     app.use(express.compress());
