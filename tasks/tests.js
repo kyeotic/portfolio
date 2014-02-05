@@ -6,26 +6,26 @@ module.exports = function(grunt) {
 		src: files.tests
 	});
 
-	// Nodejs libs.
-	var path = require('path');
+	grunt.registerMultiTask('tests', 'Run PhantomJS Tests', function() {
 
-	// External lib.
-	var phantomjs = require('grunt-lib-phantomjs').init(grunt);
+		var done = this.async();
 
-	grunt.registerMultiTask('task-tests', 'Run PhantomJS Tests', function() {
+		var childProcess = require('child_process'),
+			phantomjs = require('phantomjs'),
+			path = require('path'),
+			binPath = phantomjs.path;
 
-		options = this.options({
-			timeout: 5000,
-			urls: [],
-			force: false
-		});
+		grunt.log.writeln(__dirname);
 
-		var urls = options.urls.concat(this.filesSrc);
-		//grunt.log.writeln(options.urls);
-		//grunt.log.writeln(this.files);
-		//grunt.log.writeln(this.src);
-		grunt.log.writeln(this.filesSrc);
-		grunt.log.writeln(grunt.config('files').js);
+		var childArgs = [
+			path.join(__dirname, '../tests/spec.js')
+		];
+
+		childProcess.execFile(binPath, childArgs, function(err, stdout, stderr) {
+			grunt.log.writeln(stdout);
+			grunt.log.writeln(stderr);
+			done();
+		})
 
 	});
 };

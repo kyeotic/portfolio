@@ -12,6 +12,6 @@
     "grunt-exec": "*",
     "grunt-durandal": "*",
     "matchdep": "*",
-    "grunt-lib-phantomjs": "0.5.0"
+    "phantomjs": "~1.9.7-1"
   }
 }
