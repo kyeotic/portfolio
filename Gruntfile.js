@@ -1,8 +1,6 @@
 module.exports = function(grunt){
 
-	require("matchdep").filterDev("grunt-*").forEach(grunt.loadNpmTasks);
-	grunt.loadTasks('tasks');
-
+	//Setup Files
 	var files = {
 		js: [
 			'src/client/app/**/*.js', 
@@ -14,63 +12,9 @@ module.exports = function(grunt){
 		html: ['src/client/app/**/*.html']
 	};
 
+	//Write to config so the tasks can access them
 	grunt.initConfig({
-		pkg: grunt.file.readJSON('package.json'),
-		tests: {
-			src: files.tests
-		},
-		htmlhint: {
-			index: {
-				options: {
-					'tag-pair': true,
-					'tagname-lowercase': true,
-					'attr-lowercase': true,
-					'attr-value-double-quotes': true,
-					'doctype-first': true,
-					'spec-char-escape': true,
-					'id-unique': true,
-					'style-disabled': true
-				},
-				src: files.htmlIndex
-			},
-			app: {
-				options: {
-					'tag-pair': true,
-					'tagname-lowercase': true,
-					'attr-lowercase': true,
-					'attr-value-double-quotes': true,
-					'spec-char-escape': true,
-					'id-unique': true,
-					'style-disabled': true,
-					'img-alt-require': true
-				},
-				src: files.html
-			}
-		},
-		jshint: {
-			options: {
-				curly: false,
-				eqeqeq: true,
-				eqnull: true,
-				browser: true,
-				smarttabs: true,
-				"-W099": true, // allowed mixed tabs and spaces
-				globals: {
-					jQuery: true
-				},
-				ignores: files.jsExclude
-			},
-			uses_defaults: files.js
-		},
-		spell: {
-			all: {
-				src: files.html,
-				options: {
-					lang: 'en',
-					ignore: ['complex expression']
-				}
-			}
-		},
+		files: files,
 		watch: {
 			html: {
 				files: files.html.concat(files.htmlIndex),
@@ -84,48 +28,12 @@ module.exports = function(grunt){
 				files: files.js.concat(files.tests).concat(['tasks/tests.js']),
 				tasks: ['tests']
 			}
-		},
-		exec: {
-			tests: {
-				cwd: 'tests',
-				command: 'phantomjs.exe spec.js'
-			}
-		},
-		durandal: {
-			build: {
-				src: [
-					"src/client/app/**/*.*",
-					"src/client/lib/durandal/**/*.*"
-				],
-				options: {
-					name: '../lib/require/almond-custom',
-					baseUrl: "src/client/app/",
-					mainPath: "src/client/app/main.js",
-					out: "src/client/app/main-built.js",
-
-					paths: {
-						'text': '../lib/require/text',
-						'durandal':'../lib/durandal/js',
-						'plugins' : '../lib/durandal/js/plugins',
-						'transitions' : '../lib/durandal/js/transitions',
-						'knockout': '../lib/knockout-2.3.0',
-						'bootstrap': '../lib/bootstrap.min',
-						'magnific': '../lib/magnific-popup',
-						'jquery': '../lib/jquery-1.9.1',
-						'Q' : '../lib/q.min'
-					},
-					uglify2: {
-						compress: {
-							global_defs: {
-								DEBUG: true
-							}
-						}
-					}
-				}
-			}
 		}
 	});
 
-	grunt.registerTask('default', ['htmlhint', 'jshint', 'exec']);
+	//Load the tasks
+	grunt.loadTasks('tasks');
+
+	grunt.registerTask('default', ['htmlhint', 'jshint', 'tests']);
 	grunt.registerTask('build', ['htmlhint', 'jshint', 'exec', 'durandal']);
 };

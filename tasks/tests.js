@@ -1,8 +1,18 @@
 module.exports = function(grunt) {
 
-	var options;
+	var files = grunt.config('files');
+	
+	grunt.config.set('tests', {
+		src: files.tests
+	});
 
-	grunt.registerMultiTask('tests', 'Run PhantomJS Tests', function() {
+	// Nodejs libs.
+	var path = require('path');
+
+	// External lib.
+	var phantomjs = require('grunt-lib-phantomjs').init(grunt);
+
+	grunt.registerMultiTask('task-tests', 'Run PhantomJS Tests', function() {
 
 		options = this.options({
 			timeout: 5000,
@@ -15,6 +25,7 @@ module.exports = function(grunt) {
 		//grunt.log.writeln(this.files);
 		//grunt.log.writeln(this.src);
 		grunt.log.writeln(this.filesSrc);
+		grunt.log.writeln(grunt.config('files').js);
 
 	});
 };
