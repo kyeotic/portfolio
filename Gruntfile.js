@@ -35,5 +35,5 @@ module.exports = function(grunt){
 	grunt.loadTasks('tasks');
 
 	grunt.registerTask('default', ['htmlhint', 'jshint', 'tests']);
-	grunt.registerTask('build', ['htmlhint', 'jshint', 'exec', 'durandal']);
+	grunt.registerTask('build', ['default', 'durandal']);
 };
