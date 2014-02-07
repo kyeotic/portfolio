@@ -4,6 +4,10 @@ var fs = require('fs'),
     app = express(),
     index = app.settings.env === 'production' ? 'index.prod.html' : 'index.dev.html';
 
+<<<<<<< HEAD
+=======
+//Add new relic monitor
+>>>>>>> tests
 require('newrelic');
 
 //Configure

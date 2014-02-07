@@ -8,7 +8,7 @@ require.config({
         'bootstrap': '/lib/bootstrap.min',
         'magnific': '/lib/magnific-popup',
         'jquery': '/lib/jquery-1.9.1',
-        'Q' : '/lib/q.min'
+        'Q': '/lib/q.min'
     },
     shim: {
         'bootstrap': {
@@ -24,8 +24,8 @@ require.config({
     waitSeconds: 30
 });
 
-define(['durandal/system', 'durandal/app', 'durandal/viewLocator', 'plugins/router', 'bootstrap', 'magnific'],
-function(system, app, viewLocator) {
+define(['durandal/system', 'durandal/app', 'durandal/viewLocator', 'shell/shell', 'bootstrap', 'magnific'],
+function(system, app, viewLocator, shell) {
 
     //>>excludeStart("build", true);
     system.debug(false);
@@ -47,6 +47,9 @@ function(system, app, viewLocator) {
     });
 
     app.title = 'Tyrsius';
+    app.config = {
+        pushState: false
+    };
     app.start().then(function () {
         //Replace 'viewmodels' in the moduleId with 'views' to locate the view.
         //Look for partial views in a 'views' folder in the root.
