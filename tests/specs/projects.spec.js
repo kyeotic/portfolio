@@ -21,11 +21,15 @@ function (app, system, viewLocator, router, page, Q) {
 			});
 			expect(filteredRoutes).toEqual(page.router.navigationModel().length);
 		});
+
+		/*
 		async.it('can load all route modules', function(done) {
 			//console.log(page.router.navigationModel()[0]);
 			expect(2).toBe(2);
 			done();
 		});
+
+*/
 		
 		//test is too slow, also  isn't working
 		/*
