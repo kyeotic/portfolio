@@ -6,7 +6,7 @@
 		</p>
 
 		<p>
-			The server is a very basic NodeJS/Express server. It's only responsibility is to serve the <code>index.html</code> that Durandal run's inside of, but do so for every route so that push-state is supported. The server is running on a self-managed <a href="https://www.webfaction.com/">Webfaction</a> box. Deployments are handled by pushing over SSH to a Git server running on the same box, where a post-receive hook unpacks the repository, run's Grunt to bundle and uglify everything, and restart <a href="https://npmjs.org/package/forever">Forever</a>. A cron-job checks every 15 minutes to ensure it's still up.
+			The server is a very basic NodeJS/Express server. It's only responsibility is to serve the <code>index.html</code> that Durandal run's inside of, but do so for every route so that push-state is supported. The server is running on a self-managed <a href="https://www.webfaction.com/">Webfaction</a> box. Deployments are handled by pushing over SSH to a Git server running on the same box, where a post-receive hook unpacks the repository, run's Grunt to run tests and build the app, and restart <a href="https://npmjs.org/package/forever">Forever</a>. A cron-job checks every 15 minutes to ensure it's still up.
 		</p>
 
 		<p>

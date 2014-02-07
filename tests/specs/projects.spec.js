@@ -1,4 +1,5 @@
-define(['durandal/app', 'plugins/router', 'projects/index', 'Q'], function (app, router, page, Q) {
+define(['durandal/app', 'durandal/system', 'durandal/viewLocator', 'plugins/router', 'projects/index', 'Q'],
+function (app, system, viewLocator, router, page, Q) {
 	describe('projects module', function () {
 		var async = new AsyncSpec(this);
 
@@ -19,6 +20,11 @@ define(['durandal/app', 'plugins/router', 'projects/index', 'Q'], function (app,
 				return instruction.view.indexOf('.html') === instruction.view.length - 5;
 			});
 			expect(filteredRoutes).toEqual(page.router.navigationModel().length);
+		});
+		async.it('can load all route modules', function(done) {
+			//console.log(page.router.navigationModel()[0]);
+			expect(2).toBe(2);
+			done();
 		});
 		
 		//test is too slow, also  isn't working

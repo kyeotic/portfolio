@@ -22,9 +22,11 @@ module.exports = function(grunt) {
 		var workingDir = path.join(__dirname, '../tests/');
 
 		childProcess.execFile(binPath, childArgs, { cwd: workingDir }, function(err, stdout, stderr) {
+			//grunt.log.writeln('Test complete');
 			grunt.log.writeln(stdout);
+			//grunt.log.writeln(err);
 			grunt.log.writeln(stderr);
-			done();
+			done(!err);
 		})
 
 	});

@@ -1,7 +1,7 @@
 ﻿//Safety Net, exit after two seconds
 setTimeout(function () {
     phantom.exit();
-}, 20000);
+}, 2000);
 
 /*global phantom, require, runTests*/
 var fs = require('fs'),
@@ -69,8 +69,8 @@ test.then(function () {
     console.log("-----------------");
     console.log('Specs: ' + runSpecs.run + ', Failed: ' + runSpecs.failed);
 }).then(function() {
-    phantom.exit(runSpecs.failed == 0 ? 0 : 1);
+    phantom.exit(runSpecs.failed === 0 ? 0 : 1);
 }).fail(function(error) {
     console.log('An error occured', error);
-    phantom.exit(runSpecs.failed == 0 ? 0 : 1);
+    phantom.exit(runSpecs.failed === 0 ? 0 : 1);
 }).done();

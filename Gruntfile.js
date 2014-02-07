@@ -7,7 +7,8 @@ module.exports = function(grunt){
 			'src/client/lib/durandal/js/plugins/{knockoutActivity,knockoutCommands,knockoutExtensions,qPatch,envPatch}.js'
 		],
 		jsExclude: ['src/client/app/main-built.js'],
-		tests: ['tests/specs/**/*.js'],
+		testLib: ['tests/lib/durandalHarness.js', 'tests/spec.js'],
+		tests: ['tests/specs/*.js'],
 		htmlIndex: ['src/index.html'],
 		html: ['src/client/app/**/*.html']
 	};
@@ -21,15 +22,17 @@ module.exports = function(grunt){
 				tasks: ['htmlhint']
 			},
 			jshint: {
-				files: files.js,
+				files: files.js.concat(files.tests).concat(files.testLib),
 				tasks: ['jshint']
 			},
 			tests: {
-				files: files.js.concat(files.tests).concat(['tasks/tests.js']),
+				files: files.js.concat(files.tests).concat(files.testLib).concat(['tasks/tests.js']),
 				tasks: ['tests']
 			}
 		}
 	});
+
+	grunt.loadNpmTasks('grunt-contrib-watch');
 
 	//Load the tasks
 	grunt.loadTasks('tasks');

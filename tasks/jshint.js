@@ -15,7 +15,7 @@ module.exports = function(grunt) {
 			},
 			ignores: files.jsExclude
 		},
-		uses_defaults: files.js
+		uses_defaults: files.js.concat(files.tests).concat(files.testLib)
 	});
 	grunt.config.set('spell', {
 		all: {
