@@ -13,5 +13,16 @@
     "grunt-durandal": "*",
     "matchdep": "*",
     "phantomjs": "~1.9.7-1"
+  },
+  "dependencies": {
+    "grunt": "~0.4.0",
+    "grunt-contrib-watch": "*",
+    "grunt-contrib-jshint": "*",
+    "grunt-htmlhint": "*",
+    "grunt-spell": "*",
+    "grunt-exec": "*",
+    "grunt-durandal": "*",
+    "matchdep": "*",
+    "phantomjs": "~1.9.7-1"
   }
 }
