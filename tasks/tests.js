@@ -15,13 +15,13 @@ module.exports = function(grunt) {
 			path = require('path'),
 			binPath = phantomjs.path;
 
-		grunt.log.writeln(__dirname);
-
 		var childArgs = [
 			path.join(__dirname, '../tests/spec.js')
 		];
 
-		childProcess.execFile(binPath, childArgs, function(err, stdout, stderr) {
+		var workingDir = path.join(__dirname, '../tests/');
+
+		childProcess.execFile(binPath, childArgs, { cwd: workingDir }, function(err, stdout, stderr) {
 			grunt.log.writeln(stdout);
 			grunt.log.writeln(stderr);
 			done();
