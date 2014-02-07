@@ -27,7 +27,7 @@ module.exports = function(grunt) {
 			//grunt.log.writeln(err);
 			grunt.log.writeln(stderr);
 			done(!err);
-		})
+		});
 
 	});
 };
