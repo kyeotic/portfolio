@@ -22,4 +22,4 @@ main-built.js
 /src/client/app/main-built.js
 
 node_modules/phantomjs/
-node_modules/.bin/phantomjs/
+node_modules/.bin/phantomjs*
