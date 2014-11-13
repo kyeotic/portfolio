@@ -18,7 +18,10 @@ function (router, ko, app, $) {
 			{ route: 'portfolio',		moduleId: 'static',	title: 'Portfolio',			nav: true,	view: 'portfolio.html',		type: 'personal' },
 			{ route: 'durandal-grid',	moduleId: 'static',	title: 'Durandal Grid',		nav: true, 	view: 'durandal-grid.html',	type: 'personal' },
 			{ route: 'sprintr',			moduleId: 'static',	title: 'Sprintr',			nav: true, 	view: 'sprintr.html',		type: 'personal' },
-			{ route: 'chaos',			moduleId: 'static',	title: 'Chaos Crusade',		nav: true, 	view: 'chaos.html',			type: 'personal' }
+			{ route: 'chaos',			moduleId: 'static',	title: 'Chaos Crusade',		nav: true, 	view: 'chaos.html',			type: 'personal' },
+
+			//Publications
+			{ route: 'mastering-knockout',	moduleId: 'static',	title: 'Mastering KnockoutJS',	nav: true, 	view: 'masteringKnockout.html',	type: 'publication' }
 		]).buildNavigationModel();
 
 	var navCollapse = $('#navbar-collapse-group');
@@ -64,6 +67,11 @@ function (router, ko, app, $) {
 			return childRouter.navigationModel().filter(function(p) {
 				return p.type === 'personal';
 			});
+		}),
+		publications: ko.computed(function() {
+			return childRouter.navigationModel().filter(function(p) {
+				return p.type === 'publication';
+			}); 
 		})
 	};
 });
