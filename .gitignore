@@ -15,7 +15,6 @@ npm-debug.log
 
 .DS_store
 
-*.sublime-project
 *.sublime-workspace
 
 main-built.js
