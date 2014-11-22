@@ -1,10 +1,10 @@
+.project-group {
+    margin-bottom: 20px;
+}
+
 .splash {
     text-align: center;
     margin: 10% 0 0 0;
-}
-
-body {
-    padding-bottom: 50px;
 }
 
 .splash .message {
@@ -26,7 +26,7 @@ body {
 
 .page-host {
     position: relative;
-    top: 50px;
+    top: 20px;
     padding: 50px 20px 0 20px;
 }
 
@@ -93,8 +93,5 @@ body {
     margin-bottom: 10px;
 }
 
-.nav-project {
-    background-color: #1c1e22;
-}
+
 .nav-project>li>a { display: inline-block; }
-.nav-project>li>a.active { background-color: #3e444c; }

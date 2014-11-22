@@ -58,20 +58,23 @@ function (router, ko, app, $) {
 
 	return {
 		router: childRouter,
-		proProjects: ko.computed(function() {
-			return childRouter.navigationModel().filter(function(p) {
-				return p.type === 'pro';
-			});
-		}),
-		personalProjects: ko.computed(function() {
-			return childRouter.navigationModel().filter(function(p) {
-				return p.type === 'personal';
-			});
-		}),
-		publications: ko.computed(function() {
-			return childRouter.navigationModel().filter(function(p) {
-				return p.type === 'publication';
-			}); 
-		})
+		projectGroups:[
+			{
+				title: 'Professional Work',
+				projects: childRouter.navigationModel().filter(function(route) {
+					return route.type === 'pro';
+				})
+			}, {
+				title: 'Personal Projects',
+				projects: childRouter.navigationModel().filter(function(route) {
+					return route.type === 'personal';
+				})
+			}, {
+				title: 'Publications',
+				projects: childRouter.navigationModel().filter(function(route) {
+					return route.type === 'publication';
+				})
+			}
+		]
 	};
 });

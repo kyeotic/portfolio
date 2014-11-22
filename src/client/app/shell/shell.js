@@ -1,8 +1,5 @@
-define(['plugins/router', 'knockout', 'durandal/app', 'jquery'], 
-function (router, ko, app, $) {
-
-	var navCollapse = $('#navbar-collapse-group');
-
+define(['plugins/router', 'knockout', 'durandal/app'], 
+function (router, ko, app) {
 	return {
 		title: 'Home',
 		router: router,
@@ -14,12 +11,6 @@ function (router, ko, app, $) {
 				])
 				.buildNavigationModel()
 				.mapUnknownRoutes('shell/404', '404');
-
-			//Ensure the mobile nav menu gets closed during navigation (it doesn't do this itself)
-			router.on('router:navigation:complete').then(function() {
-				if (navCollapse.hasClass('in'))
-					navCollapse.collapse('hide');
-			});
 
 			return router.activate({ pushState: app.config.pushState });
 		}
