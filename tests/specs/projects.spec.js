@@ -9,11 +9,8 @@ function (app, system, viewLocator, router, page, Q) {
 		it('should have a router', function() {
 			expect(page.router).toBeDefined();
 		});
-		it('should have pro projects', function() {
-			expect(page.proProjects).toBeDefined();
-		});
-		it('should have personal projects', function() {
-			expect(page.personalProjects).toBeDefined();
+		it('should have projectGroups', function() {
+			expect(page.projectGroups).toBeDefined();
 		});
 		it('all routes should have view ending in .html', function() {
 			var filteredRoutes = page.router.navigationModel().count(function(instruction) {

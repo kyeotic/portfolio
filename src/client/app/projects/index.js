@@ -60,14 +60,14 @@ function (router, ko, app, $) {
 		router: childRouter,
 		projectGroups:[
 			{
-				title: 'Professional Work',
-				projects: childRouter.navigationModel().filter(function(route) {
-					return route.type === 'pro';
-				})
-			}, {
 				title: 'Personal Projects',
 				projects: childRouter.navigationModel().filter(function(route) {
 					return route.type === 'personal';
+				})
+			},{
+				title: 'Professional Work',
+				projects: childRouter.navigationModel().filter(function(route) {
+					return route.type === 'pro';
 				})
 			}, {
 				title: 'Publications',
