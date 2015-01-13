@@ -1,12 +1,13 @@
 System.register([], function (_export) {
   "use strict";
 
+  var FourOhFour;
   return {
     setters: [],
     execute: function () {
-      define(function () {
-        return {};
-      });
+      FourOhFour = function FourOhFour() {};
+
+      _export("FourOhFour", FourOhFour);
     }
   };
 });
