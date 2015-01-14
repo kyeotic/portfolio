@@ -23,6 +23,10 @@ System.register(["jquery", "magnific"], function (_export) {
           scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop() - 50 });
       };
 
+      ProjectBase.prototype.determineActivationStrategy = function () {
+        return "replace";
+      };
+
       ProjectBase.prototype.attached = function () {
         $(".image-link").each(function () {
           $(this).attr("title", this.alt);

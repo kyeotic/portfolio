@@ -24,6 +24,10 @@ export class ProjectBase {
     });
   }
 
+  determineActivationStrategy() {
+    return 'replace';
+  }
+
   attached() {
     //This is necessary because magnific popup requires these atrributes
     //They are already on the image, and I don't want to double them up in the source, this is easier
