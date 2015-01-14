@@ -5,6 +5,7 @@ export class Projects {
   constructor(router) {
     this.router = router;
     this.router.configure(config => {
+      config.title = 'Projects';
       config.map([
         { route: ['swc', ''],     moduleId: './static', title: 'ShiftWise Connect', nav: true,  view: 'projects/swc.html',    type: 'pro' },
         { route: 'esp',           moduleId: './static', title: 'ESP',               nav: true,  view: './esp.html',           type: 'pro' },
