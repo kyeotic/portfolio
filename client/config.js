@@ -4,15 +4,16 @@ System.config({
     "*": "*.js",
     "github:*": "jspm_packages/github/*.js",
     "npm:*": "jspm_packages/npm/*.js",
-    "lib/*": "lib/*.js"
+    "lib/*": "lib/*.js",
+    "portfolio/*": "lib/*.js"
   },
-  shim: {
-    packages: {
+  "shim": {
+    "packages": {
       "magnific": {
-        main: "lib/magnific",
-        format: 'global',
-        deps: "jquery",
-        exports: '$.magnificPopup'
+        "main": "lib/magnific",
+        "format": "global",
+        "deps": "jquery",
+        "exports": "$.magnificPopup"
       }
     }
   }
