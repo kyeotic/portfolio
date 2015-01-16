@@ -8,7 +8,7 @@ System.register(["aurelia-framework", "aurelia-logging-console"], function (_exp
     aurelia.plugins.installBindingLanguage().installResources().installRouter().installEventAggregator();
 
     aurelia.start().then(function (a) {
-      return a.setRoot("app", document.body);
+      return a.setRoot("app/app", document.body);
     });
   }
   return {
