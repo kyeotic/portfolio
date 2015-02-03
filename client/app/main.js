@@ -5,7 +5,7 @@ System.register(["aurelia-framework", "aurelia-logging-console"], function (_exp
   _export("configure", configure);
 
   function configure(aurelia) {
-    aurelia.plugins.installBindingLanguage().installResources().installRouter().installEventAggregator();
+    aurelia.use.defaultBindingLanguage().defaultResources().router().eventAggregator();
 
     aurelia.start().then(function (a) {
       return a.setRoot("app/app", document.body);

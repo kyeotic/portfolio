@@ -5,11 +5,11 @@ LogManager.addAppender(new ConsoleAppender());
 LogManager.setLevel(LogManager.levels.debug);
 
 export function configure(aurelia) {
-  aurelia.plugins
-    .installBindingLanguage()
-    .installResources()
-    .installRouter()
-    .installEventAggregator();
+  aurelia.use
+    .defaultBindingLanguage()
+    .defaultResources()
+    .router()
+    .eventAggregator();
 
   aurelia.start().then(a => a.setRoot('app/app', document.body));
 }

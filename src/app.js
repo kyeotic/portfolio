@@ -7,6 +7,7 @@ export class App {
     this.router.history._hasPushState = true;
     this.router.configure(config => {
       config.title = 'Portfolio';
+      config.options.pushState = true;
       config.map([
         { route: ['', 'home'],        moduleId: 'home/index',       title: 'Home',      nav: false },
         { route: 'projects',          moduleId: 'projects/index',   title: 'Portfolio', nav: true },
