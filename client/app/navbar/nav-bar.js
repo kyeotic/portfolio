@@ -1,34 +1,34 @@
-System.register(['aurelia-framework'], function (_export) {
-  var Behavior, NavBar;
+System.register(["aurelia-framework"], function (_export) {
+  "use strict";
 
-  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
+  var Behavior, _prototypeProperties, NavBar;
   return {
     setters: [function (_aureliaFramework) {
       Behavior = _aureliaFramework.Behavior;
     }],
     execute: function () {
-      'use strict';
+      _prototypeProperties = function (child, staticProps, instanceProps) {
+        if (staticProps) Object.defineProperties(child, staticProps);
+        if (instanceProps) Object.defineProperties(child.prototype, instanceProps);
+      };
 
       NavBar = (function () {
-        function NavBar() {
-          _classCallCheck(this, NavBar);
-        }
+        function NavBar() {}
 
-        _createClass(NavBar, null, [{
-          key: 'metadata',
-          value: function metadata() {
-            return Behavior.withProperty('router');
+        _prototypeProperties(NavBar, {
+          metadata: {
+            value: function () {
+              return Behavior.withProperty("router");
+            },
+            writable: true,
+            enumerable: true,
+            configurable: true
           }
-        }]);
+        });
 
         return NavBar;
       })();
-
-      _export('NavBar', NavBar);
+      _export("NavBar", NavBar);
     }
   };
 });
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm5hdmJhci9uYXYtYmFyLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Z0JBRWEsTUFBTTs7Ozs7Ozs7bUNBRlgsUUFBUTs7Ozs7QUFFSCxZQUFNO2lCQUFOLE1BQU07Z0NBQU4sTUFBTTs7O3FCQUFOLE1BQU07O2lCQUNGLG9CQUFFO0FBQUUsbUJBQU8sUUFBUSxDQUFDLFlBQVksQ0FBQyxRQUFRLENBQUMsQ0FBQztXQUFFOzs7ZUFEakQsTUFBTTs7O3dCQUFOLE1BQU0iLCJmaWxlIjoibmF2YmFyL25hdi1iYXIuanMiLCJzb3VyY2VSb290IjoiLi4vc3JjLyJ9
