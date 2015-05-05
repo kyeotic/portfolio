@@ -15,3 +15,4 @@ app.get('/*', function(req, res){
 //Start Listening
 app.listen(port);
 console.log("Express server listening on port %d in %s mode", port, app.settings.env);
+gulp 

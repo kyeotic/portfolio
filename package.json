@@ -8,10 +8,6 @@
   "license": "MIT",
   "author": "Timothy Moran <tyrsius@gmail.com> (http://tyrsius.com/)",
   "main": "dist/commonjs/index.js",
-  "scripts": {
-    "build": "gulp build",
-    "start": "node server.js"
-  },
   "repository": {
     "type": "git",
     "url": "http://github.com/tyrsius/portfolio"
