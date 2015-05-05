@@ -6,7 +6,7 @@ export class Projects {
     this.router = router;
     this.router.configure(config => {
       config.map([
-        { route: ['swc', ''],     moduleId: './static', title: 'ShiftWise Connect', nav: true,  view: 'projects/swc.html',    type: 'pro' },
+        { route: ['swc', ''],     moduleId: './static', title: 'ShiftWise Connect', nav: true,  view: 'projects/swc.html',           type: 'pro' },
         { route: 'esp',           moduleId: './static', title: 'ESP',               nav: true,  view: './esp.html',           type: 'pro' },
         { route: 'nwmaico',       moduleId: './static', title: 'NW Maico & CZ',     nav: true,  view: './nwmaico.html',       type: 'pro' },
         { route: 'affinity-web',  moduleId: './static', title: 'Affinity Web',      nav: true,  view: './affinity-web.html',  type: 'pro' },
@@ -20,7 +20,7 @@ export class Projects {
         { route: 'chaos',         moduleId: './static', title: 'Chaos Crusade',     nav: true,  view: './chaos.html',         type: 'personal' },
 
         //Publications
-        { route: 'mastering-knockout',  moduleId: './static', title: 'Mastering KnockoutJS',  nav: true,  view: './masteringKnockout.html', type: 'publication' }
+        { route: 'mastering-knockout',  moduleId: 'static', title: 'Mastering KnockoutJS',  nav: true,  view: './masteringKnockout.html', type: 'publication' }
       ]);
     });
   }

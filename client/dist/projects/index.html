@@ -3,14 +3,14 @@
 
   <div class="row">
     <div class="col-sm-2">
-      <template repeat.for="group of projectGroups">
+      <section repeat.for="group of projectGroups">
         <h4>${group.title}</h4>
         <ul class="nav nav-stacked nav-project" role="complementary">
           <li repeat.for="project of group.projects">
             <a class="navbar-link btn-block" href.bind="project.href" class="${project.isActive ? 'active' : ''}">${project.title}</a>
           </li>
         </ul>
-      </template>
+      </section>
     </div>
 
 
