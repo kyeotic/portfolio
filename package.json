@@ -45,7 +45,6 @@
       "baseURL": "client"
     },
     "dependencies": {
-      "Magnific-Popup": "github:dimsemenov/Magnific-Popup@^1.0.0",
       "aurelia-bootstrapper": "^0.8.0",
       "aurelia-http-client": "^0.4.1",
       "bootstrap": "^3.3.1",

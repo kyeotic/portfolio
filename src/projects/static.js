@@ -1,5 +1,5 @@
-import $ from 'jquery';
-import magnific from 'Magnific-Popup';
+import $ from 'jquery'
+import magnific from 'magnific'
 
 export class ProjectBase {
   activate() {

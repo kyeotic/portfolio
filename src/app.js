@@ -9,7 +9,7 @@ export class App {
       config.title = 'Portfolio';
       config.map([
         { route: ['', 'home'],        moduleId: 'home/index',       title: 'Home',      nav: false },
-        { route: 'projects',          moduleId: 'projects/index',   title: 'Portfolio', nav: true },
+        { route: 'projects',  moduleId: 'projects/index',   title: 'Portfolio', nav: true },
         { route: 'resume',            moduleId: 'resume/index',     title: 'Resume',    nav: true }
       ]);
       config.mapUnknownRoutes('errors/404');

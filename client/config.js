@@ -9,8 +9,8 @@ System.config({
   },
   "shim": {
     "packages": {
-      "Magnific-Popup": {
-        "main": "Magnific-Popup",
+      "magnific": {
+        "main": "lib/magnific",
         "format": "global",
         "deps": "jquery",
         "exports": "$.magnificPopup"
@@ -21,12 +21,12 @@ System.config({
 
 System.config({
   "map": {
-    "Magnific-Popup": "github:dimsemenov/Magnific-Popup@1.0.0",
     "aurelia-bootstrapper": "github:aurelia/bootstrapper@0.8.0",
     "aurelia-http-client": "github:aurelia/http-client@0.4.1",
     "bootstrap": "github:twbs/bootstrap@3.3.1",
     "font-awesome": "npm:font-awesome@4.2.0",
     "jquery": "github:components/jquery@2.1.3",
+    "magnific": "lib/magnific",
     "github:aurelia/binding@0.2.2": {
       "aurelia-metadata": "github:aurelia/metadata@0.2.4",
       "aurelia-task-queue": "github:aurelia/task-queue@0.2.1"
@@ -59,6 +59,10 @@ System.config({
     },
     "github:aurelia/history-browser@0.2.1": {
       "aurelia-history": "github:aurelia/history@0.2.1",
+      "core-js": "npm:core-js@0.4.4"
+    },
+    "github:aurelia/http-client@0.4.0": {
+      "aurelia-path": "github:aurelia/path@0.4.0",
       "core-js": "npm:core-js@0.4.4"
     },
     "github:aurelia/http-client@0.4.1": {

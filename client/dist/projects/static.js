@@ -1,12 +1,12 @@
-System.register(["jquery", "Magnific-Popup"], function (_export) {
+System.register(["jquery", "magnific"], function (_export) {
   "use strict";
 
   var $, magnific, _prototypeProperties, ProjectBase;
   return {
     setters: [function (_jquery) {
       $ = _jquery["default"];
-    }, function (_MagnificPopup) {
-      magnific = _MagnificPopup["default"];
+    }, function (_magnific) {
+      magnific = _magnific["default"];
     }],
     execute: function () {
       _prototypeProperties = function (child, staticProps, instanceProps) {
