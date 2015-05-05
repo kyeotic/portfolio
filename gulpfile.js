@@ -18,7 +18,7 @@ var historyApiFallback = require('connect-history-api-fallback');
 var path = {
   source:'src/**/*.js',
   html:'src/**/*.html',
-  output:'client/app/'
+  output:'client/dist/'
 };
 
 var compilerOptions = {
