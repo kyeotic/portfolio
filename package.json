@@ -24,5 +24,9 @@
     "grunt-durandal": "*",
     "matchdep": "*",
     "phantomjs": "~1.9.7-1"
+  },
+  "scripts": {
+    "build": "grunt build",
+    "start": "node src/server.js"
   }
 }
