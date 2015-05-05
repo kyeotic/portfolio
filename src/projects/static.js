@@ -29,8 +29,6 @@ export class ProjectBase {
   }
 
   attached() {
-
-    //console.log(_moduleName);
     //This is necessary because magnific popup requires these atrributes
     //They are already on the image, and I don't want to double them up in the source, this is easier
     $('.image-link').each(function() {
