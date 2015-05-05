@@ -1,1 +1,1 @@
-export class FourOhFour {}
+define(function() { return {}; });

@@ -1,41 +1,29 @@
-System.register(["jquery", "magnific"], function (_export) {
+System.register([], function (_export) {
   "use strict";
 
-  var $, magnific, ProjectBase;
   return {
-    setters: [function (_jquery) {
-      $ = _jquery["default"];
-    }, function (_magnific) {
-      magnific = _magnific["default"];
-    }],
+    setters: [],
     execute: function () {
-      ProjectBase = function ProjectBase() {};
+      define(["jquery", "knockout", "projects/index"], function ($, ko, parent) {
+        return function Static() {
+          var self = this;
+          self.view = ko.computed(function () {
+            var route = parent.router.activeInstruction();
+            return route ? "projects/" + route.config.view : null;
+          });
+          self.compositionComplete = function (view) {
+            $(".image-link").each(function () {
+              $(this).attr("title", this.alt);
+              $(this).attr("href", this.src);
+            });
 
-      ProjectBase.prototype.activate = function () {
-        var container = $("html,body"),
-            scrollTo = $("#projectsContainer");
-
-        if (container.width() > 767) {
-          return;
-        }
-
-        container.animate({
-          scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop() - 50 });
-      };
-
-      ProjectBase.prototype.attached = function () {
-        $(".image-link").each(function () {
-          $(this).attr("title", this.alt);
-          $(this).attr("href", this.src);
-        });
-
-        $(".image-link").magnificPopup({
-          type: "image",
-          gallery: { enabled: true }
-        });
-      };
-
-      _export("ProjectBase", ProjectBase);
+            $(".image-link").magnificPopup({
+              type: "image",
+              gallery: { enabled: true }
+            });
+          };
+        };
+      });
     }
   };
 });

@@ -12,7 +12,7 @@ System.register(["aurelia-router"], function (_export) {
         this.router.history._hasPushState = true;
         this.router.configure(function (config) {
           config.title = "Aurelia";
-          config.map([{ route: ["", "home"], moduleId: "home/index", title: "Home", nav: false }, { route: "projects", moduleId: "projects/index", title: "Portfolio", nav: true }, { route: "resume", moduleId: "resume/index", title: "Resume", nav: true }]);
+          config.map([{ route: ["", "home"], moduleId: "home/index", title: "Home", nav: false }, { route: "projects*project", moduleId: "projects/index", title: "Portfolio", nav: true, hash: "#projects" }, { route: "resume", moduleId: "resume/index", title: "Resume", nav: true }]);
           config.mapUnknownRoutes("errors/404");
         });
       };

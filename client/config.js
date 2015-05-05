@@ -4,17 +4,7 @@ System.config({
     "*": "*.js",
     "github:*": "jspm_packages/github/*.js",
     "npm:*": "jspm_packages/npm/*.js",
-    "lib/*": "lib/*.js"
-  },
-  shim: {
-    packages: {
-      "magnific": {
-        main: "lib/magnific",
-        format: 'global',
-        deps: "jquery",
-        exports: '$.magnificPopup'
-      }
-    }
+    "portfolio/*": "lib/*.js"
   }
 });
 
@@ -24,8 +14,6 @@ System.config({
     "aurelia-http-client": "github:aurelia/http-client@0.4.1",
     "bootstrap": "github:twbs/bootstrap@3.3.1",
     "font-awesome": "npm:font-awesome@4.2.0",
-    "jquery": "github:components/jquery@2.1.3",
-    "magnific": "lib/magnific",
     "github:aurelia/binding@0.2.2": {
       "aurelia-metadata": "github:aurelia/metadata@0.2.4",
       "aurelia-task-queue": "github:aurelia/task-queue@0.2.1"
