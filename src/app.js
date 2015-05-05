@@ -6,7 +6,7 @@ export class App {
     this.router = router;
     this.router.history._hasPushState = true;
     this.router.configure(config => {
-      config.title = 'Portfolio';
+      config.title = 'Aurelia';
       config.map([
         { route: ['', 'home'],        moduleId: 'home/index',       title: 'Home',      nav: false },
         { route: 'projects',  moduleId: 'projects/index',   title: 'Portfolio', nav: true },
