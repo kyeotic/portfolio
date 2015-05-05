@@ -14,11 +14,6 @@ results
 npm-debug.log
 
 .DS_store
-node_modules
-jspm_packages
-bower_components
-.idea
-.DS_STORE
 
 *.sublime-workspace
 
