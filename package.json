@@ -1,32 +1,41 @@
 {
   "name": "portfolio",
-  "version": "0.1.1",
-  "author": "Timothy Moran",
-  "private": true,
-  "devDependencies": {
-    "grunt": "~0.4.0",
-    "grunt-contrib-watch": "*",
-    "grunt-contrib-jshint": "*",
-    "grunt-htmlhint": "*",
-    "grunt-spell": "*",
-    "grunt-exec": "*",
-    "grunt-durandal": "*",
-    "matchdep": "*",
-    "phantomjs": "~1.9.7-1"
+  "version": "2.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "build:css": "stylus assets/stylus/app.styl --out assets/css --sourcemap --compress",
+    "watch:css": "stylus assets/stylus/app.styl --out assets/css --sourcemap --compress --watch",
+    "build:js": "jspm bundle-sfx main.js dist/app-built.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "jspm": {
+    "directories": {
+      "baseURL": "src"
+    },
+    "configFile": "src/system.config.js",
+    "dependencies": {
+      "history": "npm:history@^1.17.0",
+      "react": "npm:react@^0.14.3",
+      "react-bootstrap": "npm:react-bootstrap@^0.28.1",
+      "react-dom": "npm:react-dom@^0.14.3",
+      "react-router": "npm:react-router@^1.0.3"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
+    }
   },
   "dependencies": {
-    "grunt": "~0.4.0",
-    "grunt-contrib-watch": "*",
-    "grunt-contrib-jshint": "*",
-    "grunt-htmlhint": "*",
-    "grunt-spell": "*",
-    "grunt-exec": "*",
-    "grunt-durandal": "*",
-    "matchdep": "*",
-    "phantomjs": "~1.9.7-1"
+    "express": "^4.13.3",
+    "react": "^0.14.3",
+    "react-dom": "^0.14.3"
   },
-  "scripts": {
-    "build": "grunt build",
-    "start": "node src/server.js"
+  "devDependencies": {
+    "jspm": "^0.16.19",
+    "stylus": "^0.53.0",
+    "watch": "^0.16.0"
   }
 }

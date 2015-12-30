@@ -20,5 +20,6 @@ npm-debug.log
 main-built.js
 /src/client/app/main-built.js
 
-node_modules/phantomjs/
-node_modules/.bin/phantomjs*
+node_modules
+src/jspm_packages
+src_old
