@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ProjectList from 'components/projectList';
+import Lightbox from 'components/Lightbox';
 
 export default class Projects extends Component {
 	render() {
@@ -12,6 +13,8 @@ export default class Projects extends Component {
 			    <div id="projectsContainer" className={"col-sm-10"}>
 			    	{this.props.children}
 			    </div>
+
+			    <Lightbox />
 			</div>
 		);
 	}

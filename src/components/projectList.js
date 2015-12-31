@@ -10,7 +10,8 @@ class ProjectGroup extends Component {
 				<ul className={"nav nav-stacked nav-project"}>
 					{this.props.projects.map(project => {
 						return (<li key={project.route}>
-							<a className={"navbar-link btn-block"}>{project.title}</a>
+							<Link to={'projects/' + project.route} 
+								  className={"navbar-link btn-block"}>{project.title}</Link>
 						</li>);
 					})}
 			 	</ul>

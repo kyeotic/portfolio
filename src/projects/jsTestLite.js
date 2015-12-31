@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import Project from 'components/project';
+import GalleryImage from 'components/galleryImage';
 
 export default class JsTestLite extends Component {
 	render() {
-		const { store, history } = this.props;
 		return (
 			<div className={"row"}>
 				<div className={"col-md-8"}>
@@ -22,7 +23,9 @@ export default class JsTestLite extends Component {
 				</div>
 
 				<div className={"col-md-4"}>
-					<img src="/assets/images/jstest.png" className={"img-rounded img-responsive project-img with-caption image-link"} alt="Write and run tests instantly" />
+					<Project>
+						<GalleryImage src="/assets/images/jstest.png" alt="Write and run tests instantly" />
+					</Project>					
 				</div>
 			</div>
 		);
