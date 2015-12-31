@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Modal, Carousel, CarouselItem} from 'react-bootstrap';
+//import Img from 'apeman-react-image';
 
 export const lightboxService = {
 	handlers: new Set(),
@@ -38,10 +39,10 @@ export default class Lightbox extends Component {
 
 		return (
 			<Modal show={isShowing} onHide={close}>
-				<Carousel>
+				<Carousel interval={0}>
 					{images.map(image => {
 						return (<CarouselItem key={image.src}>
-									<img src={image.src} alt={image.alt} width={900} height={500} />
+									<img src={image.src} alt={image.alt} width={500} />
 									<div className="carousel-caption">
 										<h4>{image.alt}</h4>
 									</div>

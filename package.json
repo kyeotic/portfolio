@@ -16,6 +16,7 @@
     },
     "configFile": "src/system.config.js",
     "dependencies": {
+      "apeman-react-image": "npm:apeman-react-image@^1.0.1",
       "history": "npm:history@^1.17.0",
       "react": "npm:react@^0.14.3",
       "react-bootstrap": "npm:react-bootstrap@^0.28.1",
@@ -26,6 +27,11 @@
       "babel": "npm:babel-core@^5.8.24",
       "babel-runtime": "npm:babel-runtime@^5.8.24",
       "core-js": "npm:core-js@^1.1.4"
+    },
+    "overrides": {
+      "npm:apeman-react-image@1.0.1": {
+        "main": "lib/_ap_image"
+      }
     }
   },
   "dependencies": {
