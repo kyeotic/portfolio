@@ -18,8 +18,8 @@ npm-debug.log
 *.sublime-workspace
 
 main-built.js
-/src/client/app/main-built.js
+
+dist/*
 
 node_modules
-src/jspm_packages
-src_old
+jspm_packages

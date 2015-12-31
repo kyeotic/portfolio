@@ -4,17 +4,16 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+    "setup": "npm i && jspm i",
     "build:css": "stylus assets/stylus/app.styl --out assets/css --sourcemap --compress",
     "watch:css": "stylus assets/stylus/app.styl --out assets/css --sourcemap --compress --watch",
-    "build:js": "jspm bundle-sfx main.js dist/app-built.js"
+    "build:js": "jspm bundle-sfx main dist/main-built.js",
+    "build": "npm run build:css && npm run build:js"
   },
   "author": "",
   "license": "MIT",
   "jspm": {
-    "directories": {
-      "baseURL": "src"
-    },
-    "configFile": "src/system.config.js",
+    "configFile": "jspm.config.js",
     "dependencies": {
       "apeman-react-image": "npm:apeman-react-image@^1.0.1",
       "history": "npm:history@^1.17.0",
