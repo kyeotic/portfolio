@@ -20,7 +20,6 @@ export default class Project extends Component {
 	images = []
 	componentWillMount() {
 		this.images = [].concat([], ...Children.toArray(this.props.children).map(getImages));
-		console.log(this.images);
 	}
 	handleClick = (e) => {
 		lightboxService.show(this.images.slice(0)
