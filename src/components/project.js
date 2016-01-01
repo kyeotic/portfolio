@@ -1,5 +1,6 @@
 import React, { Component, Children } from 'react';
 import {lightboxService} from 'components/Lightbox';
+import GalleryImage from 'components/galleryImage';
 
 function getImages(element) {
 	let images = [];
@@ -7,7 +8,7 @@ function getImages(element) {
 		return images;
 	if (element.props.children)
 		images = images.concat(...Children.toArray(element.props.children).map(getImages));
-	if (element.type === 'img')
+	if (element.type === 'img' || element.type === GalleryImage)
 		images.push({
 			alt: element.props.alt,
 			src: element.props.src
