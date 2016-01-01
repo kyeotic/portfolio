@@ -4,6 +4,7 @@ import App from 'routes/app';
 import Home from 'routes/home';
 import Projects from 'routes/projects';
 import projects from 'projects/route-manifest';
+import Resume from 'resume/resume'
 
 export default class Root extends Component {
 	static propTypes = {
@@ -22,6 +23,7 @@ export default class Root extends Component {
 						<IndexRoute component={projects[0].component} />
 						{projectsRoutes}
 					</Route>
+					<Route path={'/resume'} component={Resume} />
 				</Route>
 			</Router>
 		);

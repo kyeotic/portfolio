@@ -10,19 +10,15 @@ export default class Portfolio extends Component {
 					<div className={'col-md-8'}>
 						<h2>Portfolio</h2>
 						<p>
-							This portfolio represents my ideal tinkering stack. The application itself is built with <a href="http://durandaljs.com/">Durandal</a>, a fairly new MV* Javascript framework that builds on top of Knockout, RequireJS, and jQuery. Having originally come from WPF on the desktop, I am very comfortable thinking about applications in Knockout's MVVM pattern; and Durandal was developed by the same man who created <a href="https://caliburnmicro.codeplex.com/">Caliburn.Micro</a>, so it fits in very well.
+							This portfolio, now in its second version, is my ideal tinkering stack. Originally it was a simple <a href="http://durandaljs.com/">Durandal</a> application built with Grunt ssh deployed to a self-managed <a href="https://www.webfaction.com/">Webfaction</a> box with Git. While I loved Durandal, and Knockout (which it was built on), it didn't fare too well with the public and has now been abandonded. The current version of this portfolio is built with <a href="https://facebook.github.io/react/">React</a>, which has quickly become my new favorite Javascript front-end. Instead of Grunt I am now <a href="http://blog.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/">building with plain-old-npm</a> and using <a href="http://jspm.io/">jspm</a> and <a href="https://babeljs.io/">Babel</a> to develop with ES6/7 and package the application. If this application was larger I would also be using <a href="http://redux.js.org/">Redux</a> to provide the <strong>M</strong> to React's <strong>V</strong> for <strong>MV*</strong>.
 						</p>
 
 						<p>
-							The server is a very basic NodeJS/Express server. It's only responsibility is to serve the <code>index.html</code> that Durandal run's inside of, but do so for every route so that push-state is supported. The server is running on a self-managed <a href="https://www.webfaction.com/">Webfaction</a> box. Deployments are handled by pushing over SSH to a Git server running on the same box, where a post-receive hook unpacks the repository, run's Grunt to run tests and build the app, and restart <a href="https://npmjs.org/package/forever">Forever</a>. A cron-job checks every 15 minutes to ensure it's still up.
-						</p>
-
-						<p>
-							Javascript client, stateless server, deploy with Git, built with Grunt. I love it. If you want to check out the source it's on <a href="https://github.com/tyrsius/portfolio">Github</a>.
+							Javascript client, stateless server, deploy with Git. I love it. If you want to check out the source it's on <a href="https://github.com/tyrsius/portfolio">Github</a>.
 						</p>
 					</div>
 					<div className={'col-md-4'}>
-						<GalleryImage src="/assets/images/portfolio_deploy.jpg" alt="Git deploy: push to the host which unpacks the repo, runs grunt, and starts Forever." />
+						<GalleryImage src="/assets/images/portfolio_deploy.jpg" alt="Git deploy: push to the host which unpacks the repo, runs grunt (from the Durandal version), and starts Forever." />
 					</div>
 				</div>
 			</Project>

@@ -13,6 +13,7 @@ export default class App extends Component {
 			            	</IndexLink>
 			                <ul className={"nav navbar-nav"} >
 			                	<li><Link to={'/projects'}>{'Portfolio'}</Link></li>
+			                	<li><Link to={'/resume'}>{'Resume'}</Link></li>
 			                </ul>
 			            </nav>
 			        </div>
