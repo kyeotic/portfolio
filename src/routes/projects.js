@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ProjectList from 'components/projectList';
-import Lightbox from 'components/Lightbox';
+import Lightbox from 'components/lightbox';
 
 export default class Projects extends Component {
 	render() {
