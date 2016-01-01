@@ -23,8 +23,8 @@ export default class Project extends Component {
 		this.images = [].concat([], ...Children.toArray(this.props.children).map(getImages));
 	}
 	handleClick = (e) => {
-		lightboxService.show(this.images.slice(0)
-										.sort(image => image.src === e.target.src ? -1 : 1));
+		if (e.target.tagName && e.target.tagName.toLowerCase() === 'img')
+			lightboxService.show(this.images.slice(0).sort(image => image.src === e.target.src ? -1 : 1));
 	}
 	render() {
 		return (
