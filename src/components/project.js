@@ -1,5 +1,5 @@
 import React, { Component, Children } from 'react';
-import {lightboxService} from 'components/Lightbox';
+import {lightboxService} from 'components/lightbox';
 import GalleryImage from 'components/galleryImage';
 
 function getImages(element) {
