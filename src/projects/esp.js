@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import Project from 'components/project';
 import GalleryImage from 'components/galleryImage';
+import {title} from 'util/title';
 
+@title('ESP')
 export default class Esp extends Component {
 	render() {
 		return (

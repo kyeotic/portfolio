@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import Project from 'components/project';
 import GalleryImage from 'components/galleryImage';
+import {title} from 'util/title';
 
+@title('MightyNurse')
 export default class MightyNurse extends Component {
 	render() {
 		return (

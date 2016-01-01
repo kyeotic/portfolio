@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import {title} from 'util/title';
 
+@title('Home')
 export default class Home extends Component {
     render() {
         return (

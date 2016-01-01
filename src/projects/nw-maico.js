@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import Project from 'components/project';
 import GalleryImage from 'components/galleryImage';
+import {title} from 'util/title';
 
+@title('NW Maico')
 export default class NwMaico extends Component {
 	render() {
 		return (

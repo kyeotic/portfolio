@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import Project from 'components/project';
 import GalleryImage from 'components/galleryImage';
+import {title} from 'util/title';
 
+@title('Chaos Crusade')
 export default class ChaosCrusade extends Component {
 	render() {
 		return (

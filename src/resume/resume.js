@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import {title} from 'util/title';
 
+@title('Resume')
 export default class Resume extends Component {
 	render() {
 		return (

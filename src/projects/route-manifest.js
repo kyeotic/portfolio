@@ -14,17 +14,17 @@ import Sprintr from 'projects/sprintr';
 let makeRoute = (route, title, component, type) => ({route, title, component, type});
 
 const projects = [
-	makeRoute('nw-maico', 'NwMaico', NwMaico, 'professional'),
-	makeRoute('swc', 'ShiftWise Connect', Swc, 'professional'),
 	makeRoute('jsTestLite', 'JS Test Lite', JsTestLite, 'personal'),
-	makeRoute('affinity-web', 'Affinity Web', AffinityWeb, 'professional'),
-	makeRoute('affinity', 'Affinity', Affinity, 'professional'),
-	makeRoute('esp', 'Esp', Esp, 'professional'),
 	makeRoute('chaos-crusade', 'Chaos Crusade', ChaosCrusade, 'personal'),
 	makeRoute('durandal-grid', 'Durandal Grid', DurandalGrid, 'personal'),
 	makeRoute('mighty-nurse', 'MightyNurse', MightyNurse, 'personal'),
 	makeRoute('portfolio', 'Portfolio', Portfolio, 'personal'),
 	makeRoute('sprintr', 'Sprintr', Sprintr, 'personal'),
+	makeRoute('nw-maico', 'NwMaico', NwMaico, 'professional'),
+	makeRoute('swc', 'ShiftWise Connect', Swc, 'professional'),
+	makeRoute('affinity-web', 'Affinity Web', AffinityWeb, 'professional'),
+	makeRoute('affinity', 'Affinity', Affinity, 'professional'),
+	makeRoute('esp', 'Esp', Esp, 'professional'),
 	makeRoute('mastering-knockout', 'Mastering Knockout', MasteringKnockout, 'publications')
 ];
 
