@@ -42,7 +42,7 @@ export default class Lightbox extends Component {
 				<Carousel interval={0}>
 					{images.map(image => {
 						return (<CarouselItem key={image.src}>
-									<img src={image.src} alt={image.alt} width={500} />
+									<img src={image.src} alt={image.alt} className={'lightbox-img'} />
 									<div className="carousel-caption">
 										<h4>{image.alt}</h4>
 									</div>
