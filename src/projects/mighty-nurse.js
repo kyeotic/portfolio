@@ -26,7 +26,7 @@ export default class MightyNurse extends Component {
 						<p>
 							
 						</p>
-					</div>a
+					</div>
 					<div className={'col-md-4'}>
 						<GalleryImage src="/assets/images/affinity_category.jpg" alt="The Ticket Inteface" />
 					</div>
