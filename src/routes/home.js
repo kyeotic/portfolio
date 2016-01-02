@@ -17,7 +17,7 @@ export default class Home extends Component {
                         </p>
 
                         <p>
-                            I have a strong preference for Service Oriented Front End Architecture (<a target="_blank" href="http://www.smart-soft.com/downloads/articles/sofea.html">SOFEA</a>). Lately that has meant a Durandal or Angular client talking to a server running either ServiceStack (Windows) or NodeJS (Linux).
+                            I have a strong preference for Service Oriented Front End Architecture (<a target="_blank" href="http://www.smart-soft.com/downloads/articles/sofea.html">SOFEA</a>). Lately that has meant a React/Redux or Angular client talking to a server running either ServiceStack (Windows) or NodeJS (Linux).
                         </p>
 
                         <p>
