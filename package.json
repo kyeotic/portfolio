@@ -1,21 +1,21 @@
 {
   "name": "portfolio",
   "version": "2.0.0",
-  "description": "",
+  "description": "Portfolio\r =========",
   "main": "server.js",
   "scripts": {
     "setup": "npm i && jspm i",
     "build:css": "stylus assets/stylus/app.styl --out assets/css --sourcemap --compress",
     "watch:css": "stylus assets/stylus/app.styl --out assets/css --sourcemap --compress --watch",
     "build:js": "jspm bundle-sfx main dist/main-built.js",
-    "build": "npm run build:css && npm run build:js"
+    "build": "npm run build:css && npm run build:js",
+    "start": "node server.js"
   },
-  "author": "",
+  "author": "Timothy Moran",
   "license": "MIT",
   "jspm": {
     "configFile": "jspm.config.js",
     "dependencies": {
-      "apeman-react-image": "npm:apeman-react-image@^1.0.1",
       "history": "npm:history@^1.17.0",
       "react": "npm:react@^0.14.3",
       "react-bootstrap": "npm:react-bootstrap@^0.28.1",
@@ -26,11 +26,6 @@
       "babel": "npm:babel-core@^5.8.24",
       "babel-runtime": "npm:babel-runtime@^5.8.24",
       "core-js": "npm:core-js@^1.1.4"
-    },
-    "overrides": {
-      "npm:apeman-react-image@1.0.1": {
-        "main": "lib/_ap_image"
-      }
     }
   },
   "dependencies": {
@@ -42,5 +37,13 @@
     "jspm": "^0.16.19",
     "stylus": "^0.53.0",
     "watch": "^0.16.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tyrsius/portfolio.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tyrsius/portfolio/issues"
+  },
+  "homepage": "https://github.com/tyrsius/portfolio#readme"
 }
