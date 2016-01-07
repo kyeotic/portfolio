@@ -18,7 +18,7 @@ export default class AffinityWeb extends Component {
 					</div>
 
 					<div className={'col-md-4'}>
-						<GalleryImage src="/assets/images/web_home.jpg" alt="The Technicians homepage" />
+						<GalleryImage src="/images/web_home.jpg" alt="The Technicians homepage" />
 					</div>
 				</div>
 				<div className={'row'}>
@@ -31,8 +31,8 @@ export default class AffinityWeb extends Component {
 						</p>
 					</div>
 					<div className={'col-md-4'}>
-						<GalleryImage src="/assets/images/web_ticket.jpg" alt="The ticket inteface" />
-						<GalleryImage src="/assets/images/web_rtm.jpg" alt="The customer reporting tool" />
+						<GalleryImage src="/images/web_ticket.jpg" alt="The ticket inteface" />
+						<GalleryImage src="/images/web_rtm.jpg" alt="The customer reporting tool" />
 					</div>
 				</div>
 			</Project>

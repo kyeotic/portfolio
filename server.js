@@ -11,7 +11,7 @@ var port = process.env.PORT || 9000,
 
 //Configure
 app.use('/jspm_packages', express.static(jspmDir));
-app.use('/assets', express.static(assetDir));
+app.use(express.static(assetDir));
 app.use('/src', express.static(clientDir));
 app.use(jspmConfigName, express.static(jspmConfig));
 

@@ -20,7 +20,7 @@ export default class Portfolio extends Component {
 						</p>
 					</div>
 					<div className={'col-md-4'}>
-						<GalleryImage src="/assets/images/portfolio_deploy.jpg" alt="Git deploy: push to the host which unpacks the repo, runs grunt (from the Durandal version), and starts Forever." />
+						<GalleryImage src="/images/portfolio_deploy.jpg" alt="Git deploy: push to the host which unpacks the repo, runs grunt (from the Durandal version), and starts Forever." />
 					</div>
 				</div>
 			</Project>

@@ -18,7 +18,7 @@ export default class MightyNurse extends Component {
 					</div>
 
 					<div className={'col-md-4'}>
-						<GalleryImage src="/assets/images/affinity_ticket.jpg" alt="The Ticket Inteface" />
+						<GalleryImage src="/images/affinity_ticket.jpg" alt="The Ticket Inteface" />
 					</div>
 				</div>
 				<div className={'row'}>
@@ -28,7 +28,7 @@ export default class MightyNurse extends Component {
 						</p>
 					</div>
 					<div className={'col-md-4'}>
-						<GalleryImage src="/assets/images/affinity_category.jpg" alt="The Ticket Inteface" />
+						<GalleryImage src="/images/affinity_category.jpg" alt="The Ticket Inteface" />
 					</div>
 				</div>
 				<div className={'row'}>
@@ -38,7 +38,7 @@ export default class MightyNurse extends Component {
 					</p>
 					</div>
 					<div className={'col-md-4'}>
-						<GalleryImage src="/assets/images/affinity_parts.jpg" alt="The Ticket Inteface" />
+						<GalleryImage src="/images/affinity_parts.jpg" alt="The Ticket Inteface" />
 					</div>
 				</div>
 			</Project>

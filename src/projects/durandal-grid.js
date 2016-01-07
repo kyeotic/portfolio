@@ -16,7 +16,7 @@ export default class DurandalGrid extends Component {
 						</p>
 					</div>
 					<div className={'col-md-4'}>
-						<GalleryImage src="/assets/images/durandal-grid-basic.png" alt="The standard grid styling, with paging buttons." />
+						<GalleryImage src="/images/durandal-grid-basic.png" alt="The standard grid styling, with paging buttons." />
 					</div>
 				</div>
 				<div className={'row'}>
@@ -26,7 +26,7 @@ export default class DurandalGrid extends Component {
 						</p>
 					</div>
 					<div className={'col-md-4'}>
-						<GalleryImage src="/assets/images/durandal-grid-custom.png" alt="Customized rows, with buttons bound to the host viewmodel." />
+						<GalleryImage src="/images/durandal-grid-custom.png" alt="Customized rows, with buttons bound to the host viewmodel." />
 					</div>
 				</div>
 			</Project>

@@ -16,7 +16,7 @@ export default class Affinity extends Component {
 					</div>
 
 					<div className={'col-md-4'}>
-						<GalleryImage src="/assets/images/affinity_ticket.jpg" alt="The Ticket Inteface" />
+						<GalleryImage src="/images/affinity_ticket.jpg" alt="The Ticket Inteface" />
 					</div>
 				</div>
 				<div className={'row'}>
@@ -25,7 +25,7 @@ export default class Affinity extends Component {
 						</p>
 					</div>
 					<div className={'col-md-4'}>
-						<GalleryImage src="/assets/images/affinity_category.jpg" alt="The Ticket Inteface" />
+						<GalleryImage src="/images/affinity_category.jpg" alt="The Ticket Inteface" />
 					</div>
 				</div>
 				<div className={'row'}>
@@ -33,7 +33,7 @@ export default class Affinity extends Component {
 					<p>Everyone was very happy with the product. Ticket load time in the old application had grown to 2-4 seconds, since it loaded everything up-front. I cut the load time to nearly instantaneous by loading as many things as possible asynchronously. The primary ticket interface was re-organized to improve the flow of data entry, as well as move from a Multiple Document Interface to a Tabbed Document Interface. The parts ordering interface was completely overhauled to improve searching and in-line images to help identify many of the generically named parts. I also added a very resilent crash recovery that saved the entire state of all open tickets (including unfinshed parts orders) whenever the application closed improperly.</p>
 					</div>
 					<div className={'col-md-4'}>
-						<GalleryImage src="/assets/images/affinity_parts.jpg" alt="The Ticket Inteface" />
+						<GalleryImage src="/images/affinity_parts.jpg" alt="The Ticket Inteface" />
 					</div>
 				</div>
 			</Project>

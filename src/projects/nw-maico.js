@@ -16,7 +16,7 @@ export default class NwMaico extends Component {
 						</p>
 					</div>
 					<div className={'col-md-4'}>
-						<GalleryImage src="/assets/images/nw_home.jpg" alt="The home page" />
+						<GalleryImage src="/images/nw_home.jpg" alt="The home page" />
 					</div>
 				</div>
 				<div className={'row'}>
@@ -26,7 +26,7 @@ export default class NwMaico extends Component {
 						</p>
 					</div>
 					<div className={'col-md-4'}>
-						<GalleryImage src="/assets/images/nw_parts.jpg" alt="One of the parts categories" />
+						<GalleryImage src="/images/nw_parts.jpg" alt="One of the parts categories" />
 					</div>
 				</div>
 			</Project>

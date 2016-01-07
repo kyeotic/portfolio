@@ -17,7 +17,7 @@ export default class Swc extends Component {
 						</p>
 					</div>
 					<div className={'col-md-4'}>
-						<GalleryImage src="/assets/images/swc_grid.jpg" alt="The jobs grid" />
+						<GalleryImage src="/images/swc_grid.jpg" alt="The jobs grid" />
 					</div>
 				</div>
 
@@ -31,7 +31,7 @@ export default class Swc extends Component {
 						</p>
 					</div>
 					<div className={'col-md-4'}>
-						<GalleryImage src="/assets/images/swc_user.jpg" alt="The user options page"/>
+						<GalleryImage src="/images/swc_user.jpg" alt="The user options page"/>
 					</div>
 				</div>
 
@@ -42,7 +42,7 @@ export default class Swc extends Component {
 						</p>
 					</div>
 					<div className={'col-md-4'}>
-						<GalleryImage src="/assets/images/swc_mobile.jpg" alt="The job details page for mobile browsers"/>
+						<GalleryImage src="/images/swc_mobile.jpg" alt="The job details page for mobile browsers"/>
 					</div>
 				</div>
 			</Project>

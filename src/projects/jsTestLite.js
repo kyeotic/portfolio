@@ -26,7 +26,7 @@ export default class JsTestLite extends Component {
 					</div>
 
 					<div className={"col-md-4"}>
-						<GalleryImage src="/assets/images/jstest.png" alt="Write and run tests instantly" />
+						<GalleryImage src="/images/jstest.png" alt="Write and run tests instantly" />
 					</div>
 				</div>
 			</Project>

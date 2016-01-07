@@ -16,7 +16,7 @@ export default class Sprintr extends Component {
 						</p>
 					</div>
 					<div className={'col-md-4'}>
-						<GalleryImage src="/assets/images/sprintr_collapse.jpg" alt="Sprint with stories collapsed" />
+						<GalleryImage src="/images/sprintr_collapse.jpg" alt="Sprint with stories collapsed" />
 					</div>
 				</div>
 				<div className={'row'}>
@@ -30,7 +30,7 @@ export default class Sprintr extends Component {
 						</p>
 					</div>
 					<div className={'col-md-4'}>
-						<GalleryImage src="/assets/images/sprintr_expand.jpg" alt="Sprint with stories expanded" />
+						<GalleryImage src="/images/sprintr_expand.jpg" alt="Sprint with stories expanded" />
 					</div>
 				</div>
 			</Project>

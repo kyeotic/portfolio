@@ -17,7 +17,7 @@ export default class MasteringKnockout extends Component {
 
 					<div className={'col-md-4'}>
 						<a href="https://www.packtpub.com/web-development/mastering-knockoutjs" target="_blank">
-							<GalleryImage src="/assets/images/mastering_knockout_cover.jpg" alt="Mastering Knockout" />
+							<GalleryImage src="/images/mastering_knockout_cover.jpg" alt="Mastering Knockout" />
 						</a>
 					</div>
 				</div>

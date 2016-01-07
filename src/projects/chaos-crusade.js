@@ -16,7 +16,7 @@ export default class ChaosCrusade extends Component {
 						</p>
 					</div>
 					<div className={'col-md-4'}>
-						<GalleryImage src="/assets/images/chaos_char.jpg" alt="The character screen, adding a skill" />
+						<GalleryImage src="/images/chaos_char.jpg" alt="The character screen, adding a skill" />
 					</div>
 				</div>
 				<div className={'row'}>
@@ -29,7 +29,7 @@ export default class ChaosCrusade extends Component {
 						</p>
 					</div>
 					<div className={'col-md-4'}>
-						<GalleryImage src="/assets/images/chaos_skill.jpg" alt="The skill entry interface." />
+						<GalleryImage src="/images/chaos_skill.jpg" alt="The skill entry interface." />
 					</div>
 				</div>
 			</Project>
