@@ -1,0 +1,1 @@
+module.exports = require("npm:mdurl@1.0.1/index");
