@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { Link, IndexLink } from 'react-router';
-import projects from 'projects/route-manifest';
-
 class ProjectGroup extends Component {
 	render() {
 		return (
@@ -22,6 +20,7 @@ class ProjectGroup extends Component {
 
 export default class ProjectList extends Component {
 	render() {
+		let projects = this.props.projects
 		return (
 			<div>
 				<ProjectGroup projects={projects.filter(p => p.type === 'personal')}

@@ -1,0 +1,3 @@
+# Mastering KnockoutJS
+
+A thorough look [Knockout](http://knockoutjs.com/index.html) intended for intermediate-to-advanced JavaScript developers. [Mastering KnockoutJS](https://www.packtpub.com/web-development/mastering-knockoutjs) is full of runnable code samples and includes everything from how to use the basic features to writing your own binding providers. It also looks at how to develop organize large applications, with both standard Knockout and the Knockout-based framework [Durandal](http://durandaljs.com/).
