@@ -93,9 +93,7 @@ const manifest = {
 			route: 'esp', 
 			title: 'Esp',
 			type: 'professional',
-			images: [
-				{ src: '', title: ''},
-			],
+			images: [],
 			content: Esp
 		},
 		{
