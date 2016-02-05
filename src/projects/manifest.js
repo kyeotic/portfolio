@@ -13,6 +13,9 @@ import Sprintr from 'projects/sprintr.md!text'
 
 const manifest = {
 	projects: [
+
+		//Personal
+		//
 		{
 			route: 'jsTestLite',
 			title: 'JS Test Lite',
@@ -61,16 +64,9 @@ const manifest = {
 			],
 			content: Sprintr
 		},
-		{
-			route: 'nw-maico', 
-			title: 'NwMaico',
-			type: 'professional',
-			images: [
-				{ src: 'nw_home.jpg', title: 'he home page'},
-				{ src: 'nw_parts.jpg', title: 'One of the parts categories'}
-			],
-			content: NwMaico
-		},
+
+		//Professional
+		//
 		{
 			route: 'swc', 
 			title: 'ShiftWise Connect',
@@ -81,6 +77,25 @@ const manifest = {
 				{ src: 'swc_mobile.jpg', title: 'The job details page for mobile browsers' }
 			],
 			content: Swc
+		},
+		{
+			route: 'esp', 
+			title: 'Esp',
+			type: 'professional',
+			images: [
+				{ src: '', title: ''},
+			],
+			content: Esp
+		},
+		{
+			route: 'nw-maico', 
+			title: 'NwMaico',
+			type: 'professional',
+			images: [
+				{ src: 'nw_home.jpg', title: 'he home page'},
+				{ src: 'nw_parts.jpg', title: 'One of the parts categories'}
+			],
+			content: NwMaico
 		},
 		{
 			route: 'affinity-web', 
@@ -104,15 +119,9 @@ const manifest = {
 			],
 			content: Affinity
 		},
-		{
-			route: 'esp', 
-			title: 'Esp',
-			type: 'professional',
-			images: [
-				{ src: '', title: ''},
-			],
-			content: Esp
-		},
+
+		//Publications
+		//
 		{
 			route: 'mastering-knockout', 
 			title: 'Mastering Knockout',
