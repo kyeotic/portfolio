@@ -1,8 +1,9 @@
- import JsTestLite from 'projects/jsTestLite.md!text';
+import CoralCommons from 'projects/coral-commons.md!text'
+import JsTestLite from 'projects/jsTestLite.md!text'
 import Swc from 'projects/swc.md!text'
 import AffinityWeb from 'projects/affinity-web.md!text'
 import Affinity from 'projects/affinity.md!text'
-import ChaosCrusade from 'projects/chaos-crusade.md!text';
+import ChaosCrusade from 'projects/chaos-crusade.md!text'
 import DurandalGrid from 'projects/durandal-grid.md!text'
 import Esp from 'projects/esp.md!text'
 import MasteringKnockout from 'projects/mastering-knockout.md!text'
@@ -16,6 +17,16 @@ const manifest = {
 
 		//Personal
 		//
+		{
+			route: 'coral-commons',
+			title: 'Coral Commons',
+			type: 'personal',
+			images: [
+				{ src: 'coral-bulletin.png', title: 'Markdown bulletin board'},
+				{ src: 'coral-resident.png', title: 'Contact info page'}
+			],
+			content: CoralCommons
+		},
 		{
 			route: 'jsTestLite',
 			title: 'JS Test Lite',
