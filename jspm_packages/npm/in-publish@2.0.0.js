@@ -1,0 +1,1 @@
+module.exports = require("npm:in-publish@2.0.0/index.js");

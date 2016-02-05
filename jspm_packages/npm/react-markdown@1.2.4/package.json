@@ -1,0 +1,66 @@
+{
+  "name": "react-markdown",
+  "description": "Renders Markdown as React components",
+  "version": "1.2.4",
+  "keywords": [
+    "commonmark",
+    "markdown",
+    "react",
+    "react-component"
+  ],
+  "main": "src/react-markdown.js",
+  "scripts": {
+    "build": "NODE_ENV=production webpack",
+    "coverage": "istanbul cover node_modules/.bin/_mocha -- --reporter spec",
+    "deploy": "gh-pages-deploy",
+    "lint": "eslint .",
+    "prepublish": "in-publish && npm run qa || not-in-publish",
+    "posttest": "npm run lint",
+    "qa": "npm prune && npm test && npm run build",
+    "test": "mocha --reporter spec",
+    "test-travis": "istanbul cover node_modules/.bin/_mocha --report lcovonly -- --reporter spec",
+    "watch": "webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:rexxars/react-markdown.git"
+  },
+  "author": "Espen Hovlandsdal <rexxars@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.3.17",
+    "babel-loader": "^6.2.0",
+    "babel-preset-react": "^6.3.13",
+    "chai": "^3.4.1",
+    "eslint": "^1.10.1",
+    "eslint-config-vaffel": "^3.0.0",
+    "eslint-plugin-react": "^3.10.0",
+    "gh-pages-deploy": "^0.3.0",
+    "istanbul": "^0.4.0",
+    "jsdom": "^7.0.2",
+    "json-loader": "^0.5.3",
+    "mocha": "^2.3.4",
+    "mocha-jsdom": "^1.0.0",
+    "node-libs-browser": "^0.5.3",
+    "react": "^0.14.3",
+    "react-addons-test-utils": "^0.14.3",
+    "react-dom": "^0.14.3",
+    "react-textarea-autosize": "^3.1.0",
+    "webpack": "^1.12.9"
+  },
+  "gh-pages-deploy": {
+    "noprompt": true,
+    "prep": [
+      "build"
+    ],
+    "staticpath": "demo/dist"
+  },
+  "dependencies": {
+    "commonmark": "0.22.0",
+    "commonmark-react-renderer": "2.2.0",
+    "in-publish": "^2.0.0"
+  },
+  "peerDependencies": {
+    "react": ">=0.13.3"
+  }
+}
