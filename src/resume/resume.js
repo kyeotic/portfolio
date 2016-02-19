@@ -7,10 +7,10 @@ export default class Resume extends Component {
 		return (
 			<div>
 				<section>
-					<h1>Timothy Moran</h1>
+					<h1>Timothy Kye</h1>
 					<address>
 						Portland, OR<br/>
-						<a href="mailto: tmoran.jobs@gmail.com">tmoran.jobs@gmail.com</a>
+						<a href="mailto: tim@kye.plus">tim@kye.plus</a>
 					</address>
 				</section>	
 				<section>

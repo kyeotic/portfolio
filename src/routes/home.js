@@ -7,7 +7,8 @@ export default class Home extends Component {
         return (
             <div>
                 <div className={'jumbotron text-center'}>
-                    <h1>Timothy Moran</h1>
+                    <h1>Timothy Kye</h1>
+                    <small>(Formerly Timothy Moran)</small>
                     <p className={'lead'}>I am a software developer in Portland, Oregon. I love my job, and I love tinkering.</p>
                 </div>
                 <div className={'row'}>
@@ -25,7 +26,10 @@ export default class Home extends Component {
                         </p>
 
                         <p>
-                            I also just recently published my first book, <a href="https://www.packtpub.com/web-development/mastering-knockoutjs"><em>Mastering KnockoutJS</em></a>. It is an in-depth look at using Knockout for web application development.
+                            I have a published book, <a href="https://www.packtpub.com/web-development/mastering-knockoutjs"><em>Mastering KnockoutJS</em></a>. It is an in-depth look at using Knockout for web application development.
+                        </p>
+                        <p>
+                            I changed my name in Feb 2016 from Timothy Moran to Timothy Kye.
                         </p>
                     </div>
                 </div>
