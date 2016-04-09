@@ -6,7 +6,7 @@ function safeSetTitle(title) {
 
 const titleService = {
 	set(name) {
-		safeSetTitle(name + ' | Tyrsius');
+		safeSetTitle(name + ' | Tim Kye');
 	}
 };
 

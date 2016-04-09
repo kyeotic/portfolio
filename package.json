@@ -7,7 +7,7 @@
     "setup": "npm i && jspm i",
     "build:css": "stylus assets/stylus/app.styl --out assets/css --sourcemap --compress",
     "watch:css": "stylus assets/stylus/app.styl --out assets/css --sourcemap --compress --watch",
-    "build:js": "jspm bundle-sfx main dist/main-built.js",
+    "build:js": "jspm bundle-sfx main dist/main-built.js --minify",
     "build": "npm run build:css && npm run build:js",
     "start": "node server.js"
   },
