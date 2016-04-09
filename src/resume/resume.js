@@ -20,10 +20,8 @@ export default class Resume extends Component {
 							<h4>Languages</h4>
 							<ul>
 								<li>C#/.NET</li>
-								<li>Javascript/Coffeescript</li>
+								<li>Javascript (ES6/babel)</li>
 								<li>SQL (MS)</li>
-								<li>HTML</li>
-								<li>Regular Expressions</li>
 							</ul>
 						</div>
 						<div className={'col-md-2 col-sm-6'}>
@@ -41,23 +39,20 @@ export default class Resume extends Component {
 						<div className={'col-md-2 col-sm-6'}>
 							<h4>Libraries</h4>
 							<ul>
-								<li>jQuery</li>
+								<li>React</li>
 								<li>Knockout</li>
-								<li>Jasmine</li>
-								<li>Q</li>
+								<li>Jasmine/Mocha</li>
 								<li>RequireJS</li>
 								<li>Socket.IO</li>
-								<li>MSMQ (MassTransit/NServiceBus)</li>
 							</ul>
 						</div>
 						<div className={'col-md-2 col-sm-6'}>
 							<h4>Other Tools</h4>
 							<ul>
 								<li>Visual Studio+TFS 2010/2012</li>
-								<li>SQL Server Mgt Studio 2008</li>
-								<li>Sublime Text</li>
+								<li>Amazon Web Services</li>
+								<li>jspm</li>
 								<li>Git</li>
-								<li>Grunt</li>
 								<li>Chocolatey/Boxstarter</li>
 								<li>AutoHotkey</li>
 							</ul>
