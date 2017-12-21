@@ -1,1 +1,0 @@
-module.exports = require("npm:commonmark-react-renderer@2.2.0/src/commonmark-react-renderer.js");

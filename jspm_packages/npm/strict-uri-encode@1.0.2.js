@@ -1,1 +1,0 @@
-module.exports = require("npm:strict-uri-encode@1.0.2/index");
