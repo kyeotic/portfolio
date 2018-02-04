@@ -10,8 +10,10 @@
     "react-document-title": "^2.0.3",
     "react-dom": "^16.2.0",
     "react-image-lightbox": "^4.4.0",
+    "react-responsive": "^4.0.3",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "1.0.17"
+    "react-scripts": "1.0.17",
+    "react-sidebar": "^2.3.2"
   },
   "scripts": {
     "start": "react-scripts start",

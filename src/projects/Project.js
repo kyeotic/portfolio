@@ -25,7 +25,7 @@ export default class extends Component {
     let { project } = this.props
     let { isGalleryOpen, galleryStartIndex } = this.state
     return (
-      <div className={'row'}>
+      <div className={'row page-pad'}>
         <div className={'col-md-8'}>
           <div dangerouslySetInnerHTML={{ __html: project.content }} />
         </div>

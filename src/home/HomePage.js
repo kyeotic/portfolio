@@ -13,7 +13,7 @@ export default class Home extends Component {
             love tinkering.
           </p>
         </div>
-        <div className={'row'}>
+        <div className={'row page-pad'}>
           <div className={'col-md-12'}>
             <p>
               I have been doing software development professionally since 2010,
@@ -51,7 +51,7 @@ export default class Home extends Component {
             </p>
           </div>
         </div>
-        <div className={'row'}>
+        <div className={'row page-pad'}>
           <div className={'col-md-12'}>
             <h2>External Links</h2>
             <ul className={'nav nav-pills'}>

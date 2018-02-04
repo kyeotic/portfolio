@@ -1,14 +1,26 @@
 import React, { Component } from 'react'
+import Sidebar from 'react-sidebar'
+
+import MediaQuery from 'react-responsive'
 
 import manifest from './manifest.js'
-import { Page } from '../components/index.js'
+import { Page, Mobile } from '../components/index.js'
 import ProjectList from './ProjectList.js'
 import Project from './Project.js'
 
 export default class Projects extends Component {
   constructor(props, ...args) {
     super(props, ...args)
-    this.state = { project: this.getProject(props.match.params) }
+    this.state = {
+      project: this.getProject(props.match.params),
+      isMenuOpen: false
+    }
+  }
+
+  setMenuOpen = isMenuOpen => {
+    this.setState({
+      isMenuOpen: isMenuOpen
+    })
   }
 
   componentWillReceiveProps(nextProps) {
@@ -23,18 +35,44 @@ export default class Projects extends Component {
   }
 
   render() {
-    let project = this.state.project
+    let { project, isMenuOpen } = this.state
+
     return (
       <Page title="projects">
-        <div className={'row'}>
-          <div className={'col-sm-2'}>
-            <ProjectList projects={manifest.projects} />
-          </div>
-
-          <div id="projectsContainer" className={'col-sm-10'}>
-            <Project project={project} />
-          </div>
-        </div>
+        <MediaQuery maxWidth={767}>
+          {isMobile => (
+            <Sidebar
+              styles={{
+                root: {
+                  position: 'relative',
+                  width: '100%',
+                  height: '100%'
+                },
+                sidebar: {
+                  backgroundColor: '#fff'
+                }
+              }}
+              docked={!isMobile}
+              open={isMenuOpen}
+              onSetOpen={this.setMenuOpen}
+              transitions={isMobile}
+              shadow={false}
+              sidebar={<ProjectList projects={manifest.projects} />}
+            >
+              <div style={isMobile ? null : { paddingLeft: '10px' }}>
+                {isMobile ? (
+                  <button
+                    className="btn btn-link pull-left"
+                    onClick={() => this.setMenuOpen(true)}
+                  >
+                    <i className="icon-menu" />
+                  </button>
+                ) : null}
+                <Project project={project} />
+              </div>
+            </Sidebar>
+          )}
+        </MediaQuery>
       </Page>
     )
   }
