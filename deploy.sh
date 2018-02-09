@@ -2,8 +2,9 @@
 
 # npm run build
 
-# pushd deploy
-# terraform apply
-# popd
+pushd deploy
+terraform init
+terraform apply
+popd
 
-aws s3 sync build s3://tyrsius.com
+# aws s3 sync build s3://tyrsius.com

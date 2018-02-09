@@ -63,8 +63,22 @@ export default class Resume extends Component {
             <h3 className={'page-header'}>Work Experience</h3>
 
             <h4>
+              Nike <small>Application Engineer Jan 2017 - Present</small>
+            </h4>
+            <ul>
+              <li>
+                Worked as a full stack JavaScript develoer maintaining
+                AWS-Lambda based "server" and React/Redux frontend
+              </li>
+              <li>
+                Assisted dev ops team with developing continuous integration
+                pipeline for AWS Lambda and API Gateway
+              </li>
+            </ul>
+
+            <h4>
               VanderHouwen (on contract for Nike){' '}
-              <small>Application Engineer Feb 2016 - Present</small>
+              <small>Application Engineer Feb 2016 - Jan 2017</small>
             </h4>
             <ul>
               <li>
