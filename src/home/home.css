@@ -1,53 +1,30 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:italic,300|Lato);
+
 body::before {
   position: fixed;
   display: block;
-	width: 100%;
-	height: 100vh;
+  width: 100%;
+  height: 100vh;
   color: #fff;
   content: '';
   z-index: -1;
-	/* background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB); */
-	background: linear-gradient(-45deg,  rgb(110, 7, 194), #23A6D5, #23D5AB);
-	background-size: 400% 400%;
-	-webkit-animation: Gradient 15s ease infinite;
-	-moz-animation: Gradient 15s ease infinite;
-	animation: Gradient 15s ease infinite;
-}
-
-@-webkit-keyframes Gradient {
-	0% {
-		background-position: 0% 50%
-	}
-	50% {
-		background-position: 100% 50%
-	}
-	100% {
-		background-position: 0% 50%
-	}
-}
-
-@-moz-keyframes Gradient {
-	0% {
-		background-position: 0% 50%
-	}
-	50% {
-		background-position: 100% 50%
-	}
-	100% {
-		background-position: 0% 50%
-	}
+  /* background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB); */
+  background: linear-gradient(-45deg,  rgb(110, 7, 194), #23A6D5, #23D5AB);
+  /* background: linear-gradient(-45deg,  rgb(70, 17, 114), rgb(17, 114, 90), rgb(17, 35, 114)); */
+  background-size: 400% 400%;
+  animation: Gradient 15s ease infinite;
 }
 
 @keyframes Gradient {
-	0% {
-		background-position: 0% 50%
-	}
-	50% {
-		background-position: 100% 50%
-	}
-	100% {
-		background-position: 0% 50%
-	}
+  0% {
+    background-position: 0% 50%
+  }
+  50% {
+    background-position: 100% 50%
+  }
+  100% {
+    background-position: 0% 50%
+  }
 }
 
 section {
@@ -73,18 +50,16 @@ section {
   font-size: 4.3vw;
   font-weight: 300;
   line-height: 1.5;
-  background-color: rgba(0, 0, 0, 0.45);
-  border-radius: 1rem;
-  padding: 2rem;
+  background-color: rgba(0, 0, 0, 0.40);
+  /* border-radius: 1rem; */
+  padding: 3rem;
 }
 
-#jumbotron .name {
-  color: #E4745B;
-}
-
-.subtitle-react { color: #24B2C1 }
-.subtitle-node { color: #A9D642 }
-.subtitle-aws { color: #F49E58 }
+#jumbotron .name {color: rgb(255, 41, 187); font-weight: 300;   }
+/* .subtitle { font-style: italic; } */
+.subtitle-react { color: #24B2C1; font-weight: 300; }
+.subtitle-node { color: #A9D642; font-weight: 300; }
+.subtitle-aws { color: #F49E58; font-weight: 300; }
 
 #projects {
 }
