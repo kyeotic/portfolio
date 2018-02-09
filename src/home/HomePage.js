@@ -1,7 +1,30 @@
 import React, { Component } from 'react'
 import { Page } from '../components/index.js'
 
-export default class Home extends Component {
+import './home.css'
+
+export default () => [
+  <section id="intro" key="intro">
+    <div id="jumbotron">
+      <h1>
+        My name is <span className="name">Tim Kye</span>
+      </h1>
+      <span className="subtitle">
+        I like to work with <span className="subtitle-react">React</span>,{' '}
+        <span className="subtitle-node">Node</span>, and{' '}
+        <span className="subtitle-aws">AWS</span>
+      </span>
+    </div>
+  </section>,
+  <section id="about" key="about">
+    <h2>Philosophy</h2>
+  </section>,
+  <section id="projects" key="projects">
+    <h2>Projects</h2>
+  </section>
+]
+
+export class HomeOld extends Component {
   render() {
     return (
       <Page title="Home">

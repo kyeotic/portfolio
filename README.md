@@ -19,6 +19,8 @@ Open source work
   cerberus-node-client
   aws-thin-libraries
 
+Inner Source
+
 Technology Interaction Mastery (use project to highlight use) (USE MASON TILE FILTERS)
 Security (cerberus-node-lib, Okta, entitlements)
 Performance (thin libs, cryonic)
