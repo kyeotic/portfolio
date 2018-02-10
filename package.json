@@ -7,6 +7,7 @@
     "react": "^16.2.0",
     "react-document-title": "^2.0.3",
     "react-dom": "^16.2.0",
+    "react-motion": "^0.5.2",
     "react-responsive": "^4.0.3",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.17"
@@ -17,7 +18,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "sync": "aws s3 sync build s3://tyrsius.com",
-    "deploy-staging": "npm run build && cd build && now"
+    "deploy-staging": "GENERATE_SOURCEMAP=false npm run build && cd build && now"
   },
   "prettier": {
     "semi": false,

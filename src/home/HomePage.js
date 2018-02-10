@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Page } from '../components/index.js'
+import Projects from './Projects.js'
 
 import './home.css'
 
@@ -20,7 +21,7 @@ export default () => [
     <h2>Philosophy</h2>
   </section>,
   <section id="projects" key="projects">
-    <h2>Projects</h2>
+    <Projects />
   </section>
 ]
 

@@ -26,5 +26,6 @@ locals {
   tyrsius_hosted_zone_id = "Z1BAMZ42AZF64R"
   website_zoneId         = "${local.tyrsius_hosted_zone_id}"
   website_domain         = "tyrsius.com"
+  alternate_domains      = ["www.tyrsius.com"]
   s3_bucket_website_name = "${local.website_domain}"
 }
