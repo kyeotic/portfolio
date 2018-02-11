@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { TransitionMotion, spring, presets } from 'react-motion'
 
+import { Toggle } from '../components/index.js'
+
 import './projects.css'
 
 const getProjectTags = projects =>
@@ -16,6 +18,7 @@ export default class Projects extends Component {
     super(...props)
     this.state = {
       filter: 'All',
+      selectedProject: null,
       projects: projectManifest,
       tags: getProjectTags(projectManifest)
     }
@@ -31,18 +34,30 @@ export default class Projects extends Component {
   }
 
   getStyles = () => {
-    const { projects, filter } = this.state
+    const { projects, filter, selectedProject } = this.state
     return projects
-      .filter(p => filter === 'All' || p.tags.includes(filter))
+      .filter(
+        p =>
+          selectedProject
+            ? selectedProject === p.name
+            : filter === 'All' || p.tags.includes(filter)
+      )
       .map(project => {
         return {
           data: project,
           key: project.name,
-          style: {
-            height: spring(60, presets.gentle),
-            width: spring(100, presets.gentle),
-            opacity: spring(1, presets.gentle)
-          }
+          style:
+            project.name === selectedProject
+              ? {
+                  height: spring(150, presets.stiff),
+                  width: spring(500, presets.stiff),
+                  opacity: spring(1, presets.stiff)
+                }
+              : {
+                  height: spring(60, presets.stiff),
+                  width: spring(100, presets.stiff),
+                  opacity: spring(1, presets.stiff)
+                }
         }
       })
   }
@@ -64,14 +79,21 @@ export default class Projects extends Component {
   }
 
   render() {
-    let { filter, projects, tags } = this.state
+    let { filter, projects, tags, selectedProject } = this.state
     return (
-      <div>
-        {tags.map(tag => (
-          <button key={tag} onClick={() => this.setState({ filter: tag })}>
-            {tag}
+      <div className="projects-container">
+        {!selectedProject ? (
+          <Toggle
+            className="project-tags"
+            options={tags.map(t => ({ value: t, label: t }))}
+            value={filter}
+            onChange={newFilter => this.setState({ filter: newFilter })}
+          />
+        ) : (
+          <button onClick={() => this.setState({ selectedProject: null })}>
+            Return to Projects
           </button>
-        ))}
+        )}
         <TransitionMotion
           defaultStyles={this.getDefaultStyles()}
           styles={this.getStyles()}
@@ -82,9 +104,18 @@ export default class Projects extends Component {
             <div className="projects">
               {styles.map(({ key, style, data: project }) => {
                 return (
-                  <div className="project" key={key} style={style}>
-                    {project.icon}
-                    {project.title}
+                  <div
+                    key={key}
+                    style={style}
+                    onClick={() =>
+                      this.setState({ selectedProject: project.name })
+                    }
+                  >
+                    {project.name === selectedProject ? (
+                      <Project project={project} />
+                    ) : (
+                      <ProjectTile project={project} />
+                    )}
                   </div>
                 )
               })}
@@ -96,12 +127,46 @@ export default class Projects extends Component {
   }
 }
 
+const Project = ({ project: { title, icon, body } }) => (
+  <div className="project open">
+    {icon}
+    {title}
+    {body}
+  </div>
+)
+
+const ProjectTile = ({ project: { title, icon } }) => (
+  <div className="project">
+    {icon}
+    {title}
+  </div>
+)
+
 const projectManifest = [
   {
     name: 'cerberus-node-client',
     title: 'cerberus-node-client',
     tags: ['Security', 'Open Source'],
-    icon: <img src="/images/projects/cerberus_logo.svg" />
+    icon: <img src="/images/projects/cerberus_logo.svg" />,
+    body: (
+      <div>
+        <p>
+          <a src="http://engineering.nike.com/cerberus/">Cerberus</a> is a
+          secrets management system developed at Nike that used AWS IAM Roles
+          for authentication. I developed the node client while working there,
+          and it was among the first projects to go through Nike's Open Source
+          process.
+        </p>
+        <p>
+          Cerberus is designed to be used by EC2 instances and AWS Lambdas.
+          Getting a performant cold-start on AWS Lambdas can be challengeing,
+          especially on Node where the provided AWS SDK can take 1-2 seconds to
+          load. Like the AWS Thin Libraries the Cerberus node client makes
+          signed HTTP requests to AWS's REST API to avoid using the slow-to-load
+          SDK.
+        </p>
+      </div>
+    )
   },
   {
     name: 'rocket',
@@ -130,7 +195,7 @@ const projectManifest = [
   {
     name: 'cryonic',
     title: 'Cryonic',
-    tags: ['Performance', 'Open Source'],
+    tags: ['Performance', 'Professional'],
     icon: <img src="/images/projects/snow.svg" />
   },
   {

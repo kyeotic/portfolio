@@ -1,14 +1,33 @@
+.projects-container {
+  width: inherit;
+  min-height: inherit;
+}
+
 .projects {
   /* max-width: 90vw; */
-  display: flex;
+  padding: 1rem;
+  /* display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
+  flex-wrap: wrap; */
+  /* margin: auto; */
+  text-align: center;
+}
+
+.projects > div {
+  /* flex: 1 0 auto; */
+  display: inline-block;
+  /* text-align: center; */
+}
+
+.project-tags {
+  width: 100%;
+  padding: 1rem;
 }
 
 .project {
-  flex: 0 0 auto;
+  /* flex: 1 0 auto; */
 }
 
 .project img {

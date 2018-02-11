@@ -41,18 +41,18 @@ section {
   color: #fff;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   /* background-color: #222222; */
 }
 
 #jumbotron {
-  width: auto;
   font-size: 4.3vw;
   font-weight: 300;
   line-height: 1.5;
+  /*width: 100%;*/
   background-color: rgba(0, 0, 0, 0.40);
   /* border-radius: 1rem; */
-  padding: 3rem;
+  padding: 3rem 6rem 3rem 3rem;
 }
 
 #jumbotron .name {color: rgb(255, 41, 187); font-weight: 300;   }
