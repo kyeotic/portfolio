@@ -12,7 +12,7 @@ import { Toggle } from '../components/index.js'
 
 import './projects.css'
 
-const Grid = makeResponsive(measureItems(SpringGrid), {
+const Grid = makeResponsive(SpringGrid, {
   maxWidth: 1920,
   minPadding: 100
 })
@@ -44,6 +44,7 @@ export default class Projects extends Component {
           ? selectedProject === p.name
           : filter === 'All' || p.tags.includes(filter)
     )
+    let colWidth = projects.length < 5 ? 300 : 150
     return (
       <div className="projects-container">
         {!selectedProject ? (
@@ -61,7 +62,8 @@ export default class Projects extends Component {
         <Grid
           springConfig={presets.gentle}
           layout={layout.simple}
-          columnWidth={150}
+          itemHeight={200}
+          columnWidth={colWidth}
           gutterWidth={5}
           gutterHeight={5}
         >
@@ -69,6 +71,7 @@ export default class Projects extends Component {
             <div
               key={project.name}
               onClick={() => this.setState({ selectedProject: project.name })}
+              style={{ width: `${colWidth}px` }}
             >
               {project.name === selectedProject ? (
                 <Project project={project} />
