@@ -13,8 +13,7 @@ import { Toggle } from '../components/index.js'
 import './projects.css'
 
 const Grid = makeResponsive(SpringGrid, {
-  maxWidth: 1920,
-  minPadding: 100
+  maxWidth: 1920
 })
 
 const getProjectTags = projects =>
@@ -44,7 +43,7 @@ export default class Projects extends Component {
           ? selectedProject === p.name
           : filter === 'All' || p.tags.includes(filter)
     )
-    let colWidth = projects.length < 5 ? 300 : 150
+    let colWidth = selectedProject ? 500 : 150
     return (
       <div className="projects-container">
         {!selectedProject ? (
@@ -66,6 +65,7 @@ export default class Projects extends Component {
           columnWidth={colWidth}
           gutterWidth={5}
           gutterHeight={5}
+          className="projects"
         >
           {projects.map(project => (
             <div
@@ -97,7 +97,7 @@ const Project = ({ project: { title, icon, body } }) => (
 const ProjectTile = ({ project: { title, icon } }) => (
   <div className="project">
     {icon}
-    {title}
+    <span className="project-title">{title}</span>
   </div>
 )
 

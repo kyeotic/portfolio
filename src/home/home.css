@@ -49,10 +49,16 @@ section {
   font-size: 4.3vw;
   font-weight: 300;
   line-height: 1.5;
-  /*width: 100%;*/
+  width: 90%;
   background-color: rgba(0, 0, 0, 0.40);
   /* border-radius: 1rem; */
-  padding: 3rem 6rem 3rem 3rem;
+  padding: 40px 60px 40px 40px;
+}
+
+@media only screen and (max-width: 350px) {
+  #jumbotron {
+    font-size: 14px;
+  }
 }
 
 #jumbotron .name {color: rgb(255, 41, 187); font-weight: 300;   }

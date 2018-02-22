@@ -1,6 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,600|Lato);
 
-html, body {
+html, body, #root {
   font-family: 'Open Sans';
   width: 100%
 }

@@ -1,24 +1,10 @@
 .projects-container {
-  width: inherit;
-  min-height: inherit;
+  width: 100%;
+  /* margin: 20px auto; */
 }
 
 .projects {
-  /* max-width: 90vw; */
-  padding: 1rem;
-  /* display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap; */
-  /* margin: auto; */
-  text-align: center;
-}
-
-.projects > div {
-  /* flex: 1 0 auto; */
-  display: inline-block;
-  /* text-align: center; */
+  margin: 20px auto;
 }
 
 .project-tags {
@@ -28,8 +14,24 @@
 
 .project {
   /* flex: 1 0 auto; */
+  width: 150px;
+  padding: 16px;
+  background-color: rgba(0, 0, 0, 0.253);
+}
+
+.project:hover {
 }
 
 .project img {
-  max-width: 75px;
+  max-width: 128px;
+  margin: 0 auto;
+  display: block;
+}
+
+.project > .project-title {
+  display: block;
+  font-weight: normal;
+  margin-top: 8px;
+  margin: 0 auto;
+  text-align: center;
 }
