@@ -1,36 +1,4 @@
 
-/* reset */
-.toggle-container button {
-  background: none;
-    border: 0;
-    color: inherit;
-    /* cursor: default; */
-    font: inherit;
-    line-height: normal;
-    overflow: visible;
-    padding: 0;
-    -webkit-appearance: button; /* for input */
-    -webkit-user-select: none; /* for button */
-    -moz-user-select: none;
-    -ms-user-select: none;
-    border:none;
-    background-image:none;
-    background-color:transparent;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
-}
-
-.toggle-container button:focus {
-  outline:0;
-}
-
-.toggle-container button::-moz-focus-inner,
-.toggle-container input::-moz-focus-inner {
-  border: 0;
-  padding: 0;
-}
-
 /* styles */
 
 .toggle-container {

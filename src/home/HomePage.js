@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Page } from '../components/index.js'
 import Projects from './Projects.js'
+import AboutMe from './AboutMe.js'
 
 import './home.css'
 
@@ -17,9 +18,7 @@ export default () => [
       </span>
     </div>
   </section>,
-  <section id="about" key="about">
-    <h2>Philosophy</h2>
-  </section>,
+  <AboutMe key="about" />,
   <section id="projects" key="projects">
     <Projects />
   </section>

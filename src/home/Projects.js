@@ -43,7 +43,7 @@ export default class Projects extends Component {
           ? selectedProject === p.name
           : filter === 'All' || p.tags.includes(filter)
     )
-    let colWidth = selectedProject ? 500 : 150
+    let colWidth = 150
     return (
       <div className="projects-container">
         {!selectedProject ? (
@@ -54,9 +54,14 @@ export default class Projects extends Component {
             onChange={newFilter => this.setState({ filter: newFilter })}
           />
         ) : (
-          <button onClick={() => this.setState({ selectedProject: null })}>
-            Return to Projects
-          </button>
+          <div className="project-tags">
+            <button
+              className="btn"
+              onClick={() => this.setState({ selectedProject: null })}
+            >
+              Return to Projects
+            </button>
+          </div>
         )}
         <Grid
           springConfig={presets.gentle}
@@ -71,13 +76,15 @@ export default class Projects extends Component {
             <div
               key={project.name}
               onClick={() => this.setState({ selectedProject: project.name })}
-              style={{ width: `${colWidth}px` }}
+              className={`project ${selectedProject ? 'open' : ''}`}
+              style={{
+                width: selectedProject ? undefined : `${colWidth}px`,
+                transition: 'width 1s ease'
+              }}
             >
-              {project.name === selectedProject ? (
-                <Project project={project} />
-              ) : (
-                <ProjectTile project={project} />
-              )}
+              {project.icon}
+              <h3 className="project-title">{project.title}</h3>
+              {selectedProject ? project.body : null}
             </div>
           ))}
         </Grid>
@@ -85,21 +92,6 @@ export default class Projects extends Component {
     )
   }
 }
-
-const Project = ({ project: { title, icon, body } }) => (
-  <div className="project open">
-    {icon}
-    <h3>{title}</h3>
-    {body}
-  </div>
-)
-
-const ProjectTile = ({ project: { title, icon } }) => (
-  <div className="project">
-    {icon}
-    <span className="project-title">{title}</span>
-  </div>
-)
 
 const projectManifest = [
   {

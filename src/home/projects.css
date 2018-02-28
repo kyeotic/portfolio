@@ -1,15 +1,26 @@
+.projects {
+  margin: 20px auto;
+}
+
 .projects-container {
   width: 100%;
   /* margin: 20px auto; */
 }
 
-.projects {
-  margin: 20px auto;
+.projects-container .btn {
+  flex: - 0 auto;
+  padding: .6em;
+  margin: 1em .5em;
+  color: #fff;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.253);
 }
+
+
 
 .project-tags {
   width: 100%;
-  padding: 1rem;
+  padding: 1em;
 }
 
 .project {
@@ -17,9 +28,35 @@
   width: 150px;
   padding: 16px;
   background-color: rgba(0, 0, 0, 0.253);
+  transition: width 1s ease;
+  line-height: 1.5em;
 }
 
-.project:hover {
+.project.open {
+  width: 600px;
+}
+
+@media only screen and (max-width: 320px) {
+  .project.open {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width : 321px) and (max-width : 767px) {
+  .project.open {
+    width: 100%;
+  }
+}
+  
+
+@media only screen and (max-width: 991px) and (min-width: 768px) {
+  .project.open {
+    width: 100%;
+  }
+}
+
+.project h3 {
+  margin: 16px 0;
 }
 
 .project img {
@@ -28,10 +65,17 @@
   display: block;
 }
 
-.project > .project-title {
+.project.open img {
+  margin: 0;
+}
+
+.project .project-title {
   display: block;
   font-weight: normal;
-  margin-top: 8px;
-  margin: 0 auto;
+  margin: 1em auto;
   text-align: center;
+}
+
+.project.open .project-title {
+  text-align: inherit;
 }

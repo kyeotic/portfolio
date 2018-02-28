@@ -2,6 +2,8 @@
 
 html, body, #root {
   font-family: 'Open Sans';
+  font-size: 18px;
+  line-height: 1.6em;
   width: 100%
 }
 

@@ -31,9 +31,9 @@ section {
   min-height: 100vh;
   width: 100%;
   color: #fff;
-  display: flex;
+  /* display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
   /* background-color: #222222; */
 }
 
@@ -48,14 +48,14 @@ section {
 #jumbotron {
   font-size: 4.3vw;
   font-weight: 300;
-  line-height: 1.5;
+  line-height: 1.5em;
   width: 90%;
   background-color: rgba(0, 0, 0, 0.40);
   /* border-radius: 1rem; */
   padding: 40px 60px 40px 40px;
 }
 
-@media only screen and (max-width: 350px) {
+@media only screen and (max-width: 320px) {
   #jumbotron {
     font-size: 14px;
   }
@@ -67,5 +67,15 @@ section {
 .subtitle-node { color: #A9D642; font-weight: 300; }
 .subtitle-aws { color: #F49E58; font-weight: 300; }
 
-#projects {
+#about {
+  width: 100%;
+  padding: 2em;
+  background-color: rgba(0, 0, 0, 0.40);
+  min-height: inherit;
+  margin-bottom: 20vh;
+}
+
+#about ul {
+  list-style: disc;
+  list-style-position: inside;
 }
