@@ -1,28 +1,47 @@
 import React from 'react'
 
-const aboutMe = `I am a full stack developer. That term means a lot of things to different people, but too me it means that I know: how to design and implement every layer of a modern business application, from the database to the user interface; how to create a reliable and repeatable build and deployment pipeline; how to secure it from the most common forms of attack; how to monitor and measure it's stability and performance; and how to operate and scale it to meet user demand.
-
-I am a full stack developer. I used to work heavily with C# and the Microsoft stack: MS SQL, IIS, ASP MVC, etc. I started with containers before .NET Core was stable and so naturally I took my JavaScript experience from front end work into NodeJS and haven't looked back. I have a solid foundation with strongly-typed languages working with normalized databases which evolved into a more modern`
+const links = [
+  { title: 'Github', href: 'https://github.com/tyrsius' },
+  { title: 'Blog', href: 'http://blog.tyrsius.com/' },
+  {
+    title: 'StackOverflow',
+    href: 'https://stackoverflow.com/users/788260/tyrsius'
+  },
+  { title: 'email me', href: 'mailto:tim@kye.plus' }
+]
 
 export default () => (
   <section id="about">
+    <h2>A Bit About Me</h2>
     <p>
-      I am a full stack developer. That term means a lot of things to different
-      people. To me it means that I know how to:
+      I live in Portland, Oregon. I am a full stack developer. That term means a
+      lot of things to different people. To me it means that I know how to:
     </p>
-    <ul>
+    <ul className="list">
       <li>
         design and implement every layer of a modern business application, from
         the database to the user interface
       </li>
       <li>create a reliable and repeatable build and deployment pipeline</li>
       <li>secure it from the most common forms of attack</li>
-      <li>monitor and measure it's stability and performance</li>
+      <li>monitor its stability and measure its performance</li>
       <li>operate and scale it to meet user demand</li>
     </ul>
     <p>
       While JavaScript is my language of choice on most projects I am also
-      comfortable with C#, and I have some experience patching Python and Go.
+      comfortable with C#, and I have some experience patching Python and Go. I
+      am very experienced with Amazon Web Services, with both Docker on EC2/ECS
+      and the serverless Lambda architecture, as well as supporting services
+      like Dynamo, RDS Aurora, S3, API Gateway, SQS, etc.
     </p>
+    <p>In 2016 I legally changed my name from Timothy Moran to Timothy Kye.</p>
+    <h2>External Links</h2>
+    <ul className="link-list">
+      {links.map(link => (
+        <li key={link.href}>
+          <a href={link.href}>{link.title}</a>
+        </li>
+      ))}
+    </ul>
   </section>
 )

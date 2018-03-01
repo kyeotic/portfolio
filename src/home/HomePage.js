@@ -20,6 +20,7 @@ export default () => [
   </section>,
   <AboutMe key="about" />,
   <section id="projects" key="projects">
+    <h2>Projects</h2>
     <Projects />
   </section>
 ]

@@ -37,6 +37,21 @@ section {
   /* background-color: #222222; */
 }
 
+a:link, a:visited, a:active  {
+  color: #fff;
+}
+a:hover {
+  color: #ddd;
+  /* background-color: rgba(255, 255, 255, 0.137); */
+}
+a:active {
+  color: #fff;
+}
+
+em {
+  font-style: italic;
+}
+
 #intro {
   color: #fff;
   display: flex;
@@ -75,7 +90,22 @@ section {
   margin-bottom: 20vh;
 }
 
-#about ul {
+#about  h2 {
+  font-size: 2em;
+  line-height: 2em;
+}
+
+#about p {
+  margin-top: 1em;
+}
+
+#about ul.list {
   list-style: disc;
   list-style-position: inside;
 }
+
+#about ul.link-list li {
+  display: inline-block;
+  margin-right: 1em;
+}
+

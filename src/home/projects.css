@@ -1,3 +1,13 @@
+
+#projects h2 {
+  font-size: 2em;
+  line-height: 2em;
+  font-weight: bold;
+  text-align: center;
+  padding: 1em 2em;
+  background-color: rgba(0, 0, 0, 0.253);
+}
+
 .projects {
   margin: 20px auto;
 }
@@ -78,4 +88,8 @@
 
 .project.open .project-title {
   text-align: inherit;
+}
+
+.project p {
+  margin-top: 1em;
 }
