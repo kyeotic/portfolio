@@ -194,7 +194,30 @@ const projectManifest = [
     icon: <img alt="" src="/images/projects/oauth_logo.svg" />,
     body: (
       <div>
-        <p />
+        <p>
+          The NextGen Platforms authentication toolkit was a collection of
+          packages pre-configured to handle the variety of authentication
+          providers in use at Nike, as well as aid in generating API-specific
+          authorization policies.
+        </p>
+        <p>
+          The first part was a JWT validator, provided as a Node library and
+          packaged as an AWS{' '}
+          <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html">
+            API Gateway Custom Authorizer
+          </a>{' '}
+          lambda. It handled the x509 signatures from PingFederate and the more
+          common RSA singatures from Okta, and shipped with configuration for
+          the various authorization servers in each. A seperate, matching Java
+          library was maintained by another team member.
+        </p>
+        <p>
+          The other part was a build-step tool that compiled{' '}
+          <a href="https://www.openapis.org/">OpenAPI</a> specs (formerly
+          Swagger) to create endpoint-aware authorization policies that could be
+          included with the JWT validator to apply oAuth claim requirements to
+          API requests.
+        </p>
       </div>
     )
   },
@@ -205,7 +228,25 @@ const projectManifest = [
     icon: <img alt="" src="/images/projects/market_icon.svg" />,
     body: (
       <div>
-        <p />
+        <p>
+          This was a tool developed to help identify where unauthorized online
+          resellers were getting their product. It took a list of products being
+          sold and compared them to the order book for authorized sellers. The
+          UI helped users identify most likely candidates for unauthorized
+          reselling, even when a seller bought their stock from multiple
+          distributors, by visually arranging the overlapping product offerings
+          of each distibutor with the unauthorized sellers (unfortunately I
+          cannot share screenshots of this).
+        </p>
+        <p>
+          PostgreSQL was used to handle the fairly taxing analysis, which was
+          further aided by the native array aggregation and JSON serialization
+          being done in the database. The product overlap query, which compared
+          tens of millions of rows and returned an unaggregated set of hundreds
+          of thousands, was especially taxing. By using PostgreSQLs array
+          aggregation to move the joined rows into an aggregated cell-per-seller
+          the response time dropped from 2 and half minutes to ~10 seconds.
+        </p>
       </div>
     )
   },
@@ -291,7 +332,28 @@ const projectManifest = [
     icon: <img alt="" src="/images/projects/dynamodb.svg" />,
     body: (
       <div>
-        <p />
+        <p>
+          DynamoDB, AWS's NoSQL database, didn't have an integrated backup
+          solution until Dec 2017. There were some "official" solutions that
+          involved Elastic Map Reduce, which was very slow and expensive (even
+          tables with less than 1k rows could take 10-20 minutes and use 16
+          instance hours of processing). So I created{' '}
+          <a href="https://github.com/Nike-Inc/dabber">
+            Dynamo Automated Backup, and (Benevolently Ergonomic) Restore
+          </a>, affectionately named "dabber" for short.
+        </p>
+        <p>
+          Dabber includes a CLI that allows easy, fast backups and restores on
+          Dyanmo tables to S3 buckets. The CLI can also deploy an AWS Lambda and
+          create Cloudwatch Trigger's to schedule backups. The Cloudwatch
+          Trigger event contained the information necessary to describe the
+          backup, so a single Lambda could handle any number of backup schedules
+          (up to Cloudwatch's event limit).
+        </p>
+        <p>
+          Since Dynamo has since added a native backup and restore, dabber is no
+          longer maintained.
+        </p>
       </div>
     )
   },
@@ -337,18 +399,36 @@ const projectManifest = [
     icon: <img alt="" src="/images/projects/mastering_knockout_cover.jpg" />,
     body: (
       <div>
-        <p />
-      </div>
-    )
-  },
-  {
-    name: 't-plus-plus',
-    title: 'T++ Blog',
-    tags: ['Publications'],
-    icon: <img alt="" src="/images/projects/blog_logo.jpg" />,
-    body: (
-      <div>
-        <p />
+        <p>
+          <a href="http://knockoutjs.com">KnockoutJS</a> is one of the early
+          JavaScript front-end data binding libraries. It was developed by
+          engineers are Microsoft and followed in the footsteps of Windows
+          Presentation Foundation (WPF) by using the Model-View-ViewModel (MVVM)
+          pattern. Since I transitioned from WPF desktop development into web
+          development it was a natural choice for me, and I still think it made
+          a lot of good decisions, though newer frameworks have come a lot
+          farther.
+        </p>
+        <p>
+          I wrote{' '}
+          <a href="https://www.amazon.com/Mastering-KnockoutJS-Timothy-Moran/dp/1783981008">
+            Mastering KnockoutJS
+          </a>{' '}
+          in 2014 at the height of Knockout's popularity. It is targeted at
+          experienced developers, or developers who know Knockout but want to
+          understand it better. It is well-reviewed on Amazon, and I am quite
+          proud of it. It is the only book I have ever written, but it will
+          likely be the last programming book I ever write. I find writing
+          shorter, focused blog posts to be more useful and fun, and the ability
+          to use hyperlinks and embed interactive elements has a special value
+          when communicating programming concepts.
+        </p>
+
+        <p>
+          The books has over 90 runnable code examples, which you can see on the
+          accompanying{' '}
+          <a href="https://github.com/tyrsius/MasteringKnockout">Github repo</a>.
+        </p>
       </div>
     )
   }
