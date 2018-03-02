@@ -18,9 +18,9 @@
 }
 
 .projects-container .btn {
-  flex: 1 0 auto;
+  display: block;
   padding: .6em;
-  margin: 1em .5em;
+  margin: 1em auto;
   color: #fff;
   font-weight: bold;
   background-color: rgba(0, 0, 0, 0.253);
