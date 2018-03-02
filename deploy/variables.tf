@@ -24,8 +24,13 @@ variable website_certifcate_arn {
 locals {
   kye_hosted_zone_id     = "Z17II5IIER1BTY"
   tyrsius_hosted_zone_id = "Z1BAMZ42AZF64R"
-  website_zoneId         = "${local.tyrsius_hosted_zone_id}"
-  website_domain         = "tyrsius.com"
-  alternate_domains      = ["www.tyrsius.com"]
-  s3_bucket_website_name = "${local.website_domain}"
+  bucket_domain         = "tyrsius.com"
+  bucket_zone_id         = "${local.tyrsius_hosted_zone_id}"
+  
+  tyrsius_apex           = "tyrsius.com"
+  tyrsius_alias          = "www.tyrsius.com"
+  kye_apex               = "kye.plus"
+  kye_alias              = "www.kye.plus"
+
+  cloufront__domains     = ["tyrsius.com", "www.tyrsius.com", "www.kye.plus", "kye.plus"]
 }

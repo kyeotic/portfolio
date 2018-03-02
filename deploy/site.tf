@@ -1,6 +1,6 @@
 resource "aws_route53_record" "website" {
-  name    = "${local.website_domain}"
-  zone_id = "${local.website_zoneId}"
+  name    = "${local.tyrsius_apex}"
+  zone_id = "${local.bucket_zone_id}"
   type    = "A"
 
   alias {
@@ -11,9 +11,32 @@ resource "aws_route53_record" "website" {
 }
 
 resource "aws_route53_record" "web_aliases" {
-  count   = "${length(local.alternate_domains)}"
-  name    = "${element(local.alternate_domains, count.index)}"
-  zone_id = "${local.website_zoneId}"
+  name    = "${local.tyrsius_alias}"
+  zone_id = "${local.tyrsius_hosted_zone_id}"
+  type    = "A"
+
+  alias {
+    name                   = "${aws_cloudfront_distribution.website.domain_name}"
+    zone_id                = "${aws_cloudfront_distribution.website.hosted_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "website_kye" {
+  name    = "${local.kye_apex}"
+  zone_id = "${local.kye_hosted_zone_id}"
+  type    = "A"
+
+  alias {
+    name                   = "${aws_cloudfront_distribution.website.domain_name}"
+    zone_id                = "${aws_cloudfront_distribution.website.hosted_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "web_kye_aliases" {
+  name    = "${local.kye_alias}"
+  zone_id = "${local.kye_hosted_zone_id}"
   type    = "A"
 
   alias {
@@ -24,7 +47,7 @@ resource "aws_route53_record" "web_aliases" {
 }
 
 resource "aws_s3_bucket" "website" {
-  bucket = "${local.s3_bucket_website_name}"
+  bucket = "${local.bucket_domain}"
   acl    = "public-read"
 
   policy = <<EOF
@@ -38,7 +61,7 @@ resource "aws_s3_bucket" "website" {
             "s3:GetObject"
           ],
           "Effect": "Allow",
-          "Resource": "arn:aws:s3:::${local.website_domain}/*",
+          "Resource": "arn:aws:s3:::${local.bucket_domain}/*",
           "Principal": "*"
         }
       ]
@@ -62,7 +85,7 @@ resource "aws_cloudfront_distribution" "website" {
 
   "origin" {
     origin_id   = "origin-bucket-${aws_s3_bucket.website.id}"
-    domain_name = "${local.website_domain}.s3.amazonaws.com"
+    domain_name = "${local.bucket_domain}.s3.amazonaws.com"
 
     custom_origin_config {
       origin_protocol_policy = "http-only"
@@ -107,5 +130,5 @@ resource "aws_cloudfront_distribution" "website" {
     ssl_support_method       = "sni-only"
     minimum_protocol_version = "TLSv1"
   }
-  aliases = ["${concat(list(local.website_domain), local.alternate_domains)}"]
+  aliases = ["${local.cloufront__domains}"]
 }
