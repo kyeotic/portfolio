@@ -7,6 +7,7 @@ const links = [
     title: 'StackOverflow',
     href: 'https://stackoverflow.com/users/788260/tyrsius'
   },
+  { title: 'LinkedIn', href: 'https://www.linkedin.com/in/tyrsius/' },
   { title: 'email me', href: 'mailto:tim@kye.plus' }
 ]
 

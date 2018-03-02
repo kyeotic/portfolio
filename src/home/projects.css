@@ -46,6 +46,11 @@
   align-items: flex-start;
   justify-content: space-between;
   align-content: center;
+  transition: width 1s ease, background-color .5s linear;
+}
+
+.project:hover:not(.open) {
+  background-color: rgba(255, 255, 255, 0.253);
 }
 
 .project.open {
@@ -53,6 +58,7 @@
   height: unset;
   display: unset;
   padding: 16px;
+  transform: perspective(500px) translateZ(42px);
 }
 
 @media only screen and (max-width: 320px) {

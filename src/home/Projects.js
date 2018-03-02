@@ -78,8 +78,7 @@ export default class Projects extends Component {
               onClick={() => this.setState({ selectedProject: project.name })}
               className={`project ${selectedProject ? 'open' : ''}`}
               style={{
-                width: selectedProject ? undefined : `${colWidth}px`,
-                transition: 'width 1s ease'
+                width: selectedProject ? undefined : `${colWidth}px`
               }}
             >
               {project.icon}
