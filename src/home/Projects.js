@@ -66,8 +66,8 @@ export default class Projects extends Component {
         <Grid
           springConfig={presets.gentle}
           layout={layout.simple}
-          itemHeight={200}
           columnWidth={colWidth}
+          itemHeight={225}
           gutterWidth={5}
           gutterHeight={5}
           className="projects"
@@ -99,6 +99,7 @@ const projectManifest = [
     title: 'Cerberus Node Client',
     tags: ['Security', 'Open Source'],
     icon: <img src="/images/projects/cerberus_logo.svg" />,
+    height: 221,
     body: (
       <div>
         <p>
@@ -130,6 +131,7 @@ const projectManifest = [
     title: 'Rocket',
     tags: ['Professional', 'Front End'],
     icon: <img alt="" src="/images/projects/rocket.svg" />,
+    height: 213,
     body: (
       <div>
         <p>
@@ -160,9 +162,10 @@ const projectManifest = [
   },
   {
     name: 'devportal',
-    title: 'Niketech Developer Portal',
+    title: 'API Dev Portal',
     tags: ['Security', 'Professional', 'Front End'],
     icon: <img alt="" src="/images/projects/code_icon.svg" />,
+    height: 277,
     body: (
       <div>
         <p>
@@ -189,9 +192,10 @@ const projectManifest = [
   },
   {
     name: 'auth-toolkit',
-    title: 'NGP Auth Toolkit',
+    title: 'Auth Toolkit',
     tags: ['Professional', 'Security'],
     icon: <img alt="" src="/images/projects/oauth_logo.svg" />,
+    height: 250,
     body: (
       <div>
         <p>
@@ -226,6 +230,7 @@ const projectManifest = [
     title: 'Grey Market',
     tags: ['Professional', 'Front End'],
     icon: <img alt="" src="/images/projects/market_icon.svg" />,
+    height: 213,
     body: (
       <div>
         <p>
@@ -255,6 +260,7 @@ const projectManifest = [
     title: 'Cryonic',
     tags: ['Performance', 'Professional'],
     icon: <img alt="" src="/images/projects/snow.svg" />,
+    height: 223,
     body: (
       <div>
         <p>
@@ -291,6 +297,7 @@ const projectManifest = [
     title: 'Coral Commons',
     tags: ['Open Source', 'Front End'],
     icon: <img alt="" src="/images/projects/ic_cc.png" />,
+    height: 185,
     body: (
       <div>
         <p>
@@ -330,6 +337,7 @@ const projectManifest = [
     title: 'dabber',
     tags: ['Open Source'],
     icon: <img alt="" src="/images/projects/dynamodb.svg" />,
+    height: 228,
     body: (
       <div>
         <p>
@@ -362,6 +370,7 @@ const projectManifest = [
     title: 'AWS Thin Libraries',
     tags: ['Performance', 'Open Source'],
     icon: <img alt="" src="/images/projects/aws.svg" />,
+    height: 223,
     body: (
       <div>
         <p>
@@ -397,6 +406,7 @@ const projectManifest = [
     title: 'Mastering Knockout JS',
     tags: ['Publications'],
     icon: <img alt="" src="/images/projects/mastering_knockout_cover.jpg" />,
+    height: 279,
     body: (
       <div>
         <p>
@@ -428,6 +438,27 @@ const projectManifest = [
           The books has over 90 runnable code examples, which you can see on the
           accompanying{' '}
           <a href="https://github.com/tyrsius/MasteringKnockout">Github repo</a>.
+        </p>
+      </div>
+    )
+  },
+  {
+    name: 't-plus-plus',
+    title: 'T++ Blog',
+    tags: ['Publications'],
+    icon: <img alt="" src="/images/projects/blog_logo.jpg" />,
+    body: (
+      <div>
+        <p>
+          While I don't update it as frequently as I should I do maintain a
+          blog, filled mostly with technical posts.
+        </p>
+        <p>
+          It's usually small solutions, but sometimes I write larger guides,
+          like this multi-part, soup to nuts guide guide on{' '}
+          <a href="https://blog.tyrsius.com/digital-ocean-for-beginners/">
+            getting started with Digital Ocean
+          </a>
         </p>
       </div>
     )
