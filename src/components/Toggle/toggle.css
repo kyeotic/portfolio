@@ -8,13 +8,13 @@
   flex-wrap: wrap
 }
 
-.toggle-container button {
-  flex: - 0 auto;
-  padding: .6rem;
+.toggle-container > button.toggle-btn {
+  flex: 0 0 auto;
   margin: 1rem .5rem;
-  color: #fff;
-  font-weight: bold;
-  background-color: rgba(0, 0, 0, 0.253);
+}
+
+.toggle-container button:hover {
+  background-color: rgba(255, 255, 255, 0.253);
 }
 
 .toggle-container button.active {

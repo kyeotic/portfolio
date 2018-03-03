@@ -8,7 +8,7 @@ export default ({ options, value, onChange, className }) => (
       <button
         key={option.value}
         onClick={() => onChange(option.value)}
-        className={`toggle-btn${option.value === value ? ' active' : ''}`}
+        className={`btn toggle-btn${option.value === value ? ' active' : ''}`}
       >
         {option.label}
       </button>

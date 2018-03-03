@@ -24,6 +24,8 @@
   color: #fff;
   font-weight: bold;
   background-color: rgba(0, 0, 0, 0.253);
+  cursor: pointer;
+  transition: background-color .5s linear;
 }
 
 
@@ -50,6 +52,7 @@
 }
 
 .project:hover:not(.open) {
+  cursor: pointer;
   background-color: rgba(255, 255, 255, 0.253);
 }
 

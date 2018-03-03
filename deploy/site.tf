@@ -120,6 +120,30 @@ resource "aws_cloudfront_distribution" "website" {
     viewer_protocol_policy = "redirect-to-https"
     compress               = true
   }
+
+    "cache_behavior" {
+    allowed_methods = ["GET", "HEAD", "DELETE", "OPTIONS", "PATCH", "POST", "PUT"]
+    cached_methods  = ["GET", "HEAD"]
+
+    "forwarded_values" {
+      query_string = "true"
+
+      cookies {
+        forward = "none"
+      }
+    }
+
+    min_ttl          = "0"
+    default_ttl      = "0"
+    max_ttl          = "0"
+    target_origin_id = "origin-bucket-${aws_s3_bucket.website.id}"
+    path_pattern     = "/index.html"
+
+    viewer_protocol_policy = "redirect-to-https"
+    compress               = true
+  }
+
+
   "restrictions" {
     "geo_restriction" {
       restriction_type = "none"
