@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { presets } from 'react-motion'
 import { SpringGrid, makeResponsive, layout } from 'react-stonecutter'
+import qs from 'qs'
 
 import projectManifest from './manifest.js'
 import { Toggle, Link } from '../components/index.js'
@@ -36,8 +37,14 @@ export default class Projects extends Component {
   //           onChange={newFilter => this.setState({ filter: newFilter })}
   //         />
 
+  getFilterQuery = type => {
+    type = type || this.props.filter
+    if (type === 'All') type = null
+    return type ? '?' + qs.stringify({ type }) : ''
+  }
+
   handleSelectProject = project => {
-    history.push(`/projects/${project}`)
+    history.push(`/projects/${project}${this.getFilterQuery()}`)
   }
 
   render() {
@@ -59,7 +66,7 @@ export default class Projects extends Component {
             {tags.map(tag => (
               <Link
                 key={tag}
-                to={`/projects?type=${tag}`}
+                to={`/projects${this.getFilterQuery(tag)}`}
                 className={`btn ${filter === tag ? 'active' : ''}`}
               >
                 {tag}
@@ -68,7 +75,7 @@ export default class Projects extends Component {
           </div>
         ) : (
           <div className="project-tags">
-            <Link className="btn" to={`/`}>
+            <Link className="btn" to={`/projects${this.getFilterQuery()}`}>
               Return to Projects
             </Link>
           </div>
