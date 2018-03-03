@@ -369,5 +369,28 @@ export default [
         </p>
       </div>
     )
+  },
+  {
+    name: 'portolfio',
+    title: 'Portfolio',
+    tags: ['Open Source', 'Front End'],
+    icon: <img alt="" src="/images/projects/ic_portfolio.png" />,
+    body: (
+      <div>
+        <p>
+          This portfolio iterates with me as I learn new tools and techniques.
+          Now in its fifth iteration it is based on{' '}
+          <a href="https://github.com/facebook/create-react-app">
+            create-react-app
+          </a>, deployed with <a href="https://www.terraform.io/">Terraform</a>{' '}
+          and hosted with AWS S3/Cloudfront.
+        </p>
+        <p>
+          <a href="https://github.com/tyrsius/portfolio">
+            Check out the source on GitHub
+          </a>
+        </p>
+      </div>
+    )
   }
 ]
