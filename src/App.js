@@ -6,6 +6,6 @@ import Home from './home/HomePage.js'
 
 export default () => (
   <Router history={history}>
-    <Route path="/" component={Home} />
+    <Route path="/:section?" component={Home} />
   </Router>
 )

@@ -3,23 +3,11 @@ import { presets } from 'react-motion'
 import { SpringGrid, makeResponsive, layout } from 'react-stonecutter'
 import qs from 'qs'
 
-import projectManifest from './manifest.js'
-import { Toggle, Link } from '../components/index.js'
 import history from '../util/history.js'
+import { Link } from '../components/index.js'
+import projectManifest from './manifest.js'
 
 import './projects.css'
-
-const Grid = makeResponsive(SpringGrid, {
-  maxWidth: 1920
-})
-
-const getProjectTags = projects =>
-  Array.from(
-    projects.reduce((tags, project) => {
-      project.tags.forEach(t => tags.add(t))
-      return tags
-    }, new Set(['All']))
-  )
 
 export default class Projects extends Component {
   constructor(...props) {
@@ -29,13 +17,6 @@ export default class Projects extends Component {
       tags: getProjectTags(projectManifest)
     }
   }
-
-  // <Toggle
-  //           className="project-tags"
-  //           options={tags.map(t => ({ value: t, label: t }))}
-  //           value={filter}
-  //           onChange={newFilter => this.setState({ filter: newFilter })}
-  //         />
 
   getFilterQuery = type => {
     type = type || this.props.filter
@@ -108,3 +89,15 @@ export default class Projects extends Component {
     )
   }
 }
+
+const Grid = makeResponsive(SpringGrid, {
+  maxWidth: 1920
+})
+
+const getProjectTags = projects =>
+  Array.from(
+    projects.reduce((tags, project) => {
+      project.tags.forEach(t => tags.add(t))
+      return tags
+    }, new Set(['All']))
+  )
