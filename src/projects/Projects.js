@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import { presets } from 'react-motion'
-
-import projectManifest from './manifest.js'
-
 import { SpringGrid, makeResponsive, layout } from 'react-stonecutter'
 
-import { Toggle } from '../components/index.js'
+import projectManifest from './manifest.js'
+import { Toggle, Link } from '../components/index.js'
+import history from '../util/history.js'
 
 import './projects.css'
 
@@ -25,15 +24,27 @@ export default class Projects extends Component {
   constructor(...props) {
     super(...props)
     this.state = {
-      filter: 'All',
-      selectedProject: null,
       projects: projectManifest,
       tags: getProjectTags(projectManifest)
     }
   }
 
+  // <Toggle
+  //           className="project-tags"
+  //           options={tags.map(t => ({ value: t, label: t }))}
+  //           value={filter}
+  //           onChange={newFilter => this.setState({ filter: newFilter })}
+  //         />
+
+  handleSelectProject = project => {
+    history.push(`/projects/${project}`)
+  }
+
   render() {
-    let { filter, projects, tags, selectedProject } = this.state
+    let { filter, project: selectedProject } = this.props
+    filter = filter || 'All'
+
+    let { projects, tags } = this.state
     projects = projects.filter(
       p =>
         selectedProject
@@ -44,20 +55,22 @@ export default class Projects extends Component {
     return (
       <div className="projects-container">
         {!selectedProject ? (
-          <Toggle
-            className="project-tags"
-            options={tags.map(t => ({ value: t, label: t }))}
-            value={filter}
-            onChange={newFilter => this.setState({ filter: newFilter })}
-          />
+          <div className="project-tags">
+            {tags.map(tag => (
+              <Link
+                key={tag}
+                to={`/projects?type=${tag}`}
+                className={`btn ${filter === tag ? 'active' : ''}`}
+              >
+                {tag}
+              </Link>
+            ))}
+          </div>
         ) : (
           <div className="project-tags">
-            <button
-              className="btn"
-              onClick={() => this.setState({ selectedProject: null })}
-            >
+            <Link className="btn" to={`/`}>
               Return to Projects
-            </button>
+            </Link>
           </div>
         )}
         <Grid
@@ -72,7 +85,7 @@ export default class Projects extends Component {
           {projects.map(project => (
             <div
               key={project.name}
-              onClick={() => this.setState({ selectedProject: project.name })}
+              onClick={() => this.handleSelectProject(project.name)}
               className={`project ${selectedProject ? 'open' : ''}`}
               style={{
                 width: selectedProject ? undefined : `${colWidth}px`

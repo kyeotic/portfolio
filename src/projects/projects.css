@@ -28,11 +28,25 @@
   transition: background-color .5s linear;
 }
 
-
-
 .project-tags {
+  display: flex;
   width: 100%;
   padding: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap
+}
+
+.project-tags > .btn {
+  flex: 0 0 auto;
+  margin: 1rem .5rem;
+  text-decoration: none;
+}
+
+.project-tags > .active {
+  background-color: rgba(255, 255, 255, 0.671);
+  color: #000;
 }
 
 .project {
@@ -51,7 +65,7 @@
   transition: width 1s ease, background-color .5s linear;
 }
 
-.project:hover:not(.open) {
+.project:hover:not(.open), .project-tags > .btn:hover {
   cursor: pointer;
   background-color: rgba(255, 255, 255, 0.253);
 }
