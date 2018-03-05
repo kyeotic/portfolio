@@ -70,9 +70,9 @@ em {
   padding: 40px 60px 40px 40px;
 }
 
-@media only screen and (max-width: 320px) {
+@media only screen and (max-width: 450px) {
   #jumbotron {
-    font-size: 14px;
+    font-size: 4.3vh;
   }
 }
 
