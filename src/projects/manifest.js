@@ -319,11 +319,11 @@ export default [
         <p>
           <a href="http://knockoutjs.com">KnockoutJS</a> is one of the early
           JavaScript front-end data binding libraries. It was developed by
-          engineers are Microsoft and followed in the footsteps of Windows
-          Presentation Foundation (WPF) by using the Model-View-ViewModel (MVVM)
+          engineers at Microsoft and, following in the footsteps of Windows
+          Presentation Foundation (WPF), used the Model-View-ViewModel (MVVM)
           pattern. Since I transitioned from WPF desktop development into web
-          development it was a natural choice for me, and I still think it made
-          a lot of good decisions, though newer frameworks have come a lot
+          development it was a natural choice for me. I still think it made a
+          lot of good decisions, though newer frameworks have come a lot
           farther.
         </p>
         <p>
