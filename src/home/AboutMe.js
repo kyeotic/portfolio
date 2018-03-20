@@ -15,8 +15,9 @@ export default () => (
   <section id="about">
     <h2>A Bit About Me</h2>
     <p>
-      I live in Portland, Oregon. I am a full stack developer. That term means a
-      lot of things to different people. To me it means that I know how to:
+      I live in Portland, Oregon and I am a full stack developer. That term
+      means a lot of things to different people, for me it means that I know how
+      to:
     </p>
     <ul className="list">
       <li>
