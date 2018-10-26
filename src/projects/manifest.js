@@ -36,7 +36,7 @@ export default [
   {
     name: 'rocket',
     title: 'Rocket',
-    tags: ['Professional', 'Front End'],
+    tags: ['Front End', 'Professional'],
     icon: <img alt="" src="/images/projects/rocket.svg" />,
     height: 213,
     body: (
@@ -216,7 +216,8 @@ export default [
           <a href="https://www.firebase.com/">Firebase</a>, and the{' '}
           <a href="https://github.com/firebase/blaze_compiler">
             blaze compiler
-          </a>.
+          </a>
+          .
         </p>
         <p>
           The app has display and entry screens for Residents and Houses, and
@@ -255,7 +256,8 @@ export default [
           instance hours of processing). So I created{' '}
           <a href="https://github.com/Nike-Inc/dabber">
             Dynamo Automated Backup, and (Benevolently Ergonomic) Restore
-          </a>, affectionately named "dabber" for short.
+          </a>
+          , affectionately named "dabber" for short.
         </p>
         <p>
           Dabber includes a CLI that allows easy, fast backups and restores on
@@ -344,7 +346,8 @@ export default [
         <p>
           The books has over 90 runnable code examples, which you can see on the
           accompanying{' '}
-          <a href="https://github.com/tyrsius/MasteringKnockout">Github repo</a>.
+          <a href="https://github.com/tyrsius/MasteringKnockout">Github repo</a>
+          .
         </p>
       </div>
     )
@@ -382,8 +385,9 @@ export default [
           Now in its fifth iteration it is based on{' '}
           <a href="https://github.com/facebook/create-react-app">
             create-react-app
-          </a>, deployed with <a href="https://www.terraform.io/">Terraform</a>{' '}
-          and hosted with AWS S3/Cloudfront.
+          </a>
+          , deployed with <a href="https://www.terraform.io/">Terraform</a> and
+          hosted with AWS S3/Cloudfront.
         </p>
         <p>
           <a href="https://github.com/tyrsius/portfolio">
