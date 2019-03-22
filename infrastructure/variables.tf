@@ -22,15 +22,14 @@ variable website_certifcate_arn {
 }
 
 locals {
-  bucket_domain = "tyrsius.com"
+  tyrsius_apex  = "tyrsius.com"
+  tyrsius_www   = "www.tyrsius.com"
+  kye_plus_apex = "kye.plus"
+  kye_plus_www  = "www.kye.plus"
 
-  tyrsius_apex = "tyrsius.com"
-  tyrsius_www  = "www.tyrsius.com"
-  kye_apex     = "kye.plus"
-  kye_alias    = "www.kye.plus"
+  kye_dev_apex = "kye.dev"
+  kye_dev_www  = "www.kye.dev"
+  kye_dev_tim  = "tim.kye.dev"
 
-  kye_dev_apex  = "kye.dev"
-  kye_dev_alias = "www.kye.dev"
-
-  cloufront__domains = ["tyrsius.com", "www.tyrsius.com", "www.kye.plus", "kye.plus", "www.kye.dev", "kye.dev"]
+  cloufront__domains = ["tyrsius.com", "kye.dev"]
 }

@@ -2,7 +2,7 @@
 
 # npm run build
 
-pushd deploy
+pushd infrastructure
 terraform init
 terraform apply
 popd
