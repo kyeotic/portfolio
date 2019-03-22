@@ -8,6 +8,11 @@ provider "aws" {
   region = "${var.region}"
 }
 
+provider "aws" {
+  region = "us-east-1"
+  alias = "certs"
+}
+
 terraform {
   backend "s3" {
     bucket               = "tyrsius-terraform-state"
@@ -18,7 +23,7 @@ terraform {
 }
 
 variable website_certifcate_arn {
-  default = "arn:aws:acm:us-east-1:902498034412:certificate/2c5ae0da-cd9e-4083-9324-e68343e9d28e"
+  default = "arn:aws:acm:us-east-1:902498034412:certificate/61c215d9-23d3-4690-ac02-4b2cc0004be1"
 }
 
 locals {
