@@ -1,6 +1,18 @@
+data "aws_route53_zone" "tyrsius_com" {
+  name = "tyrsius.com."
+}
+
+data "aws_route53_zone" "kye_plus" {
+  name = "kye.plus."
+}
+
+data "aws_route53_zone" "kye_dev" {
+  name = "kye.dev."
+}
+
 resource "aws_route53_record" "website" {
   name    = "${local.tyrsius_apex}"
-  zone_id = "${local.bucket_zone_id}"
+  zone_id = "${data.aws_route53_zone.tyrsius_com.zone_id}"
   type    = "A"
 
   alias {
@@ -11,8 +23,8 @@ resource "aws_route53_record" "website" {
 }
 
 resource "aws_route53_record" "web_aliases" {
-  name    = "${local.tyrsius_alias}"
-  zone_id = "${local.tyrsius_hosted_zone_id}"
+  name    = "${local.tyrsius_www}"
+  zone_id = "${data.aws_route53_zone.tyrsius_com.zone_id}"
   type    = "A"
 
   alias {
@@ -24,7 +36,7 @@ resource "aws_route53_record" "web_aliases" {
 
 resource "aws_route53_record" "website_kye" {
   name    = "${local.kye_apex}"
-  zone_id = "${local.kye_hosted_zone_id}"
+  zone_id = "${data.aws_route53_zone.kye_plus.zone_id}"
   type    = "A"
 
   alias {
@@ -36,7 +48,31 @@ resource "aws_route53_record" "website_kye" {
 
 resource "aws_route53_record" "web_kye_aliases" {
   name    = "${local.kye_alias}"
-  zone_id = "${local.kye_hosted_zone_id}"
+  zone_id = "${data.aws_route53_zone.kye_plus.zone_id}"
+  type    = "A"
+
+  alias {
+    name                   = "${aws_cloudfront_distribution.website.domain_name}"
+    zone_id                = "${aws_cloudfront_distribution.website.hosted_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "website_kye_dev" {
+  name    = "${local.kye_dev_apex}"
+  zone_id = "${data.aws_route53_zone.kye_dev.zone_id}"
+  type    = "A"
+
+  alias {
+    name                   = "${aws_cloudfront_distribution.website.domain_name}"
+    zone_id                = "${aws_cloudfront_distribution.website.hosted_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "web_kye_dev_aliases" {
+  name    = "${local.kye_dev_alias}"
+  zone_id = "${data.aws_route53_zone.kye_dev.zone_id}"
   type    = "A"
 
   alias {
@@ -120,8 +156,7 @@ resource "aws_cloudfront_distribution" "website" {
     viewer_protocol_policy = "redirect-to-https"
     compress               = true
   }
-
-    "cache_behavior" {
+  "ordered_cache_behavior" {
     allowed_methods = ["GET", "HEAD", "DELETE", "OPTIONS", "PATCH", "POST", "PUT"]
     cached_methods  = ["GET", "HEAD"]
 
@@ -142,8 +177,6 @@ resource "aws_cloudfront_distribution" "website" {
     viewer_protocol_policy = "redirect-to-https"
     compress               = true
   }
-
-
   "restrictions" {
     "geo_restriction" {
       restriction_type = "none"

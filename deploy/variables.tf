@@ -18,19 +18,19 @@ terraform {
 }
 
 variable website_certifcate_arn {
-  default = "arn:aws:acm:us-east-1:902498034412:certificate/98bcfef0-f40a-4fa2-8cbb-9c0e38058470"
+  default = "arn:aws:acm:us-east-1:902498034412:certificate/2c5ae0da-cd9e-4083-9324-e68343e9d28e"
 }
 
 locals {
-  kye_hosted_zone_id     = "Z17II5IIER1BTY"
-  tyrsius_hosted_zone_id = "Z1BAMZ42AZF64R"
-  bucket_domain         = "tyrsius.com"
-  bucket_zone_id         = "${local.tyrsius_hosted_zone_id}"
-  
-  tyrsius_apex           = "tyrsius.com"
-  tyrsius_alias          = "www.tyrsius.com"
-  kye_apex               = "kye.plus"
-  kye_alias              = "www.kye.plus"
+  bucket_domain = "tyrsius.com"
 
-  cloufront__domains     = ["tyrsius.com", "www.tyrsius.com", "www.kye.plus", "kye.plus"]
+  tyrsius_apex = "tyrsius.com"
+  tyrsius_www  = "www.tyrsius.com"
+  kye_apex     = "kye.plus"
+  kye_alias    = "www.kye.plus"
+
+  kye_dev_apex  = "kye.dev"
+  kye_dev_alias = "www.kye.dev"
+
+  cloufront__domains = ["tyrsius.com", "www.tyrsius.com", "www.kye.plus", "kye.plus", "www.kye.dev", "kye.dev"]
 }
