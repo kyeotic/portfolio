@@ -105,4 +105,6 @@ resource "aws_cloudfront_distribution" "site" {
     }
   }
 
+  aliases = ["${var.name}"]
+
 }
