@@ -30,10 +30,3 @@ module "kye_dev_www_redirect" {
   cert_arn = "${var.website_certifcate_arn}"
 }
 
-module "kye_dev_tim_redirect" {
-  source  = "./redirect"
-  zone_id = "${data.aws_route53_zone.kye_dev.zone_id}"
-  name    = "${local.kye_dev_tim}"
-  target  = "${local.kye_dev_apex}"
-  cert_arn = "${var.website_certifcate_arn}"
-}

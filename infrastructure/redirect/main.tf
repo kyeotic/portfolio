@@ -14,8 +14,8 @@ resource "aws_route53_record" "301" {
   type    = "A"
 
   alias {
-    name                   = "${aws_s3_bucket.301.website_domain}"
-    zone_id                = "${aws_s3_bucket.301.hosted_zone_id}"
+    name                   = "${aws_cloudfront_distribution.site.domain_name}"
+    zone_id                = "${aws_cloudfront_distribution.site.hosted_zone_id}"
     evaluate_target_health = false
   }
 }
@@ -23,7 +23,6 @@ resource "aws_route53_record" "301" {
 resource "aws_s3_bucket" "301" {
   bucket = "${substr(var.name, -2, -1) == "." ? substr(var.name, 0, length(var.name) - 1) : var.name}"
    acl    = "public-read"
-
   policy = <<EOF
 {
       "Id": "bucket_policy_site",
@@ -41,7 +40,6 @@ resource "aws_s3_bucket" "301" {
       ]
     }
 EOF
-
   website {
     redirect_all_requests_to = "${var.target}"
   }
@@ -54,6 +52,7 @@ resource "aws_cloudfront_distribution" "site" {
 
  "origin" {
     origin_id   = "origin-bucket-${aws_s3_bucket.301.id}"
+    # domain_name = "${aws_s3_bucket.301.website_endpoint}"
     domain_name = "${var.name}.s3.amazonaws.com"
 
     custom_origin_config {
@@ -66,13 +65,7 @@ resource "aws_cloudfront_distribution" "site" {
 
   default_root_object = "index.html"
 
-  custom_error_response {
-    error_code         = "404"
-    response_code      = "200"
-    response_page_path = "/index.html"
-  }
-
-  "default_cache_behavior" {
+  default_cache_behavior {
     allowed_methods = ["GET", "HEAD", "DELETE", "OPTIONS", "PATCH", "POST", "PUT"]
     cached_methods  = ["GET", "HEAD"]
 

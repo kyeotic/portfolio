@@ -36,5 +36,5 @@ locals {
   kye_dev_www  = "www.kye.dev"
   kye_dev_tim  = "tim.kye.dev"
 
-  cloufront__domains = ["tyrsius.com", "kye.dev"]
+  cloufront__domains = ["${local.tyrsius_apex}", "${local.kye_dev_apex}", "${local.kye_dev_tim}"]
 }

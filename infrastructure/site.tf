@@ -1,26 +1,23 @@
-data "aws_iam_policy_document" "website_s3_policy" {
-  statement {
-    sid       = "bucket_policy_site_main"
-    actions   = ["s3:GetObject"]
-    effect    = "Allow"
-    resources = ["arn:aws:s3:::${local.tyrsius_apex}/*"]
-
-    principals {
-      type        = "AWS"
-      identifiers = ["${aws_cloudfront_origin_access_identity.website_origin_access_identity.iam_arn}"]
-    }
-  }
-}
-
-resource "aws_cloudfront_origin_access_identity" "website_origin_access_identity" {
-  comment = "site ${terraform.workspace} Access Identity"
-}
-
 resource "aws_s3_bucket" "site" {
   bucket = "${local.tyrsius_apex}"
   acl    = "private"
-  policy = "${data.aws_iam_policy_document.website_s3_policy.json}"
-
+  policy = <<EOF
+{
+      "Id": "bucket_policy_site",
+      "Version": "2012-10-17",
+      "Statement": [
+        {
+          "Sid": "bucket_policy_site_main",
+          "Action": [
+            "s3:GetObject"
+          ],
+          "Effect": "Allow",
+          "Resource": "arn:aws:s3:::${local.tyrsius_apex}/*",
+          "Principal": "*"
+        }
+      ]
+    }
+EOF
   website {
     index_document = "index.html"
     error_document = "error.html"
@@ -38,8 +35,11 @@ resource "aws_cloudfront_distribution" "site" {
     # domain_name = "${aws_s3_bucket.site.website_endpoint}"
     domain_name = "${local.tyrsius_apex}.s3.amazonaws.com"
 
-    s3_origin_config {
-      origin_access_identity = "${aws_cloudfront_origin_access_identity.website_origin_access_identity.cloudfront_access_identity_path}"
+    custom_origin_config {
+      origin_protocol_policy = "http-only"
+      http_port              = "80"
+      https_port             = "443"
+      origin_ssl_protocols   = ["SSLv3", "TLSv1", "TLSv1.1", "TLSv1.2"]
     }
   }
 
