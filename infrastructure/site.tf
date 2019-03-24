@@ -32,8 +32,8 @@ resource "aws_cloudfront_distribution" "site" {
   "origin" {
     origin_id = "origin-bucket-${aws_s3_bucket.site.id}"
 
-    # domain_name = "${aws_s3_bucket.site.website_endpoint}"
-    domain_name = "${local.tyrsius_apex}.s3.amazonaws.com"
+    domain_name = "${aws_s3_bucket.site.website_endpoint}"
+    # domain_name = "${local.tyrsius_apex}.s3.amazonaws.com"
 
     custom_origin_config {
       origin_protocol_policy = "http-only"
