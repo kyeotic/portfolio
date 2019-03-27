@@ -57,7 +57,7 @@ resource "aws_cloudfront_distribution" "site" {
     response_page_path = "/index.html"
   }
 
-  "default_cache_behavior" {
+  default_cache_behavior {
     allowed_methods = ["GET", "HEAD", "DELETE", "OPTIONS", "PATCH", "POST", "PUT"]
     cached_methods  = ["GET", "HEAD"]
 
@@ -76,6 +76,12 @@ resource "aws_cloudfront_distribution" "site" {
 
     viewer_protocol_policy = "redirect-to-https"
     compress               = true
+
+    lambda_function_association {
+      event_type = "viewer-request"
+      lambda_arn = "${aws_lambda_function.cloudfront_lambda.arn}:${aws_lambda_function.cloudfront_lambda.version}"
+      include_body = false
+    }
   }
 
   ordered_cache_behavior {

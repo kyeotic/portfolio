@@ -5,8 +5,8 @@ variable "target" {}
 variable "acl" {
   default = "public-read"
 }
-variable "cert_arn" {}
 
+variable "cert_arn" {}
 
 resource "aws_route53_record" "301" {
   zone_id = "${var.zone_id}"
@@ -22,7 +22,8 @@ resource "aws_route53_record" "301" {
 
 resource "aws_s3_bucket" "301" {
   bucket = "${substr(var.name, -2, -1) == "." ? substr(var.name, 0, length(var.name) - 1) : var.name}"
-   acl    = "public-read"
+  acl    = "public-read"
+
   policy = <<EOF
 {
       "Id": "bucket_policy_site",
@@ -40,6 +41,7 @@ resource "aws_s3_bucket" "301" {
       ]
     }
 EOF
+
   website {
     redirect_all_requests_to = "${var.target}"
   }
@@ -50,9 +52,10 @@ resource "aws_cloudfront_distribution" "site" {
   is_ipv6_enabled = true
   price_class     = "PriceClass_100"
 
- "origin" {
+  "origin" {
     origin_id   = "origin-bucket-${aws_s3_bucket.301.id}"
     domain_name = "${aws_s3_bucket.301.website_endpoint}"
+
     # domain_name = "${var.name}.s3.amazonaws.com"
 
     custom_origin_config {
@@ -93,11 +96,10 @@ resource "aws_cloudfront_distribution" "site" {
   }
 
   restrictions = {
-    geo_restriction ={
+    geo_restriction = {
       restriction_type = "none"
     }
   }
 
   aliases = ["${var.name}"]
-
 }

@@ -2,7 +2,11 @@
 
 # npm run build
 
-pushd infrastructure
+pushd infrastructure/edge
+zip ../lambda.zip lambda.js
+popd
+
+pushd infrastructure/terraform
 terraform init
 terraform apply
 popd
