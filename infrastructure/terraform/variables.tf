@@ -29,13 +29,15 @@ variable website_certifcate_arn {
 locals {
   edge_lambda_file = "../lambda.zip"
   tyrsius_apex     = "tyrsius.com"
-  tyrsius_www      = "www.tyrsius.com"
-  kye_plus_apex    = "kye.plus"
-  kye_plus_www     = "www.kye.plus"
+  kye_dev_apex     = "kye.dev"
+  kye_dev_tim      = "tim.kye.dev"
 
-  kye_dev_apex = "kye.dev"
-  kye_dev_www  = "www.kye.dev"
-  kye_dev_tim  = "tim.kye.dev"
+  tyrsius_www   = "www.tyrsius.com"
+  kye_plus_apex = "kye.plus"
+  kye_plus_www  = "www.kye.plus"
 
-  cloufront__domains = ["${local.tyrsius_apex}", "${local.kye_dev_apex}", "${local.kye_dev_tim}", "${local.kye_plus_www}"]
+  kye_dev_www = "www.kye.dev"
+
+  cloufront__domains = ["${local.tyrsius_apex}", "${local.kye_dev_apex}", "${local.kye_dev_tim}"]
+  redirect_domains   = ["${local.kye_dev_www}", "${local.kye_plus_apex}", "${local.tyrsius_www}", "${local.kye_plus_www}"]
 }

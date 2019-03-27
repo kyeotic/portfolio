@@ -45,16 +45,3 @@ resource "aws_route53_record" "kye_dev_tim" {
     evaluate_target_health = false
   }
 }
-
-
-resource "aws_route53_record" "kye_plus_www" {
-  name    = "${local.kye_plus_www}"
-  zone_id = "${data.aws_route53_zone.kye_plus.zone_id}"
-  type    = "A"
-
-  alias {
-    name                   = "${aws_cloudfront_distribution.site.domain_name}"
-    zone_id                = "${aws_cloudfront_distribution.site.hosted_zone_id}"
-    evaluate_target_health = false
-  }
-}

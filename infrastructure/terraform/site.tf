@@ -1,6 +1,7 @@
 resource "aws_s3_bucket" "site" {
   bucket = "${local.tyrsius_apex}"
   acl    = "private"
+
   policy = <<EOF
 {
       "Id": "bucket_policy_site",
@@ -18,6 +19,7 @@ resource "aws_s3_bucket" "site" {
       ]
     }
 EOF
+
   website {
     index_document = "index.html"
     error_document = "error.html"
@@ -33,6 +35,7 @@ resource "aws_cloudfront_distribution" "site" {
     origin_id = "origin-bucket-${aws_s3_bucket.site.id}"
 
     domain_name = "${aws_s3_bucket.site.website_endpoint}"
+
     # domain_name = "${local.tyrsius_apex}.s3.amazonaws.com"
 
     custom_origin_config {
@@ -76,12 +79,6 @@ resource "aws_cloudfront_distribution" "site" {
 
     viewer_protocol_policy = "redirect-to-https"
     compress               = true
-
-    lambda_function_association {
-      event_type = "viewer-request"
-      lambda_arn = "${aws_lambda_function.cloudfront_lambda.arn}:${aws_lambda_function.cloudfront_lambda.version}"
-      include_body = false
-    }
   }
 
   ordered_cache_behavior {
@@ -116,7 +113,7 @@ resource "aws_cloudfront_distribution" "site" {
   aliases = ["${local.cloufront__domains}"]
 
   restrictions = {
-    geo_restriction ={
+    geo_restriction = {
       restriction_type = "none"
     }
   }
