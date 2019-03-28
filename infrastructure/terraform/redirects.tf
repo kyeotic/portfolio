@@ -48,15 +48,14 @@ resource "aws_route53_record" "kye_dev_www" {
 
 resource "aws_s3_bucket" "redirect" {
   bucket = "${local.kye_dev_www}"
-  acl    = "private"
-
+   acl    = "public-read"
   policy = <<EOF
 {
-      "Id": "bucket_policy_redirect",
+      "Id": "bucket_policy_site",
       "Version": "2012-10-17",
       "Statement": [
         {
-          "Sid": "bucket_policy_redirect_main",
+          "Sid": "bucket_policy_site_main",
           "Action": [
             "s3:GetObject"
           ],
@@ -67,10 +66,8 @@ resource "aws_s3_bucket" "redirect" {
       ]
     }
 EOF
-
   website {
-    index_document = "index.html"
-    error_document = "error.html"
+    redirect_all_requests_to = "${local.kye_dev_apex}"
   }
 }
 
