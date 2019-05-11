@@ -163,6 +163,31 @@ export default [
     )
   },
   {
+    name: 'lambda-router',
+    title: 'Lambda Router',
+    tags: ['Professional', 'Open Source'],
+    icon: <img alt="" src="/images/projects/aws-lambda.png" />,
+    height: 223,
+    body: (
+      <div>
+        <p>
+          <a href="https://github.com/Nike-Inc/lambda-router">Lambda Router</a>{' '}
+          is a{' '}
+          <a href="https://bundlephobia.com/result?p=lambda-router@2.4.1">
+            small, 5kb
+          </a>{' '}
+          API router for AWS Lambda. Lambda's recieve and return
+          plain-old-JSON-objects with a known structure. Lambda Router
+          simplifies the access and decoding of the incoming event, including
+          the awkward mapping from the <em>API Proxy Integration</em>, routes by
+          path to a handler, and provides a simple API for returning responses,
+          including custom headers.
+        </p>
+        <p>I developed this while working at Nike.</p>
+      </div>
+    )
+  },
+  {
     name: 'cryonic',
     title: 'Cryonic',
     tags: ['Performance', 'Professional'],
