@@ -23,21 +23,14 @@ terraform {
 }
 
 variable website_certifcate_arn {
-  default = "arn:aws:acm:us-east-1:902498034412:certificate/61c215d9-23d3-4690-ac02-4b2cc0004be1"
+  default = "arn:aws:acm:us-east-1:902498034412:certificate/5d781cbe-ee50-4a06-b643-825db86c13f1"
 }
 
 locals {
   edge_lambda_file = "../lambda.zip"
-  tyrsius_apex     = "tyrsius.com"
+  kyeotic_apex     = "kyeotic.com"
+  kyeotic_www   = "www.kyeotic.com"
   kye_dev_apex     = "kye.dev"
   kye_dev_tim      = "tim.kye.dev"
-
-  tyrsius_www   = "www.tyrsius.com"
-  kye_plus_apex = "kye.plus"
-  kye_plus_www  = "www.kye.plus"
-
   kye_dev_www = "www.kye.dev"
-
-  cloufront__domains = ["${local.tyrsius_apex}", "${local.kye_dev_apex}", "${local.kye_dev_tim}"]
-  redirect_domains   = ["${local.kye_dev_www}", "${local.kye_plus_apex}", "${local.tyrsius_www}", "${local.kye_plus_www}"]
 }

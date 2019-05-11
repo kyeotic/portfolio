@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:italic,300|Lato);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:italic, 300|Lato);
 
 body::before {
   position: fixed;
@@ -9,7 +9,7 @@ body::before {
   content: '';
   z-index: -1;
   /* background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB); */
-  background: linear-gradient(-45deg,  rgb(110, 7, 194), #23A6D5, #23D5AB);
+  background: linear-gradient(-45deg, rgb(110, 7, 194), #23a6d5, #23d5ab);
   /* background: linear-gradient(-45deg,  rgb(70, 17, 114), rgb(17, 114, 90), rgb(17, 35, 114)); */
   background-size: 400% 400%;
   animation: Gradient 15s ease infinite;
@@ -17,13 +17,13 @@ body::before {
 
 @keyframes Gradient {
   0% {
-    background-position: 0% 50%
+    background-position: 0% 50%;
   }
   50% {
-    background-position: 100% 50%
+    background-position: 100% 50%;
   }
   100% {
-    background-position: 0% 50%
+    background-position: 0% 50%;
   }
 }
 
@@ -37,7 +37,9 @@ section {
   /* background-color: #222222; */
 }
 
-a:link, a:visited, a:active  {
+a:link,
+a:visited,
+a:active {
   color: #fff;
 }
 a:hover {
@@ -65,7 +67,7 @@ em {
   font-weight: 300;
   line-height: 1.5em;
   width: 90%;
-  background-color: rgba(0, 0, 0, 0.40);
+  background-color: rgba(0, 0, 0, 0.4);
   /* border-radius: 1rem; */
   padding: 40px 60px 40px 40px;
 }
@@ -76,21 +78,33 @@ em {
   }
 }
 
-#jumbotron .name {color: rgb(255, 41, 187); font-weight: 300;   }
+#jumbotron .name {
+  color: rgb(255, 41, 187);
+  font-weight: 300;
+}
 /* .subtitle { font-style: italic; } */
-.subtitle-react { color: #24B2C1; font-weight: 300; }
-.subtitle-node { color: #A9D642; font-weight: 300; }
-.subtitle-aws { color: #F49E58; font-weight: 300; }
+.subtitle-react {
+  color: #24b2c1;
+  font-weight: 300;
+}
+.subtitle-node {
+  color: #a9d642;
+  font-weight: 300;
+}
+.subtitle-aws {
+  color: #f49e58;
+  font-weight: 300;
+}
 
 #about {
   width: 100%;
   padding: 2em;
-  background-color: rgba(0, 0, 0, 0.40);
+  background-color: rgba(0, 0, 0, 0.4);
   min-height: inherit;
   margin-bottom: 20vh;
 }
 
-#about  h2 {
+#about h2 {
   font-size: 2em;
   line-height: 2em;
 }
@@ -108,4 +122,3 @@ em {
   display: inline-block;
   margin-right: 1em;
 }
-

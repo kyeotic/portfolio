@@ -1,18 +1,18 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 
 const links = [
-  { title: 'Github', href: 'https://github.com/tyrsius' },
+  { title: 'Github', href: 'https://github.com/kyeotic' },
   { title: 'Blog', href: 'http://blog.tyrsius.com/' },
   {
     title: 'StackOverflow',
-    href: 'https://stackoverflow.com/users/788260/tyrsius'
+    href: 'https://stackoverflow.com/users/788260/kyeotic'
   },
-  { title: 'LinkedIn', href: 'https://www.linkedin.com/in/tyrsius/' },
+  { title: 'LinkedIn', href: 'https://www.linkedin.com/in/kyeotic/' },
   { title: 'email me', href: 'mailto:tim@kye.dev' }
 ]
 
 export default () => (
-  <section id="about">
+  <Fragment>
     <h2>A Bit About Me</h2>
     <p>
       I live in Portland, Oregon and I am a full stack developer. That term
@@ -37,6 +37,7 @@ export default () => (
       like Dynamo, RDS Aurora, S3, API Gateway, SQS, etc.
     </p>
     <p>In 2016 I legally changed my name from Timothy Moran to Timothy Kye.</p>
+    <p>In 21019 I changed my name handle from Tyrsius to Kyeotic.</p>
     <h2>External Links</h2>
     <ul className="link-list">
       {links.map(link => (
@@ -45,5 +46,5 @@ export default () => (
         </li>
       ))}
     </ul>
-  </section>
+  </Fragment>
 )

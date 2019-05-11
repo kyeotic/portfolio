@@ -7,7 +7,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "sync": "aws s3 sync build s3://tyrsius.com && aws s3 cp build/index.html s3://tyrsius.com/index.html --cache-control max-age=0",
+    "sync": "aws s3 sync build s3://kyeotic.com && aws s3 cp build/index.html s3://kyeotic.com/index.html --cache-control max-age=0",
     "deploy": "npm run build && npm run sync",
     "deploy-staging": "GENERATE_SOURCEMAP=false npm run build && cd build && now"
   },

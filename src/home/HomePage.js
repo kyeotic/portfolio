@@ -61,7 +61,15 @@ export default class HomePage extends Component {
           </span>
         </div>
       </section>,
-      <AboutMe key="about" />,
+      <section
+        key="about"
+        id="about"
+        ref={section => {
+          this.sections.about = section
+        }}
+      >
+        <AboutMe />
+      </section>,
       <section id="projects" key="projects">
         <h2>Projects</h2>
         <Projects

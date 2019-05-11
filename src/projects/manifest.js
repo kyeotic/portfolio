@@ -234,7 +234,7 @@ export default [
         </p>
         <p>
           You can check out the{' '}
-          <a href="https://github.com/tyrsius/coral-commons">source code</a> on
+          <a href="https://github.com/kyeotic/coral-commons">source code</a> on
           GitHub.
         </p>
       </div>
@@ -346,7 +346,7 @@ export default [
         <p>
           The books has over 90 runnable code examples, which you can see on the
           accompanying{' '}
-          <a href="https://github.com/tyrsius/MasteringKnockout">Github repo</a>
+          <a href="https://github.com/kyeotic/MasteringKnockout">Github repo</a>
           .
         </p>
       </div>
@@ -390,7 +390,7 @@ export default [
           hosted with AWS S3/Cloudfront.
         </p>
         <p>
-          <a href="https://github.com/tyrsius/portfolio">
+          <a href="https://github.com/kyeotic/portfolio">
             Check out the source on GitHub
           </a>
         </p>
