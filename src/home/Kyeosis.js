@@ -15,7 +15,6 @@ export default () => (
       At first <em>Kyeotic</em> may seem like a pun on my last name and{' '}
       <em>chaotic</em>, but I like to think there is a bit more to it.
     </p>
-    <p />
     <ul>
       <li>
         <em>

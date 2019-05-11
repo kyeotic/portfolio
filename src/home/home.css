@@ -111,12 +111,17 @@ em {
 
 #about p {
   margin-top: 1em;
-  max-width: 800px;
+  max-width: 1000px;
 }
 
 #about ul.list {
   list-style: disc;
   list-style-position: inside;
+}
+
+#about ul {
+  margin-top: 1rem;
+  max-width: 600px;
 }
 
 #about ul.link-list li {
