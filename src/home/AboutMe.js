@@ -37,7 +37,7 @@ export default () => (
       like Dynamo, RDS Aurora, S3, API Gateway, SQS, etc.
     </p>
     <p>In 2016 I legally changed my name from Timothy Moran to Timothy Kye.</p>
-    <p>In 21019 I changed my name handle from Tyrsius to Kyeotic.</p>
+    <p>In 2019 I changed my name handle from Tyrsius to Kyeotic.</p>
     <h2>External Links</h2>
     <ul className="link-list">
       {links.map(link => (

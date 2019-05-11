@@ -6,6 +6,11 @@ data "aws_route53_zone" "kye_dev" {
   name = "kye.dev."
 }
 
+provider "aws" {
+  region = "us-east-1"
+  alias  = "certs"
+}
+
 module "cert_kyeotic" {
   source = "github.com/azavea/terraform-aws-acm-certificate?ref=1.0.0"
 

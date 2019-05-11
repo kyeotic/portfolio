@@ -1,10 +1,9 @@
-
 #projects h2 {
   font-size: 2em;
   line-height: 2em;
   font-weight: bold;
   text-align: center;
-  padding: .2em 2em;
+  padding: 0.2em 2em;
   background-color: rgba(0, 0, 0, 0.253);
 }
 
@@ -19,13 +18,13 @@
 
 .projects-container .btn {
   display: block;
-  padding: .6em;
+  padding: 0.6em;
   margin: 1em auto;
   color: #fff;
   font-weight: bold;
   background-color: rgba(0, 0, 0, 0.253);
   cursor: pointer;
-  transition: background-color .5s linear;
+  transition: background-color 0.5s linear;
 }
 
 .project-tags {
@@ -35,12 +34,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap
+  flex-wrap: wrap;
 }
 
 .project-tags > .btn {
   flex: 0 0 auto;
-  margin: 1rem .5rem;
+  margin: 1rem 0.5rem;
   text-decoration: none;
 }
 
@@ -54,18 +53,17 @@
   height: 225px;
   width: 150px;
   padding: 16px 0;
+  display: grid;
+  justify-items: center;
+  align-content: space-between;
   background-color: rgba(0, 0, 0, 0.253);
   transition: width 1s ease;
-  line-height: 1.5em;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-  align-content: center;
-  transition: width 1s ease, background-color .5s linear;
+  /* line-height: 1.5em; */
+  transition: width 1s ease, background-color 0.5s linear;
 }
 
-.project:hover:not(.open), .project-tags > .btn:hover {
+.project:hover:not(.open),
+.project-tags > .btn:hover {
   cursor: pointer;
   background-color: rgba(255, 255, 255, 0.253);
 }
@@ -84,12 +82,11 @@
   }
 }
 
-@media only screen and (min-width : 321px) and (max-width : 767px) {
+@media only screen and (min-width: 321px) and (max-width: 767px) {
   .project.open {
     width: 100%;
   }
 }
-  
 
 @media only screen and (max-width: 991px) and (min-width: 768px) {
   .project.open {
@@ -110,7 +107,7 @@
   flex: 0 0 auto;
   max-width: 128px;
   max-height: 130px;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   display: block;
 }
 
