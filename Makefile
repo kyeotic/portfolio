@@ -4,7 +4,7 @@ apply:
 	terraform init && \
 	terraform apply
 
-destroy:
+teardown:
 	cd infrastructure && \
 	terraform init && \
 	terraform destroy
