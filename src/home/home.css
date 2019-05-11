@@ -35,6 +35,12 @@ section {
   align-items: center;
   justify-content: center; */
   /* background-color: #222222; */
+  max-width: 100vw;
+}
+
+::selection {
+  background-color: #403f4c;
+  /* color: #fff; */
 }
 
 a:link,
@@ -63,7 +69,7 @@ em {
 }
 
 #jumbotron {
-  font-size: 4.3vw;
+  font-size: 4.3vmax;
   font-weight: 300;
   line-height: 1.5em;
   width: 90%;
@@ -72,11 +78,11 @@ em {
   padding: 40px 60px 40px 40px;
 }
 
-@media only screen and (max-width: 450px) {
+/* @media only screen and (max-width: 450px) {
   #jumbotron {
     font-size: 4.3vh;
   }
-}
+} */
 
 #jumbotron .name {
   color: rgb(255, 41, 187);
