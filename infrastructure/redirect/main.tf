@@ -1,8 +1,7 @@
-
-
 resource "aws_s3_bucket" "redirect" {
   bucket = "${var.site_name}"
-   acl    = "public-read"
+  acl    = "public-read"
+
   policy = <<EOF
 {
       "Id": "bucket_policy_site",
@@ -20,6 +19,7 @@ resource "aws_s3_bucket" "redirect" {
       ]
     }
 EOF
+
   website {
     redirect_all_requests_to = "${var.redirect_to}"
   }
@@ -42,6 +42,8 @@ resource "aws_cloudfront_distribution" "redirect" {
       origin_ssl_protocols   = ["SSLv3", "TLSv1", "TLSv1.1", "TLSv1.2"]
     }
   }
+
+  aliases = ["${var.site_name}"]
 
   default_root_object = "index.html"
 

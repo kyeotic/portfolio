@@ -1,9 +1,9 @@
-variable site_name { }
-variable redirect_to { }
-variable cert_arn { }
+variable site_name {}
+variable redirect_to {}
+variable cert_arn {}
 
 output cloudfront_domain {
- value = "${aws_cloudfront_distribution.redirect.domain_name}"
+  value = "${aws_cloudfront_distribution.redirect.domain_name}"
 }
 
 output cloudfront_hosted_zone_id {

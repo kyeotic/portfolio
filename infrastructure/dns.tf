@@ -54,7 +54,6 @@ resource "aws_route53_record" "kyeotic_www" {
   }
 }
 
-
 resource "aws_route53_record" "kye_dev_www" {
   name    = "${local.kye_dev_www}"
   zone_id = "${data.aws_route53_zone.kye_dev.zone_id}"
