@@ -10,7 +10,7 @@ export default [
     body: (
       <div>
         <p>
-          <a src="http://engineering.nike.com/cerberus/">Cerberus</a> is a
+          <a href="http://engineering.nike.com/cerberus/">Cerberus</a> is a
           secrets management system developed at Nike that used AWS IAM Roles
           for authentication. I developed the node client while working there,
           and it was among the first projects to go through Nike's Open Source

@@ -1,3 +1,3 @@
-import browserHistory from 'history/createBrowserHistory.js'
+import { createBrowserHistory } from 'history'
 
-export default browserHistory()
+export default createBrowserHistory()

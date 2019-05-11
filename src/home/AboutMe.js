@@ -1,4 +1,5 @@
-import React, { Fragment } from 'react'
+import React from 'react'
+import { Link } from '../components/index.js'
 
 const links = [
   { title: 'Github', href: 'https://github.com/kyeotic' },
@@ -12,7 +13,7 @@ const links = [
 ]
 
 export default () => (
-  <Fragment>
+  <>
     <h2>A Bit About Me</h2>
     <p>
       I live in Portland, Oregon and I am a full stack developer. That term
@@ -32,12 +33,16 @@ export default () => (
     <p>
       While JavaScript is my language of choice on most projects I am also
       comfortable with C#, and I have some experience patching Python and Go. I
-      am very experienced with Amazon Web Services, with both Docker on EC2/ECS
-      and the serverless Lambda architecture, as well as supporting services
+      am very experienced with Amazon Web Services, with both the serverless
+      Lambda architecture and Docker on EC2/ECS, as well as supporting services
       like Dynamo, RDS Aurora, S3, API Gateway, SQS, etc.
     </p>
-    <p>In 2016 I legally changed my name from Timothy Moran to Timothy Kye.</p>
-    <p>In 2019 I changed my name handle from Tyrsius to Kyeotic.</p>
+    <p>
+      In 2016 I legally changed my name from Timothy Moran to Timothy Kye.{' '}
+      <br />
+      In 2019 I changed my name handle from Tyrsius to{' '}
+      <Link to="/kyeosis">Kyeotic</Link> .
+    </p>
     <h2>External Links</h2>
     <ul className="link-list">
       {links.map(link => (
@@ -46,5 +51,5 @@ export default () => (
         </li>
       ))}
     </ul>
-  </Fragment>
+  </>
 )

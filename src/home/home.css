@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:italic, 300|Lato);
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:italic, 300|Lato');
 
 body::before {
   position: fixed;
@@ -111,6 +111,7 @@ em {
 
 #about p {
   margin-top: 1em;
+  max-width: 800px;
 }
 
 #about ul.list {
