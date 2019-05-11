@@ -15,7 +15,7 @@ const getSection = props =>
 
 export default function HomePage(props) {
   let sections = {}
-  sections.intro = useRef()
+  sections.home = useRef()
   sections.about = useRef()
   sections.projects = useRef()
   sections.kyeosis = sections.about
