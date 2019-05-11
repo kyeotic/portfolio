@@ -26,7 +26,8 @@ export default () => (
         <em>
           <a href="https://www.dictionary.com/browse/-osis">-osis</a>
         </em>
-        : indicating a process or state <em>metamorphosis</em>.
+        : indicating a process or state: <em>metamorphosis</em>,{' '}
+        <em>hypnosis</em>.
       </li>
       <li>
         {' '}
