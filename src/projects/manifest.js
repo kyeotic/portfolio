@@ -5,7 +5,7 @@ export default [
     name: 'cerberus-node-client',
     title: 'Cerberus Node Client',
     tags: ['Security', 'Open Source'],
-    icon: <img alt="" src="/images/projects/cerberus_logo.svg" />,
+    icon: <img alt="" src="/images/projects/cerberus3.svg" />,
     height: 221,
     body: (
       <div>
@@ -166,7 +166,7 @@ export default [
     name: 'lambda-router',
     title: 'Lambda Router',
     tags: ['Professional', 'Open Source'],
-    icon: <img alt="" src="/images/projects/aws-lambda.png" />,
+    icon: <img alt="" src="/images/projects/lambda.svg" />,
     height: 223,
     body: (
       <div>
