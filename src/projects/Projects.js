@@ -33,11 +33,10 @@ export default class Projects extends Component {
     filter = filter || 'All'
 
     let { projects, tags } = this.state
-    projects = projects.filter(
-      p =>
-        selectedProject
-          ? selectedProject === p.name
-          : filter === 'All' || p.tags.includes(filter)
+    projects = projects.filter(p =>
+      selectedProject
+        ? selectedProject === p.name
+        : filter === 'All' || p.tags.includes(filter)
     )
     let colWidth = 150
     return (
@@ -91,7 +90,7 @@ export default class Projects extends Component {
 }
 
 const Grid = makeResponsive(SpringGrid, {
-  maxWidth: 1920
+  maxWidth: 1440
 })
 
 const getProjectTags = projects =>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from '../components/index.js'
+import { kyeosis } from './Kyeosis.js'
 
 const links = [
   { title: 'Github', href: 'https://github.com/kyeotic' },
@@ -41,7 +41,7 @@ export default () => (
       In 2016 I legally changed my name from Timothy Moran to Timothy Kye.{' '}
       <br />
       In 2019 I changed my name handle from Tyrsius to{' '}
-      <Link to="/kyeosis">Kyeotic</Link> .
+      <span onClick={kyeosis}>Kyeotic</span>.
     </p>
     <h2>External Links</h2>
     <ul className="link-list">

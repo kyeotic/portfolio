@@ -1,5 +1,23 @@
 import React from 'react'
+import appHistory from '../util/history'
+import hotkeys from 'hotkeys-js'
 import { Link } from '../components/index.js'
+
+const kyeoticHosts = ['kyeotic.com', 'localhost']
+
+export function kyeosis() {
+  if (!kyeoticHosts.includes(document.location.hostname)) return
+  appHistory.push(
+    appHistory.location && appHistory.location.pathname !== '/kyeosis'
+      ? '/kyeosis'
+      : '/about'
+  )
+}
+
+hotkeys('ctrl+shift+k', function(event, handler) {
+  event.preventDefault()
+  kyeosis()
+})
 
 const linkStyle = { marginTop: '2rem', display: 'block' }
 

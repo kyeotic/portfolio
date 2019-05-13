@@ -101,7 +101,7 @@ export default [
     name: 'auth-toolkit',
     title: 'Auth Toolkit',
     tags: ['Professional', 'Security'],
-    icon: <img alt="" src="/images/projects/oauth_logo.svg" />,
+    icon: <img alt="" src="/images/projects/oauth_logo2.png" />,
     height: 250,
     body: (
       <div>
@@ -269,7 +269,7 @@ export default [
     name: 'dabber',
     title: 'dabber',
     tags: ['Open Source'],
-    icon: <img alt="" src="/images/projects/dynamodb.svg" />,
+    icon: <img alt="" src="/images/projects/dynamodb.png" />,
     height: 228,
     body: (
       <div>
@@ -303,7 +303,7 @@ export default [
     name: 'aws-thin-libraries',
     title: 'AWS Thin Libraries',
     tags: ['Performance', 'Open Source'],
-    icon: <img alt="" src="/images/projects/aws.svg" />,
+    icon: <img alt="" src="/images/projects/aws.png" />,
     height: 223,
     body: (
       <div>
