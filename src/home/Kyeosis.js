@@ -27,7 +27,7 @@ export default () => (
     <p>
       In 2016 I legally changed my name from Timothy Moran to Timothy Kye.{' '}
       <br />
-      In 2019 I changed my name handle from Tyrsius to Kyeotic.
+      In 2019 I changed my handle from Tyrsius to Kyeotic.
     </p>
     <p>
       At first <em>Kyeotic</em> may seem like a pun on my last name and{' '}

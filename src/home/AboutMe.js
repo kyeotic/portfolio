@@ -40,7 +40,7 @@ export default () => (
     <p>
       In 2016 I legally changed my name from Timothy Moran to Timothy Kye.{' '}
       <br />
-      In 2019 I changed my name handle from Tyrsius to{' '}
+      In 2019 I changed my handle from Tyrsius to{' '}
       <span onClick={kyeosis}>Kyeotic</span>.
     </p>
     <h2>External Links</h2>
