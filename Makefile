@@ -9,11 +9,11 @@ teardown:
 	terraform init && \
 	terraform destroy
 
-pack: 
-	npm run build
-
 format:
 	cd infrastructure && terraform fmt
+
+pack: 
+	npm run build
 
 sync:
 	aws s3 sync build s3://kyeotic.com
