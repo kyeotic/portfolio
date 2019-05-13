@@ -4,7 +4,7 @@ provider "aws" {
 }
 
 module "cert_kyeotic" {
-  source = "github.com/azavea/terraform-aws-acm-certificate?ref=1.0.0"
+  source = "github.com/azavea/terraform-aws-acm-certificate?ref=1.1.0"
 
   providers = {
     aws.acm_account     = "aws.certs"
@@ -18,7 +18,7 @@ module "cert_kyeotic" {
 }
 
 module "cert_kye" {
-  source = "github.com/azavea/terraform-aws-acm-certificate?ref=1.0.0"
+  source = "github.com/azavea/terraform-aws-acm-certificate?ref=1.1.0"
 
   providers = {
     aws.acm_account     = "aws.certs"
