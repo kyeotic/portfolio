@@ -391,7 +391,7 @@ export default [
         <p>
           It's usually small solutions, but sometimes I write larger guides,
           like this multi-part, soup to nuts guide guide on{' '}
-          <a href="https://blog.tyrsius.com/digital-ocean-for-beginners/">
+          <a href="https://blog.kye.dev/digital-ocean-for-beginners/">
             getting started with Digital Ocean
           </a>
         </p>
