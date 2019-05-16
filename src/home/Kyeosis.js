@@ -3,10 +3,10 @@ import appHistory from '../util/history'
 import hotkeys from 'hotkeys-js'
 import { Link } from '../components/index.js'
 
-const kyeoticHosts = ['kyeotic.com', 'localhost']
+// const kyeoticHosts = ['kyeotic.com', 'localhost']
 
 export function kyeosis() {
-  if (!kyeoticHosts.includes(document.location.hostname)) return
+  // if (!kyeoticHosts.includes(document.location.hostname)) return
   appHistory.push(
     appHistory.location && appHistory.location.pathname !== '/kyeosis'
       ? '/kyeosis'
@@ -62,8 +62,14 @@ export default () => (
     <p />
     <p>
       Using these roots <em>kyeosis</em> could be the process of being a Kye, or
-      becoming a Kye. I like to think of it as growing and changing according to
-      my idealized values; as becoming who I want to be.
+      becoming a Kye. I like to think of it as growing and shaping myself
+      according to my idealized values; as becoming who I want to be.
+    </p>
+
+    <p>
+      So why Kyeotic, not Kyeosis? A hypnotist isn't <em>hypnosis</em>, they are
+      neither the process nor the state. They may be <em>hypnotic</em>, though.
+      Likewise, I am not Kyeosis. I am Kyeotic.
     </p>
 
     <p>
