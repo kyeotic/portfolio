@@ -1,17 +1,12 @@
 import React from 'react'
-import appHistory from '../util/history'
+import { navigate } from 'wanderer'
 import hotkeys from 'hotkeys-js'
 import { Link } from '../components/index.js'
 
 // const kyeoticHosts = ['kyeotic.com', 'localhost']
 
 export function kyeosis() {
-  // if (!kyeoticHosts.includes(document.location.hostname)) return
-  appHistory.push(
-    appHistory.location && appHistory.location.pathname !== '/kyeosis'
-      ? '/kyeosis'
-      : '/about'
-  )
+  navigate(window.location.pathname !== '/kyeosis' ? '/kyeosis' : '/about')
 }
 
 hotkeys('ctrl+shift+k', function(event, handler) {
@@ -77,7 +72,7 @@ export default () => (
       the opposite of <em>chaotic</em>.
     </p>
 
-    <Link to="/about" style={linkStyle}>
+    <Link href="/about" style={linkStyle}>
       Back to About
     </Link>
   </>

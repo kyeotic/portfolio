@@ -3,11 +3,11 @@ import ReactDOM from 'react-dom'
 import './index.css'
 import App from './App.js'
 import * as serviceWorker from './serviceWorker'
-import history from './util/history'
+import { navigate } from 'wanderer'
 
 // Bad redirects can send us here with an ugly url
 if (window.location && window.location.pathname === '/index.html') {
-  history.replace('/')
+  navigate('/', true)
 }
 
 ReactDOM.render(<App />, document.getElementById('root'))
