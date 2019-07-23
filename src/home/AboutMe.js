@@ -8,7 +8,7 @@ const links = [
     title: 'StackOverflow',
     href: 'https://stackoverflow.com/users/788260/kyeotic'
   },
-  { title: 'Link edIn', href: 'https://www.linkedin.com/in/kyeotic/' },
+  { title: 'LinkedIn', href: 'https://www.linkedin.com/in/kyeotic/' },
   { title: 'email me', href: 'mailto:tim@kye.dev' }
 ]
 
