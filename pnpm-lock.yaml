@@ -1,5 +1,6 @@
 dependencies:
   hotkeys-js: 3.6.12
+  raviger: 0.1.0_react@16.8.6
   react: 16.8.6
   react-document-title: 2.0.3_react@16.8.6
   react-dom: 16.8.6_react@16.8.6
@@ -6123,6 +6124,9 @@ packages:
       node: '>=6'
     peerDependencies:
       jest-resolve: '*'
+    peerDependenciesMeta:
+      jest-resolve:
+        optional: true
     resolution:
       integrity: sha512-pgFw2tm54fzgYvc/OHrnysABEObZCUNFnhjoRjaVOCN8NYc032/gVjPaHD4Aq6ApkSieWtfKAFQtmDKAmhupnQ==
   /jest-pnp-resolver/1.2.1_jest-resolve@24.8.0:
@@ -8683,6 +8687,14 @@ packages:
       node: '>= 0.6'
     resolution:
       integrity: sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==
+  /raviger/0.1.0_react@16.8.6:
+    dependencies:
+      react: 16.8.6
+    dev: false
+    peerDependencies:
+      react: ^16.8.0
+    resolution:
+      integrity: sha512-pZC6/2Kz5dG/P9D/b1YpNc+l4HdORcmStp3BaI9I6Fs+0YUeKGN8dUUoO7yqy7I/ksa5poCSKYFJuotdNqvNcw==
   /raw-body/2.4.0:
     dependencies:
       bytes: 3.1.0
@@ -10191,6 +10203,9 @@ packages:
       node: '>=6'
     peerDependencies:
       typescript: '*'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
     resolution:
       integrity: sha512-f5Knjh7XCyRIzoC/z1Su1yLLRrPrFCgtUAh/9fCSP6NKbATwpOL1+idQVXQokK9GRFURn/jYPGPfegIctwunoA==
   /tslib/1.10.0:
@@ -10949,6 +10964,7 @@ packages:
       integrity: sha512-Lhz8TLaYnxq/2ObqHDql8dX8CJi97oHxrjUcYtzKbbykPtVW9WB+poxI+NM2UIzsMgNCZTIf0AQwsjK5yMAqZw==
 specifiers:
   hotkeys-js: ^3.6.8
+  raviger: ^0.1.0
   react: ^16.8.6
   react-document-title: ^2.0.3
   react-dom: ^16.8.6

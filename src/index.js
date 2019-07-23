@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import './index.css'
 import App from './App.js'
 import * as serviceWorker from './serviceWorker'
-import { navigate } from 'wanderer'
+import { navigate } from 'raviger'
 
 // Bad redirects can send us here with an ugly url
 if (window.location && window.location.pathname === '/index.html') {

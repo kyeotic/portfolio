@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import scrollTo from 'react-scroll-to-component'
-import { useQueryParams } from 'wanderer'
+import { useQueryParams } from 'raviger'
 
 import Projects from '../projects/Projects.js'
 import AboutMe from './AboutMe.js'

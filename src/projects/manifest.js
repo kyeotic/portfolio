@@ -421,5 +421,39 @@ export default [
         </p>
       </div>
     )
+  },
+  {
+    name: 'aritable',
+    title: 'Airtable Alternative Client',
+    tags: ['Open Source'],
+    icon: (
+      <img
+        style={{ padding: '.3rem' }}
+        alt="Airtable"
+        src="/images/projects/airtable-mark.svg"
+      />
+    ),
+    height: 250,
+    body: (
+      <div>
+        <p>
+          While Airtable has an{' '}
+          <a href="https://github.com/Airtable/airtable.js">official client</a>{' '}
+          I struggled with its then-lacking documentation and unconventional
+          API. It is also much larger than I would like for essentially being an
+          HTTP wrapper.
+        </p>
+        <p>
+          <a href="https://github.com/kyeotic/airtable">I made my own</a>,
+          largely to experiment with the newly-released async generators
+          functions in Node 10. It even got an{' '}
+          <a href="https://github.com/Airtable/airtable.js/issues/108#issuecomment-497081949">
+            unofficial blessing
+          </a>{' '}
+          from one of the Airtable devs. I'm pretty happy with how it turned
+          out.
+        </p>
+      </div>
+    )
   }
 ]

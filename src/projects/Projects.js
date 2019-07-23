@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react'
 import { presets } from 'react-motion'
 import { SpringGrid, makeResponsive, layout } from 'react-stonecutter'
-import { navigate } from 'wanderer'
+import { navigate } from 'raviger'
 
 import { Link } from '../components/index.js'
 import projectManifest from './manifest.js'
@@ -15,7 +15,7 @@ const Grid = makeResponsive(SpringGrid, {
 const tags = getProjectTags(projectManifest)
 
 export default forwardRef(function Projects(
-  { filter = 'All', project, selectedProject },
+  { filter = 'All', project: selectedProject },
   ref
 ) {
   const projects = projectManifest.filter(p =>

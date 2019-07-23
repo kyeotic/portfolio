@@ -1,5 +1,5 @@
 import React from 'react'
-import { useRoutes } from 'wanderer'
+import { useRoutes } from 'raviger'
 
 import Home from './home/HomePage.js'
 

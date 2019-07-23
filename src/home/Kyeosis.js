@@ -1,5 +1,5 @@
 import React from 'react'
-import { navigate } from 'wanderer'
+import { navigate } from 'raviger'
 import hotkeys from 'hotkeys-js'
 import { Link } from '../components/index.js'
 
