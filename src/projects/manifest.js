@@ -423,7 +423,7 @@ export default [
     )
   },
   {
-    name: 'aritable',
+    name: 'airtable',
     title: 'Airtable Alternative Client',
     tags: ['Open Source'],
     icon: (
@@ -452,6 +452,44 @@ export default [
           </a>{' '}
           from one of the Airtable devs. I'm pretty happy with how it turned
           out.
+        </p>
+      </div>
+    )
+  },
+  {
+    name: 'raviger',
+    title: 'Raviger',
+    tags: ['Open Source', 'Front End'],
+    icon: (
+      <img
+        style={{ padding: '.3rem' }}
+        alt="Raviger"
+        src="/images/projects/raviger.svg"
+      />
+    ),
+    height: 250,
+    body: (
+      <div>
+        <p>
+          <a href="https://github.com/kyeotic/raviger">Raviger</a>, is a React
+          routing library built using React Hooks. At >4kb its tiny, with a
+          simple API to match. It is heavily inspired by{' '}
+          <a href="https://github.com/Paratron/hookrouter">hookrouter</a>, but
+          written from scratch. This portfolio site is using it right now!
+        </p>
+        <p>
+          I started using hookrouter because its API and size were a breath of
+          fresh air after living with React Router for so long. However,
+          hookrouter doesn't treat query strings as first-class citizens during
+          routing, which makes search and filter pages difficult. I{' '}
+          <a href="https://github.com/Paratron/hookrouter/pull/71">
+            created PR
+          </a>{' '}
+          to address this, but it appears the maintainer doesn't think{' '}
+          <a href="https://github.com/Paratron/hookrouter/issues/72#issuecomment-513977880">
+            query strings should work with routes.
+          </a>{' '}
+          So in true OSS fashion I made my own solution.
         </p>
       </div>
     )

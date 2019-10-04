@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "hotkeys-js": "^3.6.8",
-    "raviger": "^0.3.2",
+    "raviger": "^0.5.7",
     "react": "^16.8.6",
     "react-document-title": "^2.0.3",
     "react-dom": "^16.8.6",
