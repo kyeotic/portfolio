@@ -14,7 +14,6 @@ const links = [
 export default function AboutMe() {
   const navigate = useNavigate()
   const kyeosis = () => {
-    console.log('ky')
     navigate(window.location.pathname !== '/kyeosis' ? '/kyeosis' : '/about', {
       preventScrollReset: true,
     })

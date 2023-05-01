@@ -28,15 +28,16 @@ variable "deno_deploy_aaaa" {
 variable "deno_deploy_acme" {
   default = {
     name  = "_acme-challenge"
-    value = "2a49f3a51c08eae6d5e5a82e._acme.deno.dev."
+    value = "98b697f68feb1b814060641f._acme.deno.dev."
   }
 }
 
-locals {
-  alt_domains = [
-    "kyeotic.com",
-    "www.kyeotic.com",
-    "tim.kye.dev",
-    "www.kye.dev"
-  ]
-}
+# locals {
+#   alt_domains = [
+#     "kyeotic.com",
+#     "www.kyeotic.com",
+#     "tim.kye.dev",
+#     "www.kye.dev"
+#   ]
+# }
+
