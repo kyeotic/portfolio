@@ -1,27 +1,10 @@
-data "aws_route53_zone" "domain" {
-  name = "${var.zone_name}."
-}
+module "deno" {
+  source = "./deno-domain"
 
-resource "aws_route53_record" "a" {
-  name    = var.domain_name
-  zone_id = data.aws_route53_zone.domain.zone_id
-  type    = "A"
-  ttl     = 300
-  records = [var.deno_deploy_a]
-}
 
-resource "aws_route53_record" "aaaa" {
-  name    = var.domain_name
-  zone_id = data.aws_route53_zone.domain.zone_id
-  type    = "AAAA"
-  ttl     = 300
-  records = [var.deno_deploy_aaaa]
-}
+  for_each = local.deno
 
-resource "aws_route53_record" "acme" {
-  name    = "${var.deno_deploy_acme.name}.${var.domain_name}"
-  zone_id = data.aws_route53_zone.domain.zone_id
-  type    = "CNAME"
-  ttl     = 300
-  records = [var.deno_deploy_acme.value]
+  zone_name   = each.value.zone
+  domain_name = each.value.domain
+  deno_acme   = each.value.acme
 }
