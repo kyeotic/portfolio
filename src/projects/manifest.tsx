@@ -1,4 +1,11 @@
-import React from 'react'
+export interface Project {
+  name: string
+  title: string
+  tags: string[]
+  height: number
+  icon: JSX.Element
+  body: JSX.Element
+}
 
 export default [
   {
@@ -494,4 +501,4 @@ export default [
       </div>
     )
   }
-]
+] as Project[]

@@ -1,18 +1,4 @@
-import React from 'react'
-import { navigate } from 'raviger'
-import hotkeys from 'hotkeys-js'
-import { Link } from '../components/index.js'
-
-// const kyeoticHosts = ['kyeotic.com', 'localhost']
-
-export function kyeosis() {
-  navigate(window.location.pathname !== '/kyeosis' ? '/kyeosis' : '/about')
-}
-
-hotkeys('ctrl+shift+k', function(event, handler) {
-  event.preventDefault()
-  kyeosis()
-})
+import { Link } from '../components/index.tsx'
 
 const linkStyle = { marginTop: '2rem', display: 'block' }
 
@@ -26,7 +12,7 @@ export default () => (
     </p>
     <p>
       At first <em>Kyeotic</em> may seem like a pun on my last name and{' '}
-      <em>chaotic</em>, but I like to think there is a bit more to it.
+      <em>chaotic</em>, but I like to think of it a little differently.
     </p>
     <ul>
       <li>
@@ -57,8 +43,8 @@ export default () => (
     <p />
     <p>
       Using these roots <em>kyeosis</em> could be the process of being a Kye, or
-      becoming a Kye. I like to think of it as growing and shaping myself
-      according to my idealized values; as becoming who I want to be.
+      becoming a Kye. I like to think of it as developing according to my
+      idealized values; as becoming who I want to be.
     </p>
 
     <p>
@@ -72,7 +58,7 @@ export default () => (
       the opposite of <em>chaotic</em>.
     </p>
 
-    <Link href="/about" style={linkStyle}>
+    <Link to="/about" style={linkStyle}>
       Back to About
     </Link>
   </>

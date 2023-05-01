@@ -1,23 +1,22 @@
-import React, { useEffect, useRef } from 'react'
-import scrollTo from 'react-scroll-to-component'
-import { useQueryParams } from 'raviger'
+import { useEffect, useRef } from 'react'
+import { useParams, useSearchParams } from 'react-router-dom'
 
-import Projects from '../projects/Projects.js'
-import AboutMe from './AboutMe.js'
-import Kyeosis from './Kyeosis.js'
+import Projects from '../projects/Projects.tsx'
+import AboutMe from './AboutMe.tsx'
+import Kyeosis from './Kyeosis.tsx'
 
-import './home.css'
-
-export default function HomePage({ section, project }) {
-  const [{ type }] = useQueryParams()
-  const sections = {}
+export default function HomePage() {
+  let { section, project } = useParams()
+  const [searchParams] = useSearchParams()
+  const type = searchParams.get('type')
+  const sections = {} as any
   sections.home = useRef()
   sections.about = useRef()
   sections.projects = useRef()
   sections.kyeosis = sections.about
-  section = section || 'home'
+  section = project ? 'projects' : section || 'home'
   useEffect(() => {
-    scrollTo(sections[section].current, { align: 'top' })
+    scrollToCenter(sections[section].current)
   }, [section]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
@@ -43,4 +42,15 @@ export default function HomePage({ section, project }) {
       </section>
     </>
   )
+}
+
+export function scrollToCenter(
+  el: HTMLElement,
+  { smooth = true }: { smooth?: boolean } = {}
+) {
+  el.scrollIntoView({
+    behavior: smooth ? 'smooth' : 'auto',
+    block: 'center',
+    inline: 'center',
+  })
 }

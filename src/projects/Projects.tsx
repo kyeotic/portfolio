@@ -1,16 +1,7 @@
-import React, { forwardRef } from 'react'
-import { presets } from 'react-motion'
-import { SpringGrid, makeResponsive, layout } from 'react-stonecutter'
-import { navigate } from 'raviger'
+import { forwardRef } from 'react'
 
-import { Link } from '../components/index.js'
-import projectManifest from './manifest.js'
-
-import './projects.css'
-
-const Grid = makeResponsive(SpringGrid, {
-  maxWidth: 1440
-})
+import { Link } from '../components/index.tsx'
+import projectManifest from './manifest.tsx'
 
 const tags = getProjectTags(projectManifest)
 
@@ -18,7 +9,7 @@ export default forwardRef(function Projects(
   { filter = 'All', project: selectedProject },
   ref
 ) {
-  const projects = projectManifest.filter(p =>
+  const projects = projectManifest.filter((p) =>
     selectedProject
       ? selectedProject === p.name
       : filter === 'All' || p.tags.includes(filter)
@@ -29,10 +20,10 @@ export default forwardRef(function Projects(
     <div className="projects-container" ref={ref}>
       {!selectedProject ? (
         <div className="project-tags">
-          {tags.map(tag => (
+          {tags.map((tag) => (
             <Link
               key={tag}
-              href={`/projects${getFilterQuery(tag)}`}
+              to={`/projects${getFilterQuery(tag)}`}
               className={`btn ${filter === tag ? 'active' : ''}`}
             >
               {tag}
@@ -41,12 +32,12 @@ export default forwardRef(function Projects(
         </div>
       ) : (
         <div className="project-tags">
-          <Link className="btn" href={`/projects${getFilterQuery(filter)}`}>
+          <Link className="btn" to={`/projects${getFilterQuery(filter)}`}>
             Return to Projects
           </Link>
         </div>
       )}
-      <Grid
+      {/* <Grid
         springConfig={presets.gentle}
         layout={layout.simple}
         columnWidth={colWidth}
@@ -55,7 +46,7 @@ export default forwardRef(function Projects(
         gutterHeight={5}
         className="projects"
       >
-        {projects.map(project => (
+        {projects.map((project) => (
           <div
             key={project.name}
             onClick={() =>
@@ -63,7 +54,7 @@ export default forwardRef(function Projects(
             }
             className={`project ${selectedProject ? 'open' : ''}`}
             style={{
-              width: selectedProject ? undefined : `${colWidth}px`
+              width: selectedProject ? undefined : `${colWidth}px`,
             }}
           >
             {project.icon}
@@ -71,7 +62,7 @@ export default forwardRef(function Projects(
             {selectedProject ? project.body : null}
           </div>
         ))}
-      </Grid>
+      </Grid> */}
     </div>
   )
 })
@@ -79,7 +70,7 @@ export default forwardRef(function Projects(
 function getProjectTags(projects) {
   return Array.from(
     projects.reduce((tags, project) => {
-      project.tags.forEach(t => tags.add(t))
+      project.tags.forEach((t) => tags.add(t))
       return tags
     }, new Set(['All']))
   )
