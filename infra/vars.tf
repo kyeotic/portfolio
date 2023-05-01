@@ -10,7 +10,7 @@ variable "region" {
 }
 
 variable "domain_name" {
-  default = "snow.kye.dev"
+  default = "kye.dev"
 }
 
 variable "zone_name" {
@@ -28,10 +28,15 @@ variable "deno_deploy_aaaa" {
 variable "deno_deploy_acme" {
   default = {
     name  = "_acme-challenge"
-    value = "1b813612e3512378e41cdb4e._acme.deno.dev."
+    value = "2a49f3a51c08eae6d5e5a82e._acme.deno.dev."
   }
 }
 
 locals {
-  api_lambda_name = "snow-tracker"
+  alt_domains = [
+    "kyeotic.com",
+    "www.kyeotic.com",
+    "tim.kye.dev",
+    "www.kye.dev"
+  ]
 }

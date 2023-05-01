@@ -46,23 +46,7 @@ export default forwardRef(function Projects(
           </Link>
         </div>
       )}
-      {/* <span>
-        {JSON.stringify(
-          {
-            projects,
-            colWidth,
-          },
-          null,
-          2
-        )}
-      </span> */}
       <div className="project-grid">
-        {/* {items.map((item) => (
-          <motion.div layoutId={item.id} onClick={() => setSelectedId(item.id)}>
-            <motion.h5>{item.subtitle}</motion.h5>
-            <motion.h2>{item.title}</motion.h2>
-          </motion.div>
-        ))} */}
         <AnimatePresence>
           {projects.map((project) => (
             <motion.div
@@ -88,9 +72,6 @@ export default forwardRef(function Projects(
             className="project-selected"
             layoutId={selectedProject.name}
             onClick={() => navigate(`/projects${getFilterQuery(filter)}`)}
-            // style={{
-            //   width: selectedProject ? undefined : `${colWidth}px`,
-            // }}
           >
             {selectedProject.icon}
             <h3 className="project-title">{selectedProject.title}</h3>
@@ -98,24 +79,6 @@ export default forwardRef(function Projects(
           </motion.div>
         )}
       </AnimatePresence>
-      {/* <div className="project-grid">
-        {projects.map((project) => (
-          <div
-            key={project.name}
-            onClick={() =>
-              navigate(`/projects/${project.name}${getFilterQuery(filter)}`)
-            }
-            className={`project ${selectedProject ? 'open' : ''}`}
-            style={{
-              width: selectedProject ? undefined : `${colWidth}px`,
-            }}
-          >
-            {project.icon}
-            <h3 className="project-title">{project.title}</h3>
-            {selectedProject ? project.body : null}
-          </div>
-        ))}
-      </div> */}
     </div>
   )
 })
