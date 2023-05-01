@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from '@remix-run/react'
 
 const links = [
   { title: 'Github', href: 'https://github.com/kyeotic' },
@@ -15,7 +15,9 @@ export default function AboutMe() {
   const navigate = useNavigate()
   const kyeosis = () => {
     console.log('ky')
-    navigate(window.location.pathname !== '/kyeosis' ? '/kyeosis' : '/about')
+    navigate(window.location.pathname !== '/kyeosis' ? '/kyeosis' : '/about', {
+      preventScrollReset: true,
+    })
   }
 
   return (

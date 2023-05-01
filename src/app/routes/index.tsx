@@ -1,14 +1,14 @@
 import { useEffect, useRef } from 'react'
-import { useParams, useSearchParams } from 'react-router-dom'
+import { useParams, useSearchParams } from '@remix-run/react'
 
 import Projects from '../projects/Projects.tsx'
-import AboutMe from './AboutMe.tsx'
-import Kyeosis from './Kyeosis.tsx'
+import AboutMe from '../projects/AboutMe.tsx'
+import Kyeosis from '../projects/Kyeosis.tsx'
 
 export default function HomePage() {
   let { section, project } = useParams()
   const [searchParams] = useSearchParams()
-  const type = searchParams.get('type')
+  const type = searchParams.get('type') ?? undefined
   const sections = {} as any
   sections.home = useRef()
   sections.about = useRef()
@@ -16,6 +16,7 @@ export default function HomePage() {
   sections.kyeosis = sections.about
   section = project ? 'projects' : section || 'home'
   useEffect(() => {
+    if (!section) return
     scrollToCenter(sections[section].current)
   }, [section]) // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -48,6 +49,7 @@ export function scrollToCenter(
   el: HTMLElement,
   { smooth = true }: { smooth?: boolean } = {}
 ) {
+  if (!el) return
   el.scrollIntoView({
     behavior: smooth ? 'smooth' : 'auto',
     block: 'center',

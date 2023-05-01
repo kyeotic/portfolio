@@ -1,23 +1,32 @@
 {
   "tasks": {
-    "dev": "deno run -A --no-check --watch ./server.tsx",
-    "test": "deno test --allow-all",
-    "build": "deno run -A ./build.ts",
-    "start": "ULTRA_MODE=production deno run -A --no-remote ./server.js"
+    "start": "deno run --unstable --allow-net --allow-read --allow-env --allow-run --allow-write src/main.ts",
+    "dev": "deno run --unstable --import-map import_map_dev.json --allow-net --allow-read --allow-env --allow-run --allow-write src/dev.ts",
+    "test": "deno test",
+    "check": "deno check ./src/main.ts",
+    "lint": "deno lint",
+    "format": "deno fmt",
+    "prepare": "deno run --allow-read --allow-write --allow-env src/cli.ts prepare",
+    "env-example": "sed 's/=.*/=/' .env > .env.example"
   },
+  "importMap": "import_map.json",
   "compilerOptions": {
-    "jsx": "react-jsxdev",
-    "jsxImportSource": "react",
-    "lib": ["dom", "dom.iterable", "dom.asynciterable", "deno.ns"]
+    "lib": ["deno.ns", "dom"],
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
   },
   "fmt": {
-    "files": { "exclude": [".ultra"] }
-  },
-  "lint": {
-    "files": { "exclude": [".ultra"] },
-    "rules": {
-      "exclude": ["no-explicit-any"]
+    "files": {
+      "include": ["app/", "worker"]
+    },
+    "options": {
+      "semiColons": false,
+      "singleQuote": true
     }
   },
-  "importMap": "./importMap.json"
+  "lint": {
+    "files": {
+      "include": ["app/", "worker"]
+    }
+  }
 }

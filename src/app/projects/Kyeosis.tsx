@@ -1,4 +1,4 @@
-import { Link } from '../components/index.tsx'
+import { Link } from '@remix-run/react'
 
 const linkStyle = { marginTop: '2rem', display: 'block' }
 

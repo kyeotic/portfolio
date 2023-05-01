@@ -7,7 +7,7 @@ export interface Project {
   body: JSX.Element
 }
 
-export default [
+export const projects = [
   {
     name: 'cerberus-node-client',
     title: 'Cerberus Node Client',
@@ -38,7 +38,7 @@ export default [
           <a href="https://github.com/Nike-Inc/cerberus-node-client">Github</a>.
         </p>
       </div>
-    )
+    ),
   },
   {
     name: 'rocket',
@@ -66,13 +66,8 @@ export default [
           Blueprint, and they use <a href="http://yeoman.io/">Yeoman</a> for
           composing and generating the output.
         </p>
-        <p>
-          Rocket was a team effort, but I was largely responsible for the design
-          and implementation of the plugin system and dynamic JSON schema UI
-          that powered it.
-        </p>
       </div>
-    )
+    ),
   },
   {
     name: 'devportal',
@@ -102,7 +97,7 @@ export default [
           you through client creation, setup, and implementation.
         </p>
       </div>
-    )
+    ),
   },
   {
     name: 'auth-toolkit',
@@ -137,7 +132,7 @@ export default [
           API requests.
         </p>
       </div>
-    )
+    ),
   },
   {
     name: 'grey-market',
@@ -167,7 +162,7 @@ export default [
           the response time dropped from 2 and half minutes to ~10 seconds.
         </p>
       </div>
-    )
+    ),
   },
   {
     name: 'lambda-router',
@@ -192,7 +187,7 @@ export default [
         </p>
         <p>I developed this while working at Nike.</p>
       </div>
-    )
+    ),
   },
   {
     name: 'cryonic',
@@ -229,7 +224,7 @@ export default [
           not allowed to release Cryonic as Open Source.
         </p>
       </div>
-    )
+    ),
   },
   {
     name: 'coral-commons',
@@ -270,7 +265,7 @@ export default [
           GitHub.
         </p>
       </div>
-    )
+    ),
   },
   {
     name: 'dabber',
@@ -304,7 +299,7 @@ export default [
           longer maintained.
         </p>
       </div>
-    )
+    ),
   },
   {
     name: 'aws-thin-libraries',
@@ -340,7 +335,7 @@ export default [
           those S3 triggered lambdas if they fire a million times a month.
         </p>
       </div>
-    )
+    ),
   },
   {
     name: 'mastering-knockoutjs',
@@ -382,7 +377,7 @@ export default [
           .
         </p>
       </div>
-    )
+    ),
   },
   {
     name: 't-plus-plus',
@@ -403,7 +398,7 @@ export default [
           </a>
         </p>
       </div>
-    )
+    ),
   },
   {
     name: 'portolfio',
@@ -427,7 +422,7 @@ export default [
           </a>
         </p>
       </div>
-    )
+    ),
   },
   {
     name: 'airtable',
@@ -461,7 +456,7 @@ export default [
           out.
         </p>
       </div>
-    )
+    ),
   },
   {
     name: 'raviger',
@@ -479,7 +474,7 @@ export default [
       <div>
         <p>
           <a href="https://github.com/kyeotic/raviger">Raviger</a>, is a React
-          routing library built using React Hooks. At >4kb its tiny, with a
+          routing library built using React Hooks. At {'<'}4kb its tiny, with a
           simple API to match. It is heavily inspired by{' '}
           <a href="https://github.com/Paratron/hookrouter">hookrouter</a>, but
           written from scratch. This portfolio site is using it right now!
@@ -499,6 +494,6 @@ export default [
           So in true OSS fashion I made my own solution.
         </p>
       </div>
-    )
-  }
+    ),
+  },
 ] as Project[]
