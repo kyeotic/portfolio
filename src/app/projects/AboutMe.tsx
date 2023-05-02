@@ -38,7 +38,7 @@ export default function AboutMe() {
         <li>operate and scale it to meet user demand</li>
       </ul>
       <p>
-        While TypeScript has been my language of choice for the last few years
+        While TypeScript has been my language of choice for the last few years,
         lately I have been working with Kotlin and loving it. I am also
         comfortable with C#, and I have some experience patching Python and Go.
         I am very experienced with Amazon Web Services, with both the serverless
