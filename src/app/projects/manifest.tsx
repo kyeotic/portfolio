@@ -409,12 +409,9 @@ export const projects = [
       <div>
         <p>
           This portfolio iterates with me as I learn new tools and techniques.
-          Now in its fifth iteration it is based on{' '}
-          <a href="https://github.com/facebook/create-react-app">
-            create-react-app
-          </a>
-          , deployed with <a href="https://www.terraform.io/">Terraform</a> and
-          hosted with AWS S3/Cloudfront.
+          Its current iteration is Remix and Deno running on Deno Deploy. I'm
+          quite happy with the transition from NodeJS to Deno, despite some of
+          deno's growing pains integrating with existing React libraries.
         </p>
         <p>
           <a href="https://github.com/kyeotic/portfolio">
@@ -477,7 +474,7 @@ export const projects = [
           routing library built using React Hooks. At {'<'}4kb its tiny, with a
           simple API to match. It is heavily inspired by{' '}
           <a href="https://github.com/Paratron/hookrouter">hookrouter</a>, but
-          written from scratch. This portfolio site is using it right now!
+          written from scratch.
         </p>
         <p>
           I started using hookrouter because its API and size were a breath of
