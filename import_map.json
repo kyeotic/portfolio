@@ -13,6 +13,11 @@
     "react-test-renderer": "https://esm.sh/react-test-renderer@18.2.0",
     "react-rewards": "https://esm.sh/react-rewards@2.0.4",
 
+    "tw": "./src/twind/twind.ts",
+    "@twind/core": "https://esm.sh/@twind/core@1.0.1",
+    "@twind/preset-autoprefix": "https://esm.sh/@twind/preset-autoprefix@1.0.1",
+    "@twind/preset-tailwind": "https://esm.sh/*@twind/preset-tailwind@1.0.1",
+
     "framer-motion": "https://esm.sh/framer-motion@10.12.5",
     "url-join": "https://deno.land/x/url_join@1.0.0/mod.ts"
   }

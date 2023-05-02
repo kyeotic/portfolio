@@ -92,19 +92,6 @@ em {
   color: rgb(255, 41, 187);
   font-weight: 300;
 }
-/* .subtitle { font-style: italic; } */
-.subtitle-react {
-  color: #24b2c1;
-  font-weight: 300;
-}
-.subtitle-node {
-  color: #a9d642;
-  font-weight: 300;
-}
-.subtitle-aws {
-  color: #f49e58;
-  font-weight: 300;
-}
 
 #about {
   width: 100%;

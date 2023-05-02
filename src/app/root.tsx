@@ -7,6 +7,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from '@remix-run/react'
+import TwindStyle from '../twind/TwindStyle.tsx'
 
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
@@ -33,6 +34,7 @@ export default function Root() {
         <Meta />
         <meta name="theme-color" content="#000000" />
         <meta name="description" content="Tim Kye - Portfolio" />
+        <TwindStyle />
         <Links />
       </head>
       <body>

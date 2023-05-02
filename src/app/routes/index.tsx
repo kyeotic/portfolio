@@ -4,6 +4,7 @@ import { useParams, useSearchParams } from '@remix-run/react'
 import Projects from '../projects/Projects.tsx'
 import AboutMe from '../projects/AboutMe.tsx'
 import Kyeosis from '../projects/Kyeosis.tsx'
+import Hero from '../projects/Hero.tsx'
 
 export default function HomePage() {
   let { section, project } = useParams()
@@ -23,16 +24,7 @@ export default function HomePage() {
   return (
     <>
       <section id="intro" ref={sections.intro}>
-        <div id="jumbotron">
-          <h1>
-            My name is <span className="name">Tim Kye</span>
-          </h1>
-          <span className="subtitle">
-            I like to work with <span className="subtitle-react">React</span>,{' '}
-            <span className="subtitle-node">Node</span>, and{' '}
-            <span className="subtitle-aws">AWS</span>
-          </span>
-        </div>
+        <Hero />
       </section>
       <section id="about" ref={sections.about}>
         {section === 'kyeosis' ? <Kyeosis /> : <AboutMe />}
