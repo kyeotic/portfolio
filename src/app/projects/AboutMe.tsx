@@ -42,8 +42,12 @@ export default function AboutMe() {
         lately I have been working with Kotlin and loving it. I am also
         comfortable with C#, and I have some experience patching Python and Go.
         I am very experienced with Amazon Web Services, with both the serverless
-        Lambda architecture and Docker on EC2/ECS, as well as supporting
+        Lambda architecture and Docker on ECS/Fargate, as well as supporting
         services like Dynamo, RDS Aurora, S3, API Gateway, SQS, etc.
+      </p>
+      <p>
+        I've also worked with K8s, Cloudflare Pages/Workers, Digital Ocean Apps,
+        and recently Deno Deploy.
       </p>
       <p>
         In 2016 I legally changed my name from Timothy Moran to Timothy Kye.{' '}
