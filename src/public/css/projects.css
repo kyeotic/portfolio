@@ -1,17 +1,17 @@
-#projects h2 {
+/* #projects h2 {
   font-size: 2em;
   line-height: 2em;
   font-weight: bold;
   text-align: center;
   padding: 0.2em 2em;
   background-color: rgba(0, 0, 0, 0.253);
-}
+} */
 
-.projects-container {
+/* .projects-container {
   width: 100%;
-  padding: 1em;
+  /* padding: 1em; 
   position: relative;
-}
+} */
 
 .projects-container .btn {
   display: block;
@@ -96,7 +96,7 @@
 
 .project-selected {
   position: absolute;
-  top: 7rem;
+  top: 12rem;
   background-color: rgba(0, 0, 0, 0.253);
   padding: 1rem;
   right: 1rem;

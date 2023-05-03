@@ -23,7 +23,6 @@ export const links: LinksFunction = () => {
     { rel: 'stylesheet', href: '/css/reset.css' },
     { rel: 'stylesheet', href: '/css/app.css' },
     { rel: 'stylesheet', href: '/css/projects.css' },
-    { rel: 'stylesheet', href: '/css/vestigial.css' },
   ]
 }
 

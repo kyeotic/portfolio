@@ -13,3 +13,54 @@ body,
 * {
   box-sizing: border-box;
 }
+
+::selection {
+  background-color: #403f4c;
+  /* color: #fff; */
+}
+
+a:link,
+a:visited,
+a:active {
+  color: #fff;
+}
+a:hover {
+  color: #ddd;
+  /* background-color: rgba(255, 255, 255, 0.137); */
+}
+a:active {
+  color: #fff;
+}
+
+em {
+  font-style: italic;
+}
+
+/* background colors and animation */
+
+body::before {
+  position: fixed;
+  display: block;
+  width: 100%;
+  height: 100vh;
+  color: #fff;
+  content: '';
+  z-index: -1;
+  /* background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB); */
+  background: linear-gradient(-45deg, rgb(110, 7, 194), #23a6d5, #23d5ab);
+  /* background: linear-gradient(-45deg,  rgb(70, 17, 114), rgb(17, 114, 90), rgb(17, 35, 114)); */
+  background-size: 400% 400%;
+  animation: Gradient 15s ease infinite;
+}
+
+@keyframes Gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

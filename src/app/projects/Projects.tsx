@@ -1,18 +1,20 @@
 import { ForwardedRef, forwardRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link, useNavigate } from '@remix-run/react'
+import { tw } from 'tw'
+
 import { projects as projectManifest, Project } from './manifest.tsx'
 import { useHydrated } from '../components/useHydrated.ts'
 
 const tags = getProjectTags(projectManifest)
 
-export default forwardRef(function Projects(
-  {
-    filter = 'All',
-    project: selectedProjectName,
-  }: { filter?: string; project?: string },
-  ref: ForwardedRef<HTMLDivElement>
-) {
+export default function Projects({
+  filter = 'All',
+  project: selectedProjectName,
+}: {
+  filter?: string
+  project?: string
+}) {
   const navigate = useNavigate()
   const projects = projectManifest.filter(
     (p) => filter === 'All' || p.tags.includes(filter)
@@ -26,14 +28,25 @@ export default forwardRef(function Projects(
 
   let colWidth = 150
   return (
-    <div className="projects-container" ref={ref}>
+    <div
+      className={tw(`projects-container w-full relative min-h-screen mt-12`)}
+    >
+      <h2
+        className={tw(
+          `text-4xl text-center font-bold py-4 px-8 w-full text-white bg-black/40`
+        )}
+      >
+        Projects
+      </h2>
       {!selectedProjectName ? (
         <div className="project-tags">
           {tags.map((tag) => (
             <Link
               key={tag}
               to={`/projects${getFilterQuery(tag)}`}
-              className={`btn ${filter === tag ? 'active' : ''}`}
+              className={`btn ${filter === tag ? 'active' : ''} ${tw(
+                `p-0.5 text-center font-white font-bold`
+              )}`}
             >
               {tag}
             </Link>
@@ -46,7 +59,7 @@ export default forwardRef(function Projects(
           </Link>
         </div>
       )}
-      <div className="project-grid">
+      <div className={tw(`project-grid p-4`)}>
         <AnimatePresence>
           {projects.map((project) => (
             <motion.div
@@ -81,7 +94,7 @@ export default forwardRef(function Projects(
       </AnimatePresence>
     </div>
   )
-})
+}
 
 function getProjectTags(projects: Project[]) {
   return Array.from(

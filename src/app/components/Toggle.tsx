@@ -1,3 +1,6 @@
+import { tw } from 'tw'
+import classnames from 'npm:classnames'
+
 export default function Toggle({
   options,
   value,
@@ -9,13 +12,21 @@ export default function Toggle({
   value?: string
   onChange: (val: string) => void
 }): JSX.Element {
+  const active = tw(`bg-white/65 font-black`)
   return (
-    <div className={`toggle-container${className ? ` ${className}` : ''}`}>
+    <div
+      className={`${className ? ` ${className}` : ''} ${tw(
+        `flex items-center justify-center flex-wrap`
+      )}`}
+    >
       {options.map((option) => (
         <button
           key={option.value}
           onClick={() => onChange(option.value)}
-          className={`btn toggle-btn${option.value === value ? ' active' : ''}`}
+          className={classnames(
+            tw(`flex-initial my-2 mx-4 hover:bg-white/25`),
+            { [active]: option.value === value }
+          )}
         >
           {option.label}
         </button>

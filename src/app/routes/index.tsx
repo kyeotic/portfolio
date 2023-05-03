@@ -5,40 +5,57 @@ import Projects from '../projects/Projects.tsx'
 import AboutMe from '../projects/AboutMe.tsx'
 import Kyeosis from '../projects/Kyeosis.tsx'
 import Hero from '../projects/Hero.tsx'
+import { tw } from 'tw'
 
 export default function HomePage() {
   let { section, project } = useParams()
   const [searchParams] = useSearchParams()
+
   const type = searchParams.get('type') ?? undefined
-  const sections = {} as any
-  sections.home = useRef()
-  sections.about = useRef()
-  sections.projects = useRef()
-  sections.kyeosis = sections.about
   section = project ? 'projects' : section || 'home'
+
   useEffect(() => {
     if (!section) return
-    scrollToCenter(sections[section].current)
-  }, [section]) // eslint-disable-line react-hooks/exhaustive-deps
+    scrollToCenter(document.getElementById(section))
+  }, [section])
 
   return (
     <>
-      <section id="intro" ref={sections.intro}>
+      <Section id="intro">
         <Hero />
-      </section>
-      <section id="about" ref={sections.about}>
-        {section === 'kyeosis' ? <Kyeosis /> : <AboutMe />}
-      </section>
-      <section id="projects">
-        <h2>Projects</h2>
-        <Projects project={project} filter={type} ref={sections.projects} />
-      </section>
+      </Section>
+      {section !== 'kyeosis' && (
+        <Section id="about">
+          <AboutMe />
+        </Section>
+      )}
+      {section === 'kyeosis' && (
+        <Section id="kyeosis">
+          <Kyeosis />
+        </Section>
+      )}
+      <Section id="projects">
+        <Projects project={project} filter={type} />
+      </Section>
     </>
   )
 }
 
-export function scrollToCenter(
-  el: HTMLElement,
+function Section({ id, children }: { id: string; children?: JSX.Element }) {
+  return (
+    <section
+      id={id}
+      className={tw(
+        `min-h-screen w-full text-white max-w-full text-white flex items-center justify-start`
+      )}
+    >
+      {children}
+    </section>
+  )
+}
+
+function scrollToCenter(
+  el?: HTMLElement | null,
   { smooth = true }: { smooth?: boolean } = {}
 ) {
   if (!el) return
