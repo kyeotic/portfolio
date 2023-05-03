@@ -1,17 +1,20 @@
 import { serve } from 'https://deno.land/std@0.176.0/http/server.ts'
 import { type Context, createServer } from 'ultra/server.ts'
-import Root from './root.tsx'
+import Root from './src/root.tsx'
 
 // Twind
 import { createHeadInsertionTransformStream } from 'ultra/stream.ts'
-import { stringify, tw } from './twind/twind.ts'
+import { stringify, tw } from './src/twind/twind.ts'
 
 // React Router
 import { StaticRouter } from 'react-router-dom/server'
 
 const server = await createServer({
-  importMapPath: import.meta.resolve('../importMap.json'),
+  importMapPath: import.meta.resolve('./importMap.json'),
   browserEntrypoint: import.meta.resolve('./client.tsx'),
+  enableEsModuleShims: true,
+  esModuleShimsPath:
+    'https://ga.jspm.io/npm:es-module-shims@1.7.0/dist/es-module-shims.js',
 })
 
 function ServerApp({ context }: { context: Context }) {
