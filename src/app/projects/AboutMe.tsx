@@ -31,7 +31,7 @@ export default function AboutMe() {
         means a lot of things to different people, for me it means that I know
         how to:
       </BodyText>
-      <ul className="list">
+      <ul className={tw(`mt-4 max-w-screen-sm list-disc list-inside`)}>
         <li>
           design and implement every layer of a modern business application,
           from the database to the user interface
