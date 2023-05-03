@@ -7,17 +7,22 @@ import {
   twind,
   tx as tx$,
   virtual,
-} from '@twind/core'
-import config from './twind.config.ts'
+} from "@twind/core";
+import config from "./twind.config.ts";
 
-export const sheet =
-  typeof Deno === 'undefined' ? cssom('style#__twind') : virtual()
+export const sheet = typeof Deno === "undefined"
+  ? cssom("style#__twind")
+  : virtual();
+
+export const stringify = (target: unknown) =>
+  `<style id="__twind">${stringify$(target)}</style>`;
 
 //@ts-ignore twind type issue
-export const tw = twind(config, sheet)
+export const tw = twind(
+  config,
+  sheet,
+);
 
-export const stringify = () => stringify$(tw.target)
-
-export const tx = tx$.bind(tw)
-export const injectGlobal = injectGlobal$.bind(tw)
-export const keyframes = keyframes$.bind(tw)
+export const tx = tx$.bind(tw);
+export const injectGlobal = injectGlobal$.bind(tw);
+export const keyframes = keyframes$.bind(tw);
