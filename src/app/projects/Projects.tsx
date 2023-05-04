@@ -59,7 +59,7 @@ export default function Projects({
           </Link>
         </div>
       )}
-      <div className={tw(`project-grid p-4`)}>
+      <div className={tw(`project-grid p-4 max-w-5xl mx-auto`)}>
         <AnimatePresence>
           {projects.map((project) => (
             <motion.div
