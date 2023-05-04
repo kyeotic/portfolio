@@ -1,5 +1,6 @@
 import { useNavigate } from '@remix-run/react'
 import Panel from '../components/Panel.tsx'
+import Link from '../components/Link.tsx'
 import { tw } from 'tw'
 
 import { H2, BodyText } from '../components/Typography.tsx'
@@ -63,9 +64,7 @@ export default function AboutMe() {
       <ul className={tw(`mt-4 max-w-screen-sm list-disc list-inside`)}>
         {links.map((link) => (
           <li key={link.href} className={tw(`inline-block mr-4`)}>
-            <a href={link.href} className={tw(`underline underline-offset-2`)}>
-              {link.title}
-            </a>
+            <Link href={link.href}>{link.title}</Link>
           </li>
         ))}
       </ul>

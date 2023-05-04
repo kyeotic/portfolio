@@ -1,3 +1,5 @@
+import Link from '../components/Link.tsx'
+
 export interface Project {
   name: string
   title: string
@@ -17,8 +19,8 @@ export const projects = [
     body: (
       <div>
         <p>
-          <a href="http://engineering.nike.com/cerberus/">Cerberus</a> is a
-          secrets management system developed at Nike that used AWS IAM Roles
+          <Link href="http://engineering.nike.com/cerberus/">Cerberus</Link> is
+          a secrets management system developed at Nike that used AWS IAM Roles
           for authentication. I developed the node client while working there,
           and it was among the first projects to go through Nike's Open Source
           process.
@@ -33,9 +35,14 @@ export const projects = [
         </p>
         <p>
           This client is on{' '}
-          <a href="https://www.npmjs.com/package/cerberus-node-client">npm</a>,
-          the source is on{' '}
-          <a href="https://github.com/Nike-Inc/cerberus-node-client">Github</a>.
+          <Link href="https://www.npmjs.com/package/cerberus-node-client">
+            npm
+          </Link>
+          , the source is on{' '}
+          <Link href="https://github.com/Nike-Inc/cerberus-node-client">
+            Github
+          </Link>
+          .
         </p>
       </div>
     ),
@@ -61,10 +68,10 @@ export const projects = [
         <p>
           Rocket was my team's first Typescript project, which we chose to help
           with the tangled interactions between plugins. Its plugins are
-          described with <a href="http://json-schema.org/">JSON Schema</a>,
-          which dynamically creates the UI forms and validation for each
-          Blueprint, and they use <a href="http://yeoman.io/">Yeoman</a> for
-          composing and generating the output.
+          described with <Link href="http://json-schema.org/">JSON Schema</Link>
+          , which dynamically creates the UI forms and validation for each
+          Blueprint, and they use <Link href="http://yeoman.io/">Yeoman</Link>{' '}
+          for composing and generating the output.
         </p>
       </div>
     ),
@@ -86,10 +93,12 @@ export const projects = [
           APIs can be created, managed, and versioned. Documentation can be
           supplied using a combination of markdown READMEs and interactive
           endpoint documenation using{' '}
-          <a href="https://www.openapis.org/">OpenAPI 3 (formerly Swagger)</a>{' '}
-          or <a href="https://apiblueprint.org/">API Blueprint</a>. Details can
-          also be provided for API, such as host, SLAs, and maintainer contact
-          emails.
+          <Link href="https://www.openapis.org/">
+            OpenAPI 3 (formerly Swagger)
+          </Link>{' '}
+          or <Link href="https://apiblueprint.org/">API Blueprint</Link>.
+          Details can also be provided for API, such as host, SLAs, and
+          maintainer contact emails.
         </p>
         <p>
           The portal also offered self-service oAuth application management,
@@ -116,9 +125,9 @@ export const projects = [
         <p>
           The first part was a JWT validator, provided as a Node library and
           packaged as an AWS{' '}
-          <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html">
+          <Link href="https://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html">
             API Gateway Custom Authorizer
-          </a>{' '}
+          </Link>{' '}
           lambda. It handled the x509 signatures from PingFederate and the more
           common RSA singatures from Okta, and shipped with configuration for
           the various authorization servers in each. A seperate, matching Java
@@ -126,7 +135,7 @@ export const projects = [
         </p>
         <p>
           The other part was a build-step tool that compiled{' '}
-          <a href="https://www.openapis.org/">OpenAPI</a> specs (formerly
+          <Link href="https://www.openapis.org/">OpenAPI</Link> specs (formerly
           Swagger) to create endpoint-aware authorization policies that could be
           included with the JWT validator to apply oAuth claim requirements to
           API requests.
@@ -173,11 +182,13 @@ export const projects = [
     body: (
       <div>
         <p>
-          <a href="https://github.com/Nike-Inc/lambda-router">Lambda Router</a>{' '}
+          <Link href="https://github.com/Nike-Inc/lambda-router">
+            Lambda Router
+          </Link>{' '}
           is a{' '}
-          <a href="https://bundlephobia.com/result?p=lambda-router@2.4.1">
+          <Link href="https://bundlephobia.com/result?p=lambda-router@2.4.1">
             small, 5kb
-          </a>{' '}
+          </Link>{' '}
           API router for AWS Lambda. Lambda's recieve and return
           plain-old-JSON-objects with a known structure. Lambda Router
           simplifies the access and decoding of the incoming event, including
@@ -201,9 +212,9 @@ export const projects = [
           Cryonic is a tool for measuring NodeJS AWS Lambda cold-start
           performance. It hooks into the module loader, times everything, and
           generates a flame graph like{' '}
-          <a href="https://github.com/aws/aws-sdk-js/issues/1469#issuecomment-322820847">
+          <Link href="https://github.com/aws/aws-sdk-js/issues/1469#issuecomment-322820847">
             this one
-          </a>{' '}
+          </Link>{' '}
           (this was actually generated with Cryonic).{' '}
         </p>
         <p>
@@ -239,11 +250,11 @@ export const projects = [
           community. After our first community meeting I discovered they were
           keeping contact and other information in spreadsheets, so I offered to
           help them out. It was also a good opportunity to play with{' '}
-          <a href="https://github.com/rackt/redux">Redux</a>,{' '}
-          <a href="https://www.firebase.com/">Firebase</a>, and the{' '}
-          <a href="https://github.com/firebase/blaze_compiler">
+          <Link href="https://github.com/rackt/redux">Redux</Link>,{' '}
+          <Link href="https://www.firebase.com/">Firebase</Link>, and the{' '}
+          <Link href="https://github.com/firebase/blaze_compiler">
             blaze compiler
-          </a>
+          </Link>
           .
         </p>
         <p>
@@ -254,15 +265,17 @@ export const projects = [
         </p>
         <p>
           There is also a bulletin board that anyone can post to, which supports
-          Markdown (<a href="http://commonmark.org/">CommonMark</a> flavored).
-          The site was designed with Bootsrap so that it can be easily used on
-          phones, which is how I expected the majority of the community the use
-          the site.
+          Markdown (<Link href="http://commonmark.org/">CommonMark</Link>{' '}
+          flavored). The site was designed with Bootsrap so that it can be
+          easily used on phones, which is how I expected the majority of the
+          community the use the site.
         </p>
         <p>
           You can check out the{' '}
-          <a href="https://github.com/kyeotic/coral-commons">source code</a> on
-          GitHub.
+          <Link href="https://github.com/kyeotic/coral-commons">
+            source code
+          </Link>{' '}
+          on GitHub.
         </p>
       </div>
     ),
@@ -281,9 +294,9 @@ export const projects = [
           involved Elastic Map Reduce, which was very slow and expensive (even
           tables with less than 1k rows could take 10-20 minutes and use 16
           instance hours of processing). So I created{' '}
-          <a href="https://github.com/Nike-Inc/dabber">
+          <Link href="https://github.com/Nike-Inc/dabber">
             Dynamo Automated Backup, and (Benevolently Ergonomic) Restore
-          </a>
+          </Link>
           , affectionately named "dabber" for short.
         </p>
         <p>
@@ -316,15 +329,18 @@ export const projects = [
           package before handling a request, which can result in very slow
           responses if your containers cannot start very, <em>very</em> quickly.
           This problem is exacerbated by the{' '}
-          <a href="https://github.com/aws/aws-sdk-js/issues/1469#issuecomment-322820847">
+          <Link href="https://github.com/aws/aws-sdk-js/issues/1469#issuecomment-322820847">
             slow startup speed of the Official AWS SDK.
-          </a>
+          </Link>
         </p>
         <p>
           Enter the AWS Thin Libraries: paired down versions of the{' '}
-          <a href="https://github.com/Nike-Inc/aws-thin-dynamo-node">Dynamo</a>,{' '}
-          <a href="https://github.com/Nike-Inc/aws-thin-s3-node">S3</a>, and{' '}
-          <a href="https://github.com/Nike-Inc/aws-thin-ses-node">SES</a>{' '}
+          <Link href="https://github.com/Nike-Inc/aws-thin-dynamo-node">
+            Dynamo
+          </Link>
+          , <Link href="https://github.com/Nike-Inc/aws-thin-s3-node">S3</Link>,
+          and{' '}
+          <Link href="https://github.com/Nike-Inc/aws-thin-ses-node">SES</Link>{' '}
           clients optimzed for start-up speed. The performance gains on these
           are substantial, ranging from 300ms-1500ms depending on the size of
           the lambda and how you loaded the client. While less important for
@@ -346,8 +362,8 @@ export const projects = [
     body: (
       <div>
         <p>
-          <a href="http://knockoutjs.com">KnockoutJS</a> is one of the early
-          JavaScript front-end data binding libraries. It was developed by
+          <Link href="http://knockoutjs.com">KnockoutJS</Link> is one of the
+          early JavaScript front-end data binding libraries. It was developed by
           engineers at Microsoft and, following in the footsteps of Windows
           Presentation Foundation (WPF), used the Model-View-ViewModel (MVVM)
           pattern. Since I transitioned from WPF desktop development into web
@@ -357,9 +373,9 @@ export const projects = [
         </p>
         <p>
           I wrote{' '}
-          <a href="https://www.amazon.com/Mastering-KnockoutJS-Timothy-Moran/dp/1783981008">
+          <Link href="https://www.amazon.com/Mastering-KnockoutJS-Timothy-Moran/dp/1783981008">
             Mastering KnockoutJS
-          </a>{' '}
+          </Link>{' '}
           in 2014 at the height of Knockout's popularity. It is targeted at
           experienced developers, or developers who know Knockout but want to
           understand it better. It is well-reviewed on Amazon, and I am quite
@@ -373,7 +389,9 @@ export const projects = [
         <p>
           The books has over 90 runnable code examples, which you can see on the
           accompanying{' '}
-          <a href="https://github.com/kyeotic/MasteringKnockout">Github repo</a>
+          <Link href="https://github.com/kyeotic/MasteringKnockout">
+            Github repo
+          </Link>
           .
         </p>
       </div>
@@ -387,15 +405,18 @@ export const projects = [
     body: (
       <div>
         <p>
-          While I don't update it as frequently as I should I do maintain a
-          blog, filled mostly with technical posts.
+          <Link href="https://blog.kye.dev">
+            This is my personal/technical blog
+          </Link>
+          , named after an inside joke. While I don't update it as frequently as
+          I should I do maintain a blog, filled mostly with technical posts.
         </p>
         <p>
           It's usually small solutions, but sometimes I write larger guides,
           like this multi-part, soup to nuts guide guide on{' '}
-          <a href="https://blog.kye.dev/digital-ocean-for-beginners/">
+          <Link href="https://blog.kye.dev/digital-ocean-for-beginners/">
             getting started with Digital Ocean
-          </a>
+          </Link>
         </p>
       </div>
     ),
@@ -414,9 +435,9 @@ export const projects = [
           deno's growing pains integrating with existing React libraries.
         </p>
         <p>
-          <a href="https://github.com/kyeotic/portfolio">
+          <Link href="https://github.com/kyeotic/portfolio">
             Check out the source on GitHub
-          </a>
+          </Link>
         </p>
       </div>
     ),
@@ -437,18 +458,20 @@ export const projects = [
       <div>
         <p>
           While Airtable has an{' '}
-          <a href="https://github.com/Airtable/airtable.js">official client</a>{' '}
+          <Link href="https://github.com/Airtable/airtable.js">
+            official client
+          </Link>{' '}
           I struggled with its then-lacking documentation and unconventional
           API. It is also much larger than I would like for essentially being an
           HTTP wrapper.
         </p>
         <p>
-          <a href="https://github.com/kyeotic/airtable">I made my own</a>,
+          <Link href="https://github.com/kyeotic/airtable">I made my own</Link>,
           largely to experiment with the newly-released async generators
           functions in Node 10. It even got an{' '}
-          <a href="https://github.com/Airtable/airtable.js/issues/108#issuecomment-497081949">
+          <Link href="https://github.com/Airtable/airtable.js/issues/108#issuecomment-497081949">
             unofficial blessing
-          </a>{' '}
+          </Link>{' '}
           from one of the Airtable devs. I'm pretty happy with how it turned
           out.
         </p>
@@ -470,24 +493,24 @@ export const projects = [
     body: (
       <div>
         <p>
-          <a href="https://github.com/kyeotic/raviger">Raviger</a>, is a React
-          routing library built using React Hooks. At {'<'}4kb its tiny, with a
-          simple API to match. It is heavily inspired by{' '}
-          <a href="https://github.com/Paratron/hookrouter">hookrouter</a>, but
-          written from scratch.
+          <Link href="https://github.com/kyeotic/raviger">Raviger</Link>, is a
+          React routing library built using React Hooks. At {'<'}4kb its tiny,
+          with a simple API to match. It is heavily inspired by{' '}
+          <Link href="https://github.com/Paratron/hookrouter">hookrouter</Link>,
+          but written from scratch.
         </p>
         <p>
           I started using hookrouter because its API and size were a breath of
           fresh air after living with React Router for so long. However,
           hookrouter doesn't treat query strings as first-class citizens during
           routing, which makes search and filter pages difficult. I{' '}
-          <a href="https://github.com/Paratron/hookrouter/pull/71">
+          <Link href="https://github.com/Paratron/hookrouter/pull/71">
             created PR
-          </a>{' '}
+          </Link>{' '}
           to address this, but it appears the maintainer doesn't think{' '}
-          <a href="https://github.com/Paratron/hookrouter/issues/72#issuecomment-513977880">
+          <Link href="https://github.com/Paratron/hookrouter/issues/72#issuecomment-513977880">
             query strings should work with routes.
-          </a>{' '}
+          </Link>{' '}
           So in true OSS fashion I made my own solution.
         </p>
       </div>
