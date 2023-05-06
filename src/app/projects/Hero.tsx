@@ -4,7 +4,7 @@ export default function Hero() {
   return (
     <div
       className={tw(
-        `text=[4vmax] sm:text-[4.2vmax] font-light leading-normal w-11/12 bg-black/40 p-8`
+        `font-light leading-normal w-11/12 bg-black/40 p-8 text-[5vmax] md:text-[4vmax]`
       )}
     >
       <h1>
