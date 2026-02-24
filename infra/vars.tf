@@ -19,10 +19,5 @@ locals {
       domain = "www.kye.dev"
       acme   = "c7cc99277264edac23839c5c._acme.deno.dev."
     }
-    kyeotic = {
-      zone   = "kyeotic.com"
-      domain = "kyeotic.com"
-      acme   = "9fe9b4a153351fa9c1d77198._acme.deno.dev."
-    }
   }
 }

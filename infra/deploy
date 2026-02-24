@@ -3,13 +3,17 @@ set -ex
 
 _scripts="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 _project="${_scripts}/.."
-_infra="${_scripts}/../infra"
+_infra="${_project}/infra"
 
 # Terraform state, bucket name
 AWS_ACCOUNT_ID=$(aws sts get-caller-identity | jq -r '.Account')
 terraform_state_bucket="terraform-remote-$AWS_ACCOUNT_ID"
 
-export $(grep -v '^#' $_project/.env | xargs)
+# export $(grep -v '^#' $_project/.env | xargs)
+
+# Source project .env for CLOUDFLARE_API_TOKEN
+set -o allexport; source "${_project}/.env"; set +o allexport
+
 
 pushd "${_infra}"
 
@@ -19,6 +23,6 @@ terraform init \
   -backend-config="key=portfolio" \
   -backend-config="encrypt=true"
 
-terraform apply -auto-approve
+# terraform apply -auto-approve
 popd
 
