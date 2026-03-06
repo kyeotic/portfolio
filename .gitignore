@@ -39,3 +39,17 @@ yarn-error.log*
 /build
 /public/build
 .env
+
+node_modules
+dist
+.env*
+*.tsbuildinfo
+.cache
+.DS_Store
+*.pem
+.wrangler
+worker-configuration.d.ts
+
+.dev.vars*
+!.dev.vars.example
+!.env.example
