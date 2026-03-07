@@ -1,30 +1,41 @@
 'use client'
 
-// Each bar has its own max height and animation timing for independent movement
-const BARS: Array<{ maxScale: number; duration: number; delay: number }> = [
-  { maxScale: 0.42, duration: 4.2, delay: 0.0 },
-  { maxScale: 0.68, duration: 5.6, delay: 1.2 },
-  { maxScale: 0.38, duration: 3.8, delay: 2.1 },
-  { maxScale: 0.78, duration: 6.4, delay: 0.5 },
-  { maxScale: 0.55, duration: 4.6, delay: 2.8 },
-  { maxScale: 0.88, duration: 5.2, delay: 1.4 },
-  { maxScale: 0.44, duration: 3.6, delay: 3.5 },
-  { maxScale: 0.72, duration: 6.0, delay: 0.7 },
-  { maxScale: 0.95, duration: 4.0, delay: 2.4 },
-  { maxScale: 0.52, duration: 5.4, delay: 1.7 },
-  { maxScale: 0.82, duration: 3.4, delay: 3.1 },
-  { maxScale: 0.62, duration: 6.2, delay: 0.9 },
-  { maxScale: 0.40, duration: 4.4, delay: 2.6 },
-  { maxScale: 0.74, duration: 5.0, delay: 1.9 },
-  { maxScale: 0.58, duration: 5.8, delay: 0.3 },
-  { maxScale: 0.48, duration: 3.8, delay: 3.3 },
-]
+import { useState, useEffect } from 'react'
+
+const BAR_COUNT = 16
+const BAR_CONFIG = {
+  maxScale: { min: 0.35, max: 0.95 },
+  duration: { min: 3.4, max: 6.4 },
+  delay: { max: 3.5 },
+}
+
+type Bar = { maxScale: number; duration: number; delay: number }
+
+function rand(min: number, max: number) {
+  return min + Math.random() * (max - min)
+}
+
+function generateBars(): Bar[] {
+  return Array.from({ length: BAR_COUNT }, () => ({
+    maxScale: rand(BAR_CONFIG.maxScale.min, BAR_CONFIG.maxScale.max),
+    duration: rand(BAR_CONFIG.duration.min, BAR_CONFIG.duration.max),
+    delay: rand(0, BAR_CONFIG.delay.max),
+  }))
+}
 
 export default function WaveBackground() {
+  const [bars, setBars] = useState<Bar[] | null>(null)
+
+  useEffect(() => {
+    setBars(generateBars())
+  }, [])
+
+  if (!bars) return null
+
   return (
     <div className="fixed inset-0 z-[-1] pointer-events-none overflow-hidden">
       <div className="absolute bottom-0 left-0 w-full flex items-end" style={{ height: '65vh' }}>
-        {BARS.map((bar, i) => (
+        {bars.map((bar, i) => (
           <div
             key={i}
             className="flex-1"
