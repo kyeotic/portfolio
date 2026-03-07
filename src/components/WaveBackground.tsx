@@ -11,16 +11,32 @@ const BAR_CONFIG = {
 
 type Bar = { maxScale: number; duration: number; delay: number }
 
-function rand(min: number, max: number) {
-  return min + Math.random() * (max - min)
+// Mulberry32 seeded PRNG
+function seededRng(seed: number) {
+  let s = seed
+  return () => {
+    s |= 0; s = s + 0x6d2b79f5 | 0
+    let t = Math.imul(s ^ s >>> 15, 1 | s)
+    t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t
+    return ((t ^ t >>> 14) >>> 0) / 4294967296
+  }
 }
 
+const SEED = 42
+
 function generateBars(): Bar[] {
-  return Array.from({ length: BAR_COUNT }, () => ({
-    maxScale: rand(BAR_CONFIG.maxScale.min, BAR_CONFIG.maxScale.max),
-    duration: rand(BAR_CONFIG.duration.min, BAR_CONFIG.duration.max),
-    delay: rand(0, BAR_CONFIG.delay.max),
-  }))
+  const rng = seededRng(SEED)
+  const rand = (min: number, max: number) => min + rng() * (max - min)
+  const now = Date.now() / 1000
+
+  return Array.from({ length: BAR_COUNT }, () => {
+    const duration = rand(BAR_CONFIG.duration.min, BAR_CONFIG.duration.max)
+    return {
+      maxScale: rand(BAR_CONFIG.maxScale.min, BAR_CONFIG.maxScale.max),
+      duration,
+      delay: -(now % (2 * duration)),
+    }
+  })
 }
 
 export default function WaveBackground() {
