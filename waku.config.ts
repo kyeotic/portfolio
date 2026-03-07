@@ -34,10 +34,14 @@ export default defineConfig({
           plugins: ['babel-plugin-react-compiler'],
         },
       }),
-      cloudflare({
-        viteEnvironment: { name: 'rsc', childEnvironments: ['ssr'] },
-        inspectorPort: false,
-      }),
+      ...(process.env.NODE_ENV !== 'development'
+        ? [
+            cloudflare({
+              viteEnvironment: { name: 'rsc', childEnvironments: ['ssr'] },
+              inspectorPort: false,
+            }),
+          ]
+        : []),
     ],
   },
 });

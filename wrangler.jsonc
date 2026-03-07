@@ -10,7 +10,8 @@
 	// It can be removed if only building static pages
 	"compatibility_flags": [
 		"nodejs_compat",
-		"nodejs_als"
+		"nodejs_als",
+		"no_handle_cross_request_promise_resolution"
 	],
 	// https://developers.cloudflare.com/workers/platform/compatibility-dates
 	"compatibility_date": "2025-11-17",

@@ -49,54 +49,15 @@ body {
   background-color: #1e1e1e;
 }
 
-/* Flame gradient — breathes at the bottom */
-body::before {
-  position: fixed;
-  display: block;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 65vh;
-  content: '';
-  z-index: -1;
-  background: radial-gradient(
-    ellipse 90% 100% at 50% 100%,
-    rgba(255, 41, 187, 0.9) 0%,
-    rgba(160, 0, 255, 0.65) 35%,
-    rgba(80, 0, 180, 0.25) 60%,
-    transparent 80%
-  );
-  transform-origin: bottom center;
-  animation: FlameBreath 4s ease-in-out infinite;
-}
+/* Wave bars are rendered by WaveBackground React component */
 
-body::after {
-  position: fixed;
-  display: block;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 40vh;
-  content: '';
-  z-index: -1;
-  background: radial-gradient(
-    ellipse 55% 90% at 50% 110%,
-    rgba(255, 100, 210, 0.85) 0%,
-    rgba(210, 60, 255, 0.5) 45%,
-    transparent 70%
-  );
-  transform-origin: bottom center;
-  animation: FlameBreath 4s ease-in-out infinite;
-  animation-delay: -2s;
-}
-
-@keyframes FlameBreath {
-  0%, 100% {
-    transform: scaleY(0.82) scaleX(0.93);
-    opacity: 0.72;
+@keyframes waveBar {
+  from {
+    transform: scaleY(var(--min-scale));
+    opacity: 0.6;
   }
-  50% {
-    transform: scaleY(1.06) scaleX(1.04);
+  to {
+    transform: scaleY(var(--max-scale));
     opacity: 1;
   }
 }

@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import Hero from './projects/Hero.js'
 import AboutMe from './projects/AboutMe.js'
 import Projects from './projects/Projects.js'
+import WaveBackground from './WaveBackground.js'
 
 type Tab = 'main' | 'about' | 'projects'
 
@@ -59,6 +60,7 @@ export default function HomePage() {
 
   return (
     <div className="flex flex-col h-dvh">
+      <WaveBackground />
       {/* Content area */}
       <div className="flex-1 overflow-hidden min-h-0">
         {tab === 'main' && (
