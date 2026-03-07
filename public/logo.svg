@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 264">
+  <!--
+    Design:
+      plus size:      132 × 132, arm thickness = 32 (longer/thinner arms)
+      equals bars:    132 wide × 32 tall, gap = 14 (compact, vertically centered)
+      group spacing:  44 between + and =
+      padding:        66 on all sides (50% of plus width)
+    Canvas: (66 + 132 + 44 + 132 + 66) × (66 + 132 + 66) = 440 × 264
+    Plus center: (132, 132)
+    Equals center: (308, 132) — equals group height = 78, spans y=93–171
+  -->
+  <rect width="440" height="264" fill="#404040"/>
+
+  <!-- Plus sign — center (132, 132), arm thickness 38, overall size 132 -->
+  <!-- horizontal: x = cx-S/2 = 66,  y = cy-T/2 = 113 -->
+  <!-- vertical:   x = cx-T/2 = 113, y = cy-S/2 = 66  -->
+  <rect x="66"  y="113" width="132" height="38" fill="white"/><!-- horizontal -->
+  <rect x="113" y="66"  width="38"  height="132" fill="white"/><!-- vertical -->
+
+  <!-- Equals sign — center (308, 132), small gap between bars -->
+  <rect x="215" y="92"  width="120" height="36" fill="white"/><!-- top bar -->
+  <rect x="215" y="140" width="120" height="36" fill="white"/><!-- bottom bar -->
+</svg>

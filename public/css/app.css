@@ -1,13 +1,20 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,600|Lato);
 
 html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+html,
 body,
 #root {
   font-family: 'Open Sans';
   font-size: 18px;
   line-height: 1.6em;
   width: 100%;
-  overflow-x: hidden; /* wtf mobile? why you scroll? */
 }
 
 * {
@@ -38,29 +45,58 @@ em {
 
 /* background colors and animation */
 
+body {
+  background-color: #1e1e1e;
+}
+
+/* Flame gradient — breathes at the bottom */
 body::before {
   position: fixed;
   display: block;
+  bottom: 0;
+  left: 0;
   width: 100%;
-  height: 100vh;
-  color: #fff;
+  height: 65vh;
   content: '';
   z-index: -1;
-  /* background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB); */
-  background: linear-gradient(-45deg, rgb(110, 7, 194), #23a6d5, #23d5ab);
-  /* background: linear-gradient(-45deg,  rgb(70, 17, 114), rgb(17, 114, 90), rgb(17, 35, 114)); */
-  background-size: 400% 400%;
-  animation: Gradient 15s ease infinite;
+  background: radial-gradient(
+    ellipse 90% 100% at 50% 100%,
+    rgba(255, 41, 187, 0.9) 0%,
+    rgba(160, 0, 255, 0.65) 35%,
+    rgba(80, 0, 180, 0.25) 60%,
+    transparent 80%
+  );
+  transform-origin: bottom center;
+  animation: FlameBreath 4s ease-in-out infinite;
 }
 
-@keyframes Gradient {
-  0% {
-    background-position: 0% 50%;
+body::after {
+  position: fixed;
+  display: block;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40vh;
+  content: '';
+  z-index: -1;
+  background: radial-gradient(
+    ellipse 55% 90% at 50% 110%,
+    rgba(255, 100, 210, 0.85) 0%,
+    rgba(210, 60, 255, 0.5) 45%,
+    transparent 70%
+  );
+  transform-origin: bottom center;
+  animation: FlameBreath 4s ease-in-out infinite;
+  animation-delay: -2s;
+}
+
+@keyframes FlameBreath {
+  0%, 100% {
+    transform: scaleY(0.82) scaleX(0.93);
+    opacity: 0.72;
   }
   50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
+    transform: scaleY(1.06) scaleX(1.04);
+    opacity: 1;
   }
 }

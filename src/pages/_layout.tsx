@@ -5,13 +5,13 @@ type RootLayoutProps = { children: ReactNode }
 
 export default async function RootLayout({ children }: RootLayoutProps) {
   return (
-    <div>
+    <div className="h-dvh overflow-hidden">
       <title>Tim Kye | Portfolio</title>
       <meta name="description" content="Tim Kye's portfolio — full stack developer" />
       <link rel="icon" type="image/x-icon" href="/favicon.ico" />
       <link rel="stylesheet" href="/css/app.css" />
       <link rel="stylesheet" href="/css/projects.css" />
-      <main>{children}</main>
+      <main className="h-full">{children}</main>
     </div>
   )
 }
