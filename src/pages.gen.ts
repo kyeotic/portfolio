@@ -4,17 +4,19 @@
 import type { PathsForPages, GetConfigResponse } from 'waku/router';
 
 // prettier-ignore
-import type { getConfig as File_Section_getConfig } from './pages/[section]';
-// prettier-ignore
 import type { getConfig as File_Index_getConfig } from './pages/index';
 // prettier-ignore
 import type { getConfig as File_ProjectsProject_getConfig } from './pages/projects/[project]';
+// prettier-ignore
+import type { getConfig as File_ProjectsIndex_getConfig } from './pages/projects/index';
 
 // prettier-ignore
 type Page =
-| ({ path: '/[section]' } & GetConfigResponse<typeof File_Section_getConfig>)
+| { path: '/about'; render: 'static' }
 | ({ path: '/' } & GetConfigResponse<typeof File_Index_getConfig>)
-| ({ path: '/projects/[project]' } & GetConfigResponse<typeof File_ProjectsProject_getConfig>);
+| { path: '/kyeosis'; render: 'static' }
+| ({ path: '/projects/[project]' } & GetConfigResponse<typeof File_ProjectsProject_getConfig>)
+| ({ path: '/projects' } & GetConfigResponse<typeof File_ProjectsIndex_getConfig>);
 
 // prettier-ignore
 declare module 'waku/router' {

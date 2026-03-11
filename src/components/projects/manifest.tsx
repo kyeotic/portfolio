@@ -9,12 +9,266 @@ export interface Project {
   body: JSX.Element
 }
 
+function PlaceholderIcon({
+  label,
+  bg = '#333',
+}: {
+  label: string
+  bg?: string
+}) {
+  return (
+    <div
+      style={{
+        background: bg,
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontSize: '1.5rem',
+        fontWeight: 'bold',
+        color: '#fff',
+        letterSpacing: '0.05em',
+      }}
+    >
+      {label}
+    </div>
+  )
+}
+
 export const projects = [
+  {
+    name: 'raviger',
+    title: 'Raviger',
+    tags: ['Open Source'],
+    icon: (
+      <img
+        style={{ padding: '.3rem', filter: 'brightness(0) invert(1)' }}
+        alt="Raviger"
+        src="/images/projects/raviger.svg"
+      />
+    ),
+    height: 250,
+    body: (
+      <div>
+        <p>
+          <Link href="https://github.com/kyeotic/raviger">Raviger</Link>, is a
+          React routing library built using React Hooks. At {'<'}4kb its tiny,
+          with a simple API to match. It is heavily inspired by{' '}
+          <Link href="https://github.com/Paratron/hookrouter">hookrouter</Link>,
+          but written from scratch.
+        </p>
+        <p>
+          I started using hookrouter because its API and size were a breath of
+          fresh air after living with React Router for so long. However,
+          hookrouter doesn't treat query strings as first-class citizens during
+          routing, which makes search and filter pages difficult. I{' '}
+          <Link href="https://github.com/Paratron/hookrouter/pull/71">
+            created PR
+          </Link>{' '}
+          to address this, but it appears the maintainer doesn't think{' '}
+          <Link href="https://github.com/Paratron/hookrouter/issues/72#issuecomment-513977880">
+            query strings should work with routes.
+          </Link>{' '}
+          So in true OSS fashion I made my own solution.
+        </p>
+      </div>
+    ),
+  },
+  {
+    name: 'dockru',
+    title: 'Dockru',
+    tags: ['Open Source', 'DevOps', 'Rust', 'Web Apps'],
+    icon: (
+      <img
+        style={{ padding: '.3rem' }}
+        alt="Stack Sync"
+        src="/images/projects/dockru.svg"
+      />
+    ),
+    height: 240,
+    body: (
+      <div>
+        <p>
+          <Link href="https://github.com/kyeotic/dockru">Dockru</Link> is a
+          self-hosted Docker Compose management UI. I liked{' '}
+          <Link href="https://dockge.kuma.pet/">Dockge</Link>'s simplified
+          interface over Portainer, but found its idle CPU usage noticeably
+          worse — so I rewrote the backend in Rust while keeping a Vue-based
+          frontend.
+        </p>
+        <p>
+          Features include compose file create/edit/start/stop/restart/delete,
+          an interactive terminal, multi-host support, and{' '}
+          <code>docker run</code> → <code>compose.yaml</code> conversion.
+          Supports amd64, arm64, and armv7.
+        </p>
+      </div>
+    ),
+  },
+  {
+    name: 'stack-sync',
+    title: 'Stack Sync',
+    tags: ['Open Source', 'DevOps', 'Rust'],
+    icon: (
+      <img
+        style={{ padding: '.3rem' }}
+        alt="Stack Sync"
+        src="/images/projects/stack%20sync.png"
+      />
+    ),
+    height: 240,
+    body: (
+      <div>
+        <p>
+          <Link href="https://github.com/kyeotic/stack-sync">Stack Sync</Link>{' '}
+          is a Rust CLI for deploying and managing Docker Compose stacks to
+          remote infrastructure. It supports two backends: Portainer's REST API
+          and direct SSH deployment to any host running Docker Compose.
+        </p>
+        <p>
+          Commands include <code>sync</code>, <code>view</code>,{' '}
+          <code>import</code>, <code>redeploy</code>, and <code>init</code>. It
+          uses hierarchical config inheritance so credentials can live in parent
+          directories, separate from project-specific stack files.
+        </p>
+      </div>
+    ),
+  },
+  {
+    name: 'vault-sync',
+    title: 'Vault Sync',
+    tags: ['Open Source', 'DevOps', 'Rust'],
+    icon: (
+      <img
+        style={{ padding: '.3rem' }}
+        alt="Vault Sync"
+        src="/images/projects/vault-sync.png"
+      />
+    ),
+    height: 230,
+    body: (
+      <div>
+        <p>
+          <Link href="https://github.com/kyeotic/vault-sync">Vault Sync</Link>{' '}
+          is a Rust CLI that syncs secrets from{' '}
+          <Link href="https://bitwarden.com/products/secrets-manager/">
+            Bitwarden Secrets Manager
+          </Link>{' '}
+          into local <code>.env</code> files. It uses a <code>.toml</code>{' '}
+          config, supports template variable substitution, dry-run mode, and
+          self-update. Installable via Homebrew, shell script, or Nix flakes.
+        </p>
+      </div>
+    ),
+  },
+  {
+    name: 'stook',
+    title: 'Stook',
+    tags: ['Open Source', 'DevOps', 'Rust'],
+    icon: <PlaceholderIcon label="ST" bg="#e05c1a" />,
+    height: 220,
+    body: (
+      <div>
+        <p>
+          <Link href="https://github.com/kyeotic/stook">Stook</Link> is a
+          webhook receiver that enables continuous deployment for self-hosted
+          Docker infrastructure. When an image is pushed to a Docker registry,
+          Stook queries the Docker socket for containers labeled{' '}
+          <code>stook: redeploy</code> and triggers Portainer to redeploy those
+          stacks automatically — a clean CD primitive without a full CI/CD
+          platform.
+        </p>
+      </div>
+    ),
+  },
+  {
+    name: 'smashdown',
+    title: 'Smashdown',
+    tags: ['Open Source', 'Web Apps'],
+    icon: <PlaceholderIcon label="SD" bg="#c0392b" />,
+    height: 240,
+    body: (
+      <div>
+        <p>
+          <Link href="https://github.com/kyeotic/smashdown">Smashdown</Link> is
+          a Super Smash Bros. Ultimate tournament app for friend groups. It
+          handles the full tournament lifecycle: drafting rosters from the
+          complete 89-fighter roster (with random fill helpers), running a
+          single-elimination bracket, and tracking per-fighter win/loss stats
+          and win streaks.
+        </p>
+        <p>
+          Built with SolidJS, tRPC, and Deno — with Auth0 for user management so
+          each player has their own account.
+        </p>
+      </div>
+    ),
+  },
+  {
+    name: 'foodie',
+    title: 'Foodie',
+    tags: ['Open Source', 'Web Apps'],
+    icon: <PlaceholderIcon label="FD" bg="#27ae60" />,
+    height: 240,
+    body: (
+      <div>
+        <p>
+          <Link href="https://github.com/kyeotic/foodie">Foodie</Link> is a
+          collaborative restaurant tracker for groups. Places are organized by
+          city and tag, with a rating system and an interactive split-screen
+          Google Maps view where hovering a list entry highlights its map pin
+          and vice versa.
+        </p>
+        <p>
+          Built as a PWA (installable on mobile), with team support so a group
+          can share and manage their restaurant list together. Stack: SolidJS,
+          tRPC, Deno, Auth0.
+        </p>
+      </div>
+    ),
+  },
+  {
+    name: 'airtable',
+    title: 'Airtable Alternative Client',
+    tags: ['Open Source'],
+    icon: (
+      <img
+        style={{ padding: '.3rem' }}
+        alt="Airtable"
+        src="/images/projects/airtable-mark.svg"
+      />
+    ),
+    height: 250,
+    body: (
+      <div>
+        <p>
+          While Airtable has an{' '}
+          <Link href="https://github.com/Airtable/airtable.js">
+            official client
+          </Link>{' '}
+          I struggled with its then-lacking documentation and unconventional
+          API. It is also much larger than I would like for essentially being an
+          HTTP wrapper.
+        </p>
+        <p>
+          <Link href="https://github.com/kyeotic/airtable">I made my own</Link>,
+          largely to experiment with the newly-released async generators
+          functions in Node 10. It even got an{' '}
+          <Link href="https://github.com/Airtable/airtable.js/issues/108#issuecomment-497081949">
+            unofficial blessing
+          </Link>{' '}
+          from one of the Airtable devs. I'm pretty happy with how it turned
+          out.
+        </p>
+      </div>
+    ),
+  },
   {
     name: 'cerberus-node-client',
     title: 'Cerberus Node Client',
-    tags: ['Security', 'Open Source'],
-    icon: <img alt="" src="/images/projects/cerberus3.svg" />,
+    tags: ['Open Source'],
+    icon: <img alt="" src="/images/projects/cerberus_logo.svg" />,
     height: 221,
     body: (
       <div>
@@ -48,136 +302,16 @@ export const projects = [
     ),
   },
   {
-    name: 'rocket',
-    title: 'Rocket',
-    tags: ['Front End', 'Professional'],
-    icon: <img alt="" src="/images/projects/rocket.svg" />,
-    height: 213,
-    body: (
-      <div>
-        <p>
-          Rocket is a project bootstrapper. Nike is a big shop with thousands of
-          engineers. Experimentation is strongly encouraged, and new projects
-          spin up every week (sometimes to fail less than a month later). Rocket
-          is designed on a plugin system that lets its user select a Blueprint
-          and choose what modules get included. Are you starting a new
-          serverless project? Do you need CloudFormation or Terraform? CircleCI
-          or Jenkins? Rocket makes getting off the ground quick, even with
-          constantly shifting "Best Practices", patterns, and technology stacks.
-        </p>
-        <p>
-          Rocket was my team's first Typescript project, which we chose to help
-          with the tangled interactions between plugins. Its plugins are
-          described with <Link href="http://json-schema.org/">JSON Schema</Link>
-          , which dynamically creates the UI forms and validation for each
-          Blueprint, and they use <Link href="http://yeoman.io/">Yeoman</Link>{' '}
-          for composing and generating the output.
-        </p>
-      </div>
-    ),
-  },
-  {
-    name: 'devportal',
-    title: 'API Dev Portal',
-    tags: ['Security', 'Professional', 'Front End'],
-    icon: <img alt="" src="/images/projects/code_icon.svg" />,
-    height: 277,
-    body: (
-      <div>
-        <p>
-          Like the Facebook or Twitter developer portals the Niketech Developer
-          Portal is a tool for discovering APIs, viewing documentation, and
-          manaing oAuth applications.
-        </p>
-        <p>
-          APIs can be created, managed, and versioned. Documentation can be
-          supplied using a combination of markdown READMEs and interactive
-          endpoint documenation using{' '}
-          <Link href="https://www.openapis.org/">
-            OpenAPI 3 (formerly Swagger)
-          </Link>{' '}
-          or <Link href="https://apiblueprint.org/">API Blueprint</Link>.
-          Details can also be provided for API, such as host, SLAs, and
-          maintainer contact emails.
-        </p>
-        <p>
-          The portal also offered self-service oAuth application management,
-          which was a managed abstraction over PingFederate and Okta. It guided
-          you through client creation, setup, and implementation.
-        </p>
-      </div>
-    ),
-  },
-  {
-    name: 'auth-toolkit',
-    title: 'Auth Toolkit',
-    tags: ['Professional', 'Security'],
-    icon: <img alt="" src="/images/projects/oauth_logo2.png" />,
-    height: 250,
-    body: (
-      <div>
-        <p>
-          The NextGen Platforms authentication toolkit was a collection of
-          packages pre-configured to handle the variety of authentication
-          providers in use at Nike, as well as aid in generating API-specific
-          authorization policies.
-        </p>
-        <p>
-          The first part was a JWT validator, provided as a Node library and
-          packaged as an AWS{' '}
-          <Link href="https://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html">
-            API Gateway Custom Authorizer
-          </Link>{' '}
-          lambda. It handled the x509 signatures from PingFederate and the more
-          common RSA singatures from Okta, and shipped with configuration for
-          the various authorization servers in each. A seperate, matching Java
-          library was maintained by another team member.
-        </p>
-        <p>
-          The other part was a build-step tool that compiled{' '}
-          <Link href="https://www.openapis.org/">OpenAPI</Link> specs (formerly
-          Swagger) to create endpoint-aware authorization policies that could be
-          included with the JWT validator to apply oAuth claim requirements to
-          API requests.
-        </p>
-      </div>
-    ),
-  },
-  {
-    name: 'grey-market',
-    title: 'Grey Market',
-    tags: ['Professional', 'Front End'],
-    icon: <img alt="" src="/images/projects/market_icon.svg" />,
-    height: 213,
-    body: (
-      <div>
-        <p>
-          This was a tool developed to help identify where unauthorized online
-          resellers were getting their product. It took a list of products being
-          sold and compared them to the order book for authorized sellers. The
-          UI helped users identify most likely candidates for unauthorized
-          reselling, even when a seller bought their stock from multiple
-          distributors, by visually arranging the overlapping product offerings
-          of each distibutor with the unauthorized sellers (unfortunately I
-          cannot share screenshots of this).
-        </p>
-        <p>
-          PostgreSQL was used to handle the fairly taxing analysis, which was
-          further aided by the native array aggregation and JSON serialization
-          being done in the database. The product overlap query, which compared
-          tens of millions of rows and returned an unaggregated set of hundreds
-          of thousands, was especially taxing. By using PostgreSQLs array
-          aggregation to move the joined rows into an aggregated cell-per-seller
-          the response time dropped from 2 and half minutes to ~10 seconds.
-        </p>
-      </div>
-    ),
-  },
-  {
     name: 'lambda-router',
     title: 'Lambda Router',
-    tags: ['Professional', 'Open Source'],
-    icon: <img alt="" src="/images/projects/lambda.svg" />,
+    tags: ['Open Source'],
+    icon: (
+      <img
+        alt=""
+        src="/images/projects/lambda.svg"
+        style={{ filter: 'brightness(0) invert(1)' }}
+      />
+    ),
     height: 223,
     body: (
       <div>
@@ -197,159 +331,6 @@ export const projects = [
           including custom headers.
         </p>
         <p>I developed this while working at Nike.</p>
-      </div>
-    ),
-  },
-  {
-    name: 'cryonic',
-    title: 'Cryonic',
-    tags: ['Performance', 'Professional'],
-    icon: <img alt="" src="/images/projects/snow.svg" />,
-    height: 223,
-    body: (
-      <div>
-        <p>
-          Cryonic is a tool for measuring NodeJS AWS Lambda cold-start
-          performance. It hooks into the module loader, times everything, and
-          generates a flame graph like{' '}
-          <Link href="https://github.com/aws/aws-sdk-js/issues/1469#issuecomment-322820847">
-            this one
-          </Link>{' '}
-          (this was actually generated with Cryonic).{' '}
-        </p>
-        <p>
-          If you aren't familiar with AWS Lambdas the need for this may not be
-          clear. AWS Lambdas are special containers that each handle a single
-          concurrent request, which makes their scaling policy dead simple: if
-          there is not an available container to handle a request, make a new
-          one. They are discarded if they are idle for too long, so "cold
-          starts" like this are common unless you have a perfectly flat request
-          rate. Freshly started containers have to load all their code before
-          they can run, in contrast to typical servers that startup once and
-          then run forever. This means their is an unusual focus on how quickly
-          the container can start. Cryonic was built to help identify
-          bottlenecks in this process.
-        </p>
-        <p>
-          Unlike the AWS Thin Libraries, which I also developed at Nike, I was
-          not allowed to release Cryonic as Open Source.
-        </p>
-      </div>
-    ),
-  },
-  {
-    name: 'coral-commons',
-    title: 'Coral Commons',
-    tags: ['Open Source', 'Front End'],
-    icon: <img alt="" src="/images/projects/ic_cc.png" />,
-    height: 185,
-    body: (
-      <div>
-        <p>
-          I used to live in a condo project with a very proactive and positive
-          community. After our first community meeting I discovered they were
-          keeping contact and other information in spreadsheets, so I offered to
-          help them out. It was also a good opportunity to play with{' '}
-          <Link href="https://github.com/rackt/redux">Redux</Link>,{' '}
-          <Link href="https://www.firebase.com/">Firebase</Link>, and the{' '}
-          <Link href="https://github.com/firebase/blaze_compiler">
-            blaze compiler
-          </Link>
-          .
-        </p>
-        <p>
-          The app has display and entry screens for Residents and Houses, and
-          mapping between the two. "Verified" accounts can read any data, and
-          write to Residents or Houses that they have been linked to. The HOA
-          board members have write access to everything.
-        </p>
-        <p>
-          There is also a bulletin board that anyone can post to, which supports
-          Markdown (<Link href="http://commonmark.org/">CommonMark</Link>{' '}
-          flavored). The site was designed with Bootsrap so that it can be
-          easily used on phones, which is how I expected the majority of the
-          community the use the site.
-        </p>
-        <p>
-          You can check out the{' '}
-          <Link href="https://github.com/kyeotic/coral-commons">
-            source code
-          </Link>{' '}
-          on GitHub.
-        </p>
-      </div>
-    ),
-  },
-  {
-    name: 'dabber',
-    title: 'dabber',
-    tags: ['Open Source'],
-    icon: <img alt="" src="/images/projects/dynamodb.png" />,
-    height: 228,
-    body: (
-      <div>
-        <p>
-          DynamoDB, AWS's NoSQL database, didn't have an integrated backup
-          solution until Dec 2017. There were some "official" solutions that
-          involved Elastic Map Reduce, which was very slow and expensive (even
-          tables with less than 1k rows could take 10-20 minutes and use 16
-          instance hours of processing). So I created{' '}
-          <Link href="https://github.com/Nike-Inc/dabber">
-            Dynamo Automated Backup, and (Benevolently Ergonomic) Restore
-          </Link>
-          , affectionately named "dabber" for short.
-        </p>
-        <p>
-          Dabber includes a CLI that allows easy, fast backups and restores on
-          Dyanmo tables to S3 buckets. The CLI can also deploy an AWS Lambda and
-          create Cloudwatch Trigger's to schedule backups. The Cloudwatch
-          Trigger event contained the information necessary to describe the
-          backup, so a single Lambda could handle any number of backup schedules
-          (up to Cloudwatch's event limit).
-        </p>
-        <p>
-          Since Dynamo has since added a native backup and restore, dabber is no
-          longer maintained.
-        </p>
-      </div>
-    ),
-  },
-  {
-    name: 'aws-thin-libraries',
-    title: 'AWS Thin Libraries',
-    tags: ['Performance', 'Open Source'],
-    icon: <img alt="" src="/images/projects/aws.png" />,
-    height: 223,
-    body: (
-      <div>
-        <p>
-          AWS Lambdas are "serverless" runtimes that offer low-cost,
-          automatically scaling infrastructure. These benefits come at the cost
-          of ephemeral instances which often have to start and load their entire
-          package before handling a request, which can result in very slow
-          responses if your containers cannot start very, <em>very</em> quickly.
-          This problem is exacerbated by the{' '}
-          <Link href="https://github.com/aws/aws-sdk-js/issues/1469#issuecomment-322820847">
-            slow startup speed of the Official AWS SDK.
-          </Link>
-        </p>
-        <p>
-          Enter the AWS Thin Libraries: paired down versions of the{' '}
-          <Link href="https://github.com/Nike-Inc/aws-thin-dynamo-node">
-            Dynamo
-          </Link>
-          , <Link href="https://github.com/Nike-Inc/aws-thin-s3-node">S3</Link>,
-          and{' '}
-          <Link href="https://github.com/Nike-Inc/aws-thin-ses-node">SES</Link>{' '}
-          clients optimzed for start-up speed. The performance gains on these
-          are substantial, ranging from 300ms-1500ms depending on the size of
-          the lambda and how you loaded the client. While less important for
-          lambdas that triggered by S3 or Dynamo events, these are indispensable
-          if your lambda is handling requests from your user-facing REST API.
-          Since lambdas are billed by their execution time if you can cut off
-          500ms you could be saving 50% on your bill, which is still valuable to
-          those S3 triggered lambdas if they fire a million times a month.
-        </p>
       </div>
     ),
   },
@@ -413,19 +394,30 @@ export const projects = [
         </p>
         <p>
           It's usually small solutions, but sometimes I write larger guides,
-          like this multi-part, soup to nuts guide guide on{' '}
+          like this multi-part, from-scratch guide on{' '}
           <Link href="https://blog.kye.dev/digital-ocean-for-beginners/">
             getting started with Digital Ocean
+          </Link>{' '}
+          and this one on{' '}
+          <Link href="https://blog.kye.dev/proxmox-series/">
+            setting up a Proxmox cluster
           </Link>
+          .
         </p>
       </div>
     ),
   },
   {
-    name: 'portolfio',
+    name: 'portfolio',
     title: 'Portfolio',
-    tags: ['Open Source', 'Front End'],
-    icon: <img alt="" src="/images/projects/ic_portfolio.png" />,
+    tags: ['Open Source', 'Web Apps'],
+    icon: (
+      <img
+        alt=""
+        src="/images/projects/ic_portfolio.png"
+        style={{ filter: 'brightness(0) invert(1)' }}
+      />
+    ),
     body: (
       <div>
         <p>
@@ -438,80 +430,6 @@ export const projects = [
           <Link href="https://github.com/kyeotic/portfolio">
             Check out the source on GitHub
           </Link>
-        </p>
-      </div>
-    ),
-  },
-  {
-    name: 'airtable',
-    title: 'Airtable Alternative Client',
-    tags: ['Open Source'],
-    icon: (
-      <img
-        style={{ padding: '.3rem' }}
-        alt="Airtable"
-        src="/images/projects/airtable-mark.svg"
-      />
-    ),
-    height: 250,
-    body: (
-      <div>
-        <p>
-          While Airtable has an{' '}
-          <Link href="https://github.com/Airtable/airtable.js">
-            official client
-          </Link>{' '}
-          I struggled with its then-lacking documentation and unconventional
-          API. It is also much larger than I would like for essentially being an
-          HTTP wrapper.
-        </p>
-        <p>
-          <Link href="https://github.com/kyeotic/airtable">I made my own</Link>,
-          largely to experiment with the newly-released async generators
-          functions in Node 10. It even got an{' '}
-          <Link href="https://github.com/Airtable/airtable.js/issues/108#issuecomment-497081949">
-            unofficial blessing
-          </Link>{' '}
-          from one of the Airtable devs. I'm pretty happy with how it turned
-          out.
-        </p>
-      </div>
-    ),
-  },
-  {
-    name: 'raviger',
-    title: 'Raviger',
-    tags: ['Open Source', 'Front End'],
-    icon: (
-      <img
-        style={{ padding: '.3rem' }}
-        alt="Raviger"
-        src="/images/projects/raviger.svg"
-      />
-    ),
-    height: 250,
-    body: (
-      <div>
-        <p>
-          <Link href="https://github.com/kyeotic/raviger">Raviger</Link>, is a
-          React routing library built using React Hooks. At {'<'}4kb its tiny,
-          with a simple API to match. It is heavily inspired by{' '}
-          <Link href="https://github.com/Paratron/hookrouter">hookrouter</Link>,
-          but written from scratch.
-        </p>
-        <p>
-          I started using hookrouter because its API and size were a breath of
-          fresh air after living with React Router for so long. However,
-          hookrouter doesn't treat query strings as first-class citizens during
-          routing, which makes search and filter pages difficult. I{' '}
-          <Link href="https://github.com/Paratron/hookrouter/pull/71">
-            created PR
-          </Link>{' '}
-          to address this, but it appears the maintainer doesn't think{' '}
-          <Link href="https://github.com/Paratron/hookrouter/issues/72#issuecomment-513977880">
-            query strings should work with routes.
-          </Link>{' '}
-          So in true OSS fashion I made my own solution.
         </p>
       </div>
     ),

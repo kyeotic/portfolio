@@ -12,6 +12,7 @@
 		"preview": "NODE_ENV=production npm run build && wrangler dev"
 	},
 	"dependencies": {
+		"clsx": "^2.1.1",
 		"framer-motion": "^12.35.0",
 		"hono": "^4.10.0",
 		"react": "~19.2.4",

@@ -52,6 +52,10 @@
   column-gap: 1em;
 }
 
+.project-grid.hidden {
+  display: none;
+}
+
 .project {
   /* flex: 1 0 auto; */
   height: 225px;
@@ -101,6 +105,7 @@
   padding: 1rem;
   right: 1rem;
   left: 1rem;
+  z-index: 20;
 }
 
 .project-selected h3 {

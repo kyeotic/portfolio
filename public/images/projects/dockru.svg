@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="640" height="640" viewBox="0 0 640 640" xml:space="preserve">
+<desc>Created with Fabric.js 5.3.0</desc>
+<style>
+  /* Change --rot to adjust the spiral rotation of the inner/outer squares */
+  :root { --rot: -20deg; }
+  #sq-outer { transform: rotate(calc(var(--rot) * 1.5)); transform-origin: 0px 0px; }
+  #sq-inner { transform: rotate(var(--rot)); transform-origin: 0px 0px; }
+  #sq-middle { transform: rotate(calc(var(--rot) / 2)); transform-origin: 0px 0px; }
+</style>
+<defs>
+  <linearGradient id="SVGID_136_0" gradientUnits="userSpaceOnUse" x1="-200" y1="-200" x2="200" y2="200">
+    <stop offset="0%" style="stop-color:rgb(210, 99, 9);stop-opacity: 1"/>
+    <stop offset="100%" style="stop-color:rgb(225, 133, 59);stop-opacity: 1"/>
+  </linearGradient>
+</defs>
+<g transform="matrix(0.9544918218 0 0 0.9544918218 320 325.5657767239)">
+  <rect id="sq-outer" x="-260" y="-260" rx="10" ry="10" width="520" height="520" fill="rgb(255, 183, 142)" fill-opacity="0.51"/>
+  <rect id="sq-middle" x="-200" y="-200" rx="10" ry="10" width="400" height="400" fill="url(#SVGID_136_0)"/>
+  <rect id="sq-inner" x="-110" y="-110" rx="10" ry="10" width="220" height="220" fill="rgb(255, 183, 142)" fill-opacity="0.51"/>
+</g>
+</svg>

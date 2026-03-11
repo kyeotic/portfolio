@@ -1,8 +1,9 @@
 'use client'
 
-import Panel from '../Panel.js'
-import Link from '../Link.js'
-import { H2, BodyText } from '../Typography.js'
+import { useRouter } from 'waku'
+import Panel from '../components/Panel.js'
+import Link from '../components/Link.js'
+import { H2, BodyText } from '../components/Typography.js'
 
 const links = [
   { title: 'Github', href: 'https://github.com/kyeotic' },
@@ -15,20 +16,19 @@ const links = [
   { title: 'email me', href: 'mailto:tim@kye.dev' },
 ]
 
-export default function AboutMe({
-  navigate,
-}: {
-  navigate: (path: string) => void
-}) {
+export default function AboutMe() {
+  const { push, path } = useRouter()
   const kyeosis = () => {
-    navigate(window.location.pathname !== '/kyeosis' ? '/kyeosis' : '/about')
+    push(path !== '/kyeosis' ? '/kyeosis' : '/about')
   }
 
   return (
     <Panel>
       <H2>A Bit About Me</H2>
       <BodyText>
-        I live in Portland, Oregon and I am a full stack developer. That term
+        I live in Portland, Oregon and I've been a software engineer since 2010.
+        I consider myself a full-stack generalist, and I have experience with a
+        wide variety of technologies and programming languages. "Full Stack"
         means a lot of things to different people, for me it means that I know
         how to:
       </BodyText>

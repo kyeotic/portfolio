@@ -1,17 +1,11 @@
 import Projects from '../../components/projects/Projects.js'
 
-export default function Page({
-  project,
-  query,
-}: {
-  project: string
-  query?: string
-}) {
+export default function Page({ query }: { query?: string }) {
   const filter = new URLSearchParams(query ?? '').get('type') ?? 'All'
 
   return (
     <div className="h-full overflow-y-auto">
-      <Projects project={project} filter={filter} />
+      <Projects filter={filter} />
     </div>
   )
 }

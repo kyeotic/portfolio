@@ -1,13 +1,11 @@
 'use client'
 
-import Panel from '../Panel.js'
-import { H2, BodyText } from '../Typography.js'
+import { useRouter } from 'waku'
+import Panel from '../components/Panel.js'
+import { H2, BodyText } from '../components/Typography.js'
 
-export default function Kyeosis({
-  navigate,
-}: {
-  navigate: (path: string) => void
-}) {
+export default function Kyeosis() {
+  const { push } = useRouter()
   return (
     <Panel>
       <>
@@ -72,7 +70,7 @@ export default function Kyeosis({
           className={`mt-4 block underline underline-offset-2`}
           onClick={(e) => {
             e.preventDefault()
-            navigate('/about')
+            push('/about')
           }}
         >
           Back to About

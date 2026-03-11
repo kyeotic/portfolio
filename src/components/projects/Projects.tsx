@@ -1,6 +1,8 @@
 'use client'
 
 import { motion, AnimatePresence } from 'framer-motion'
+import { useRouter } from 'waku'
+import { clsx } from 'clsx'
 
 import { projects as projectManifest, Project } from './manifest.js'
 import { useHydrated } from '../useHydrated.js'
@@ -10,12 +12,11 @@ const tags = getProjectTags(projectManifest)
 export default function Projects({
   filter = 'All',
   project: selectedProjectName,
-  navigate,
 }: {
   filter?: string
   project?: string
-  navigate: (path: string) => void
 }) {
+  const { push } = useRouter()
   const projects = projectManifest.filter(
     (p) => filter === 'All' || p.tags.includes(filter),
   )
@@ -44,7 +45,7 @@ export default function Projects({
               } ${`p-0.5 text-center font-white font-bold`}`}
               onClick={(e) => {
                 e.preventDefault()
-                navigate(`/projects${getFilterQuery(tag)}`)
+                push(`/projects${getFilterQuery(tag)}`)
               }}
             >
               {tag}
@@ -58,14 +59,18 @@ export default function Projects({
             href={`/projects${getFilterQuery(filter)}`}
             onClick={(e) => {
               e.preventDefault()
-              navigate(`/projects${getFilterQuery(filter)}`)
+              push(`/projects${getFilterQuery(filter)}`)
             }}
           >
             Return to Projects
           </a>
         </div>
       )}
-      <div className={`project-grid p-4 max-w-5xl mx-auto`}>
+      <div
+        className={clsx('project-grid p-4 max-w-5xl mx-auto text-white', {
+          hidden: !!selectedProjectName,
+        })}
+      >
         <AnimatePresence>
           {projects.map((project) => (
             <motion.div
@@ -74,7 +79,7 @@ export default function Projects({
               layoutId={project.name}
               animate={{ opacity: selectedProject ? 0 : 1 }}
               onClick={() =>
-                navigate(`/projects/${project.name}${getFilterQuery(filter)}`)
+                push(`/projects/${project.name}${getFilterQuery(filter)}`)
               }
               className="project"
             >
@@ -87,10 +92,16 @@ export default function Projects({
 
       <AnimatePresence>
         {selectedProject && (
+          <div
+            className="fixed inset-0 z-10"
+            onClick={() => push(`/projects${getFilterQuery(filter)}`)}
+          />
+        )}
+        {selectedProject && (
           <motion.div
-            className="project-selected"
+            className="project-selected text-white z-20"
             layoutId={selectedProject.name}
-            onClick={() => navigate(`/projects${getFilterQuery(filter)}`)}
+            onClick={(e) => e.stopPropagation()}
           >
             {selectedProject.icon}
             <h3 className="project-title">{selectedProject.title}</h3>
@@ -106,7 +117,7 @@ function getProjectTags(projects: Project[]) {
   return Array.from(
     projects.reduce(
       (tags, project) => {
-        project.tags.forEach((t) => tags.add(t))
+        project.tags.filter((t) => t !== 'Rust').forEach((t) => tags.add(t))
         return tags
       },
       new Set(['All']),
