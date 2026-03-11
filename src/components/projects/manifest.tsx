@@ -166,7 +166,13 @@ export const projects = [
     name: 'stook',
     title: 'Stook',
     tags: ['Open Source', 'DevOps', 'Rust'],
-    icon: <PlaceholderIcon label="ST" bg="#e05c1a" />,
+    icon: (
+      <img
+        style={{ padding: '.3rem' }}
+        alt="Stook"
+        src="/images/projects/stook.svg"
+      />
+    ),
     height: 220,
     body: (
       <div>
@@ -186,7 +192,13 @@ export const projects = [
     name: 'smashdown',
     title: 'Smashdown',
     tags: ['Open Source', 'Web Apps'],
-    icon: <PlaceholderIcon label="SD" bg="#c0392b" />,
+    icon: (
+      <img
+        style={{ padding: '.3rem' }}
+        alt="Smashdown"
+        src="/images/projects/smashdown.png"
+      />
+    ),
     height: 240,
     body: (
       <div>
@@ -209,7 +221,13 @@ export const projects = [
     name: 'foodie',
     title: 'Foodie',
     tags: ['Open Source', 'Web Apps'],
-    icon: <PlaceholderIcon label="FD" bg="#27ae60" />,
+    icon: (
+      <img
+        style={{ padding: '.3rem' }}
+        alt="Foodie"
+        src="/images/projects/foodie.png"
+      />
+    ),
     height: 240,
     body: (
       <div>

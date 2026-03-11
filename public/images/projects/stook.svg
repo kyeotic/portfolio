@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 108">
+  <!-- Cable from top -->
+  <line x1="40" y1="0" x2="40" y2="10" stroke="#aaa" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Hook: shank at x=40 leads into a clockwise arc centered on x=40 -->
+  <!-- Arc goes: top → right → bottom → lower-left (tip), opening at upper-left -->
+  <!-- center ~(40,32), r=10: top=(40,22), bottom=(40,42), tip at lower-left=(31,37) -->
+  <path d="M 40 10 L 40 22 A 10 10 0 1 1 31 37"
+        stroke="#c8c8c8" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Lifting bail crossbar — centered, sits in the hook bottom -->
+  <rect x="30" y="42" width="20" height="5" rx="2.5" fill="#666"/>
+
+  <!-- Container body -->
+  <rect x="5" y="47" width="70" height="59" rx="2" fill="#2471a3"/>
+  <rect x="5" y="47" width="70" height="59" rx="2" fill="none" stroke="#1a5276" stroke-width="2"/>
+
+  <!-- Horizontal panel ribs -->
+  <line x1="7" y1="62" x2="73" y2="62" stroke="#1a5276" stroke-width="1.5" opacity="0.8"/>
+  <line x1="7" y1="75" x2="73" y2="75" stroke="#1a5276" stroke-width="1.5" opacity="0.8"/>
+  <line x1="7" y1="88" x2="73" y2="88" stroke="#1a5276" stroke-width="1.5" opacity="0.8"/>
+
+  <!-- Corner structural posts -->
+  <rect x="5" y="47" width="6" height="59" rx="1" fill="#1a5276"/>
+  <rect x="69" y="47" width="6" height="59" rx="1" fill="#1a5276"/>
+
+  <!-- S -->
+  <text x="40" y="78" font-family="Arial Black, Arial, sans-serif" font-size="27" font-weight="900"
+        text-anchor="middle" dominant-baseline="middle" fill="white">S</text>
+</svg>
