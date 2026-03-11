@@ -9,33 +9,6 @@ export interface Project {
   body: JSX.Element
 }
 
-function PlaceholderIcon({
-  label,
-  bg = '#333',
-}: {
-  label: string
-  bg?: string
-}) {
-  return (
-    <div
-      style={{
-        background: bg,
-        width: '100%',
-        height: '100%',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        fontSize: '1.5rem',
-        fontWeight: 'bold',
-        color: '#fff',
-        letterSpacing: '0.05em',
-      }}
-    >
-      {label}
-    </div>
-  )
-}
-
 export const projects = [
   {
     name: 'raviger',
@@ -98,10 +71,8 @@ export const projects = [
           frontend.
         </p>
         <p>
-          Features include compose file create/edit/start/stop/restart/delete,
-          an interactive terminal, multi-host support, and{' '}
-          <code>docker run</code> → <code>compose.yaml</code> conversion.
-          Supports amd64, arm64, and armv7.
+          The new backend idles at close to 0% CPU and while active it uses less
+          than 1/10 as much CPU and RAM.
         </p>
       </div>
     ),

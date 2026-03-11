@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useRouter } from 'waku'
 import { clsx } from 'clsx'
@@ -9,6 +10,15 @@ import { useHydrated } from '../useHydrated.js'
 
 const tags = getProjectTags(projectManifest)
 
+function getScrollParent(el: HTMLElement | null): Element {
+  while (el) {
+    const { overflowY } = getComputedStyle(el)
+    if (overflowY === 'auto' || overflowY === 'scroll') return el
+    el = el.parentElement
+  }
+  return document.documentElement
+}
+
 export default function Projects({
   filter = 'All',
   project: selectedProjectName,
@@ -17,6 +27,32 @@ export default function Projects({
   project?: string
 }) {
   const { push } = useRouter()
+  const containerRef = useRef<HTMLDivElement>(null)
+  const [savedScrollTop, setSavedScrollTop] = useState<number | null>(null)
+
+  useEffect(() => {
+    if (selectedProjectName) {
+      const scroller = getScrollParent(containerRef.current)
+      scroller.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }, [selectedProjectName])
+
+  function selectProject(name: string) {
+    const scroller = getScrollParent(containerRef.current)
+    setSavedScrollTop(scroller.scrollTop)
+    push(`/projects/${name}${getFilterQuery(filter)}`, { scroll: false })
+  }
+
+  function deselectProject() {
+    const restoreY = savedScrollTop
+    setSavedScrollTop(null)
+    push(`/projects${getFilterQuery(filter)}`, { scroll: false })
+    if (restoreY !== null) {
+      const scroller = getScrollParent(containerRef.current)
+      scroller.scrollTo({ top: restoreY, behavior: 'smooth' })
+    }
+  }
+
   const projects = projectManifest.filter(
     (p) => filter === 'All' || p.tags.includes(filter),
   )
@@ -28,7 +64,10 @@ export default function Projects({
   if (!useHydrated()) return null
 
   return (
-    <div className={`projects-container w-full relative min-h-screen mt-12`}>
+    <div
+      ref={containerRef}
+      className={`projects-container w-full relative min-h-screen mt-12`}
+    >
       <h2
         className={`text-4xl text-center font-bold py-4 px-8 w-full text-white bg-black/40`}
       >
@@ -59,56 +98,63 @@ export default function Projects({
             href={`/projects${getFilterQuery(filter)}`}
             onClick={(e) => {
               e.preventDefault()
-              push(`/projects${getFilterQuery(filter)}`)
+              deselectProject()
             }}
           >
             Return to Projects
           </a>
         </div>
       )}
-      <div
-        className={clsx('project-grid p-4 max-w-5xl mx-auto text-white', {
-          hidden: !!selectedProjectName,
-        })}
-      >
-        <AnimatePresence>
-          {projects.map((project) => (
-            <motion.div
-              initial={false}
-              key={project.name}
-              layoutId={project.name}
-              animate={{ opacity: selectedProject ? 0 : 1 }}
-              onClick={() =>
-                push(`/projects/${project.name}${getFilterQuery(filter)}`)
-              }
-              className="project"
-            >
-              {project.icon}
-              <h3 className="project-title">{project.title}</h3>
-            </motion.div>
-          ))}
-        </AnimatePresence>
-      </div>
 
       <AnimatePresence>
         {selectedProject && (
-          <div
+          <motion.div
+            key="backdrop"
             className="fixed inset-0 z-10"
-            onClick={() => push(`/projects${getFilterQuery(filter)}`)}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => deselectProject()}
           />
         )}
-        {selectedProject && (
-          <motion.div
-            className="project-selected text-white z-20"
-            layoutId={selectedProject.name}
-            onClick={(e) => e.stopPropagation()}
-          >
-            {selectedProject.icon}
-            <h3 className="project-title">{selectedProject.title}</h3>
-            {selectedProject.body}
-          </motion.div>
-        )}
       </AnimatePresence>
+
+      <div className="project-grid p-4 max-w-5xl mx-auto text-white">
+        {projects.map((project) => {
+          const isSelected = selectedProject?.name === project.name
+          return (
+            <motion.div
+              key={project.name}
+              layout
+              className={clsx('project', { 'project-expanded': isSelected })}
+              animate={{
+                opacity: !selectedProjectName || isSelected ? 1 : 0,
+              }}
+              onClick={() => {
+                if (!isSelected) {
+                  selectProject(project.name)
+                }
+              }}
+            >
+              <motion.div layout className="project-icon">
+                {project.icon}
+              </motion.div>
+              <motion.h3 layout className="project-title">
+                {project.title}
+              </motion.h3>
+              {isSelected && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                >
+                  {project.body}
+                </motion.div>
+              )}
+            </motion.div>
+          )
+        })}
+      </div>
     </div>
   )
 }
@@ -125,7 +171,7 @@ function getProjectTags(projects: Project[]) {
   )
 }
 
-function getFilterQuery(type: string) {
+function getFilterQuery(type: string): string {
   if (type === 'All') return ''
   return type ? `?type=${encodeURIComponent(type)}` : ''
 }
