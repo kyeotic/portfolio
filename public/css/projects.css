@@ -57,14 +57,11 @@
 }
 
 .project {
-  /* flex: 1 0 auto; */
   height: 225px;
   width: 150px;
   padding: 16px 0;
-  display: flex;
-  flex-direction: column;
-  justify-items: center;
-  justify-content: space-between;
+  display: grid;
+  grid-template-rows: 1fr 2.5rem;
   background-color: rgba(0, 0, 0, 0.253);
 }
 
@@ -75,16 +72,14 @@
 }
 
 .project h3 {
-  /* margin: 16px 0; */
-  flex: 0 0 auto;
+  align-self: end;
 }
 
 .project img {
-  flex: 0 0 auto;
   max-width: 128px;
   max-height: 130px;
-  margin: 0 auto;
-  display: block;
+  align-self: center;
+  justify-self: center;
 }
 
 .project .project-title {
