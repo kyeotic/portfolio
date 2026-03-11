@@ -1,10 +1,12 @@
-module "deno" {
-  source = "./deno-domain"
+data "cloudflare_zone" "domain" {
+  name = "kye.dev"
+}
 
+resource "cloudflare_workers_domain" "portfolio" {
+  for_each = local.domains
 
-  for_each = local.deno
-
-  zone_name   = each.value.zone
-  domain_name = each.value.domain
-  deno_acme   = each.value.acme
+  account_id = local.cloudflare_account_id
+  hostname   = each.value.domain
+  service    = "portfolio"
+  zone_id    = data.cloudflare_zone.domain.id
 }

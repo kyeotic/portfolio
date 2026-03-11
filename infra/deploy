@@ -23,6 +23,6 @@ terraform init \
   -backend-config="key=portfolio" \
   -backend-config="encrypt=true"
 
-# terraform apply -auto-approve
+terraform apply -auto-approve
 popd
 

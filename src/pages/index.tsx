@@ -11,15 +11,17 @@ export default function Page() {
 function Hero() {
   return (
     <div className="font-light leading-snug w-11/12 max-w-3xl bg-black/40 p-8 md:p-12 text-white text-[7vw] sm:text-[5vw] md:text-[4vw] lg:text-[3.5vw]">
+      <div className="flex justify-center mb-6">
+        <img
+          src="/logo.svg"
+          alt="Tim Kye logo"
+          className="w-28 md:w-36 rounded"
+        />
+      </div>
       <h1 className="mb-2">
         My name is{' '}
         <span className="font-semibold" style={{ color: 'rgb(255, 41, 187)' }}>
           Tim Kye
-          <img
-            src="/logo.svg"
-            alt="Tim Kye logo"
-            className="inline-block ml-6 w-28 md:w-36 rounded"
-          />
         </span>
       </h1>
 
