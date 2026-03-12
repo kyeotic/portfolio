@@ -1,11 +1,9 @@
-'use client'
+/** @jsxImportSource @b9g/crank */
 
-import { useRouter } from 'waku'
-import Panel from '../components/Panel.js'
-import { H2, BodyText } from '../components/Typography.js'
+import Panel from './../components/Panel.js'
+import { H2, BodyText } from './../components/Typography.js'
 
-export default function Kyeosis() {
-  const { push } = useRouter()
+export function Kyeosis() {
   return (
     <Panel>
       <>
@@ -19,7 +17,7 @@ export default function Kyeosis() {
           At first <em>Kyeotic</em> may seem like a pun on my last name and{' '}
           <em>chaotic</em>, but I like to think of it a little differently.
         </BodyText>
-        <ul className={`mt-4 max-w-screen-sm`}>
+        <ul class={`mt-4 max-w-screen-sm`}>
           <li>
             <em>
               <a href="https://www.dictionary.com/browse/chaotic?s=t">
@@ -67,11 +65,7 @@ export default function Kyeosis() {
 
         <a
           href="/about"
-          className={`mt-4 block underline underline-offset-2`}
-          onClick={(e) => {
-            e.preventDefault()
-            push('/about')
-          }}
+          class={`mt-4 block underline underline-offset-2`}
         >
           Back to About
         </a>

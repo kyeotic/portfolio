@@ -53,3 +53,11 @@ worker-configuration.d.ts
 .dev.vars*
 !.dev.vars.example
 !.env.example
+
+node_modules/
+dist/
+public/assets/
+.env
+.env.local
+*.log
+.DS_Store

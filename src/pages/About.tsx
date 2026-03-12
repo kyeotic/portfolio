@@ -1,9 +1,8 @@
-'use client'
+/** @jsxImportSource @b9g/crank */
 
-import { useRouter } from 'waku'
-import Panel from '../components/Panel.js'
-import Link from '../components/Link.js'
-import { H2, BodyText } from '../components/Typography.js'
+import Panel from './../components/Panel.js'
+import Link from './../components/Link.js'
+import { H2, BodyText } from './../components/Typography.js'
 
 const links = [
   { title: 'Github', href: 'https://github.com/kyeotic' },
@@ -16,12 +15,7 @@ const links = [
   { title: 'email me', href: 'mailto:tim@kye.dev' },
 ]
 
-export default function AboutMe() {
-  const { push, path } = useRouter()
-  const kyeosis = () => {
-    push(path !== '/kyeosis' ? '/kyeosis' : '/about')
-  }
-
+export function About() {
   return (
     <Panel>
       <H2>A Bit About Me</H2>
@@ -32,7 +26,7 @@ export default function AboutMe() {
         means a lot of things to different people, for me it means that I know
         how to:
       </BodyText>
-      <ul className={`mt-4 max-w-screen-sm list-disc list-inside`}>
+      <ul class={`mt-4 max-w-screen-sm list-disc list-inside`}>
         <li>
           design and implement every layer of a modern business application,
           from the database to the user interface
@@ -58,15 +52,13 @@ export default function AboutMe() {
         In 2016 I legally changed my name from Timothy Moran to Timothy Kye.{' '}
         <br />
         In 2019 I changed my handle from Tyrsius to{' '}
-        <span onClick={kyeosis} style={{ cursor: 'pointer' }}>
-          Kyeotic
-        </span>
+        <a href="/kyeosis">Kyeotic</a>
         .
       </BodyText>
       <H2>External Links</H2>
-      <ul className={`mt-4 max-w-screen-sm list-disc list-inside`}>
+      <ul class={`mt-4 max-w-screen-sm list-disc list-inside`}>
         {links.map((link) => (
-          <li key={link.href} className={`inline-block mr-4`}>
+          <li key={link.href} class={`inline-block mr-4`}>
             <Link href={link.href}>{link.title}</Link>
           </li>
         ))}
