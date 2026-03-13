@@ -1,0 +1,54 @@
+{
+  "__svg-BVjWLb1o.js": {
+    "file": "assets/_svg-BVjWLb1o.js",
+    "name": "_svg"
+  },
+  "_dom-Ckup3XYa.js": {
+    "file": "assets/dom-Ckup3XYa.js",
+    "name": "dom",
+    "imports": [
+      "__svg-BVjWLb1o.js"
+    ]
+  },
+  "_manifest-BlA3SUPw.js": {
+    "file": "assets/manifest-BlA3SUPw.js",
+    "name": "manifest",
+    "imports": [
+      "__svg-BVjWLb1o.js"
+    ]
+  },
+  "src/client-projects.tsx": {
+    "file": "assets/client-projects.js",
+    "name": "client-projects",
+    "src": "src/client-projects.tsx",
+    "isEntry": true,
+    "imports": [
+      "__svg-BVjWLb1o.js",
+      "_dom-Ckup3XYa.js",
+      "_manifest-BlA3SUPw.js"
+    ]
+  },
+  "src/client.tsx": {
+    "file": "assets/client.js",
+    "name": "client",
+    "src": "src/client.tsx",
+    "isEntry": true,
+    "imports": [
+      "__svg-BVjWLb1o.js",
+      "_dom-Ckup3XYa.js"
+    ],
+    "css": [
+      "assets/client.css"
+    ]
+  },
+  "virtual:cloudflare/worker-entry": {
+    "file": "assets/index.js",
+    "name": "index",
+    "src": "virtual:cloudflare/worker-entry",
+    "isEntry": true,
+    "imports": [
+      "__svg-BVjWLb1o.js",
+      "_manifest-BlA3SUPw.js"
+    ]
+  }
+}

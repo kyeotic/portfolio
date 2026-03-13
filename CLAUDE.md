@@ -2,69 +2,76 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Tech Stack
+## Crank Reference
 
-- **Framework**: Waku (React Server Components framework)
-- **Runtime**: Cloudflare Workers
-- **Styling**: Tailwind CSS v4 + static CSS files in `public/css/`
-- **Animations**: Framer Motion
-- **Deployment**: Cloudflare Workers (`wrangler deploy`)
+This is a Crank-based project. For full framework documentation and component authoring patterns, see: https://github.com/bikeshaving/crank/blob/main/docs/SKILL.md
 
-## Common Commands
+## Commands
 
 ```bash
-# Development
-npm run dev
-
-# Build only
-npm run build
-
-# Local preview (production build + wrangler dev)
-npm run preview
-
-# Start wrangler dev against built output
-npm run start
-
-# Deploy to Cloudflare Workers
-npm run deploy
-
-# Generate Cloudflare binding types
-npm run cf-typegen
+npm run dev       # Vite dev server (client-side only, no Workers runtime)
+npm run preview   # Build + run via wrangler dev (full Workers environment)
+npm run build     # Vite build
+npm run deploy    # Build + deploy to Cloudflare Workers
+npm run lint      # ESLint on src/
 ```
+
+No test suite exists currently.
 
 ## Architecture
 
-### Runtime & Build
+Vite is used for local/dev mode as well as building for the Cloudflare Workers runtime
 
-Waku builds the app (via Vite) and outputs to `dist/`. Cloudflare Workers serves the app via the Waku Cloudflare adapter. `src/waku.server.tsx` is the Workers entry point, using Waku's `fsRouter` and Cloudflare adapter.
+**SSR + Island Hydration** — Pages are fully server-rendered via Hono + Crank's HTML renderer (`@b9g/crank/html`). Interactive components are hydrated client-side from two entry points:
 
-Config files:
-- `waku.config.ts` — Vite/Waku configuration (Tailwind, React compiler, Cloudflare plugin)
-- `wrangler.jsonc` — Cloudflare Workers configuration (entry point, static assets, compat flags)
+- `src/client.tsx` — hydrates `WaveBackground` into `#wave-bg`
+- `src/client-projects.tsx` — hydrates `Projects` into `#projects-root`
 
-### Routing
+**Routing** — Hono handles 5 routes in `src/server.tsx`. Within `/projects`, client-side navigation uses `history.pushState` (no full page reloads). The server passes `path` to `Layout` for active nav highlighting.
 
-File-system based routing via Waku's `fsRouter`. Files in `src/pages/` become routes:
+**Hydration handoff** — SSR pages set `data-filter` and `data-project` attributes on the hydration root so client components can pick up initial state from the DOM.
 
-- `src/pages/_layout.tsx` — Root layout
-- `src/pages/index.tsx` — `/` (Hero)
-- `src/pages/about.tsx` — `/about`
-- `src/pages/kyeosis.tsx` — `/kyeosis`
-- `src/pages/projects/index.tsx` — `/projects` (filterable grid, `?type=...`)
-- `src/pages/projects/[project].tsx` — `/projects/:project` (project detail)
+## Crank Patterns Used
 
-Navigation uses Waku's `Link` component and `useRouter()` hook.
+**Generator components** are used for all stateful/interactive client components (e.g., `WaveBackground`, `Projects`). State lives in generator-scoped variables; re-renders are triggered via `this.refresh()`.
 
-### Content / Projects
+```tsx
+function* MyComponent(this: Context) {
+  let count = 0;
+  for ({ } of this) {
+    yield <button onclick={() => { count++; this.refresh(); }}>{count}</button>;
+  }
+}
+```
 
-Project data is defined statically in `src/projects/manifest.tsx` as a `Project[]` array. Each project has a `name` (URL slug), `title`, `tags`, `icon` (JSX), and `body` (JSX). To add or edit a project, modify this file.
+**Function components** are used for stateless SSR components (e.g., `Navbar`, `Layout`, page components).
 
-### Components
+**Cleanup** is registered with `this.cleanup(fn)` for event listeners and timers (see `WaveBackground`).
 
-- `src/pages/` — Route-level page components
-- `src/components/` — Shared utilities: `Link.tsx`, `Panel.tsx`, `Toggle.tsx`, `Typography.tsx`, `WaveBackground.tsx`, etc.
-- `src/projects/` — Project manifest and project-specific components
+## Adding a Project
 
-### Styling
+Edit `src/components/projects/manifest.tsx`. Each entry:
 
-Tailwind CSS v4 configured via `@tailwindcss/vite` plugin. Additional global styles are in `public/css/` (`reset.css`, `app.css`, `projects.css`).
+```tsx
+{
+  name: 'slug',           // used in URL: /projects/slug
+  title: 'Display Name',
+  tags: ['Open Source'],  // filter categories shown as buttons
+  icon: <img src="/images/projects/foo.png" />,
+  body: <p>Description JSX</p>,
+}
+```
+
+Available tags: `Open Source`, `DevOps`, `Rust`, `Web Apps`, `Publications`.
+
+## Styling
+
+Plain CSS in `public/css/` — no utility framework. Key conventions:
+- `app.css` — global layout, fonts, wave animation keyframes
+- `projects.css` — project grid and card styles
+- Wave bars use CSS custom properties (`--max-scale`, `--duration`, `--delay`) set inline by `WaveBackground.tsx`
+- Project cards are `150px × 225px` by default; expanded card takes full width
+
+## Deployment
+
+Cloudflare Workers via Wrangler. Static assets served from `public/`. Build output goes to `public/assets/`. Infrastructure is in `infra/` (Terraform).

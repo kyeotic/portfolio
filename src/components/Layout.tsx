@@ -9,7 +9,12 @@ interface LayoutProps {
   path?: string
 }
 
-export function Layout({ title, children, clientUrls = [], path = '/' }: LayoutProps) {
+export function Layout({
+  title,
+  children,
+  clientUrls = [],
+  path = '/',
+}: LayoutProps) {
   return (
     <html lang="en">
       <head>
@@ -19,7 +24,9 @@ export function Layout({ title, children, clientUrls = [], path = '/' }: LayoutP
         <link rel="stylesheet" href="/css/reset.css" />
         <link rel="stylesheet" href="/css/app.css" />
         <link rel="stylesheet" href="/css/projects.css" />
-        {clientUrls.map(url => <script src={url} type="module" />)}
+        {clientUrls.map((url) => (
+          <script src={url} type="module" />
+        ))}
       </head>
       <body>
         <div id="wave-bg" />

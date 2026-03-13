@@ -1,12 +1,13 @@
 import { defineConfig } from 'vite'
 import { cloudflare } from '@cloudflare/vite-plugin'
+import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   esbuild: {
     jsx: 'automatic',
     jsxImportSource: '@b9g/crank',
   },
-  plugins: [cloudflare()],
+  plugins: [tailwindcss(), cloudflare()],
   build: {
     rollupOptions: {
       input: {
@@ -16,6 +17,7 @@ export default defineConfig({
       output: {
         dir: 'public',
         entryFileNames: 'assets/[name].js',
+        assetFileNames: 'assets/[name][extname]',
       },
     },
   },
