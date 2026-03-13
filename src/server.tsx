@@ -9,7 +9,6 @@ import { Kyeosis } from './pages/Kyeosis.js'
 import { ProjectsPage } from './pages/ProjectsPage.js'
 
 const clientUrl = '/assets/client.js'
-const projectsClientUrl = '/assets/client-projects.js'
 
 const app = new Hono()
 
@@ -53,7 +52,7 @@ app.get('/projects', async (c) => {
       (await renderer.render(
         <Layout
           title="Projects"
-          clientUrls={[clientUrl, projectsClientUrl]}
+          clientUrls={[clientUrl]}
           path="/projects"
         >
           <ProjectsPage filter={filter} />
@@ -70,7 +69,7 @@ app.get('/projects/:project', async (c) => {
       (await renderer.render(
         <Layout
           title="Projects"
-          clientUrls={[clientUrl, projectsClientUrl]}
+          clientUrls={[clientUrl]}
           path="/projects"
         >
           <ProjectsPage filter={filter} project={project} />

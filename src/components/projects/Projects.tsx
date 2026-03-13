@@ -3,7 +3,7 @@ import { Context } from '@b9g/crank'
 import { animate } from 'motion'
 import { clsx } from 'clsx'
 
-import { projects as projectManifest, Project } from './manifest.js'
+import { projects as projectManifest, type Project } from './manifest.js'
 
 const tags = getProjectTags(projectManifest)
 
@@ -25,7 +25,7 @@ function getProjectTags(projects: Project[]): string[] {
   return Array.from(
     projects.reduce(
       (tagSet, project) => {
-        project.tags.filter((t) => t !== 'Rust').forEach((t) => tagSet.add(t))
+        project.tags.forEach((t) => tagSet.add(t))
         return tagSet
       },
       new Set(['All']),
@@ -34,15 +34,19 @@ function getProjectTags(projects: Project[]): string[] {
 }
 
 export function* Projects(this: Context) {
-  // Read initial state from SSR-rendered DOM
-  const root = document.getElementById('projects-root')
-  let filter = root?.dataset.filter ?? 'All'
-  let selectedProjectName = root?.dataset.project ?? ''
+  const ctx = this
+  const url = new URL(window.location.href)
+  const pathParts = url.pathname.split('/').filter(Boolean)
+  let filter = url.searchParams.get('type') ?? 'All'
+  let selectedProjectName = pathParts[1] ?? ''
   let savedScrollTop: number | null = null
 
+  console.log('Selected project:', selectedProjectName, 'Filter:', filter)
+
   // Animate card opacities after each render based on current selection state.
-  // Called via crank-ref on the grid container so it runs with fresh DOM nodes.
-  const animateCards = (gridEl: HTMLDivElement | null) => {
+  let gridEl: HTMLDivElement | null = null
+  const animateCards = (el: HTMLDivElement | null) => {
+    gridEl = el
     if (!gridEl) return
     const cards = gridEl.querySelectorAll<HTMLElement>('.project')
     cards.forEach((card) => {
@@ -53,39 +57,45 @@ export function* Projects(this: Context) {
     })
   }
 
-  function selectProject(name: string) {
-    const container = this.querySelector<HTMLElement>('.projects-container')
+  const selectProject = (name: string) => {
+    const container = ctx.querySelector<HTMLElement>('.projects-container')
     const scroller = getScrollParent(container)
-    savedScrollTop = (scroller as HTMLElement & { scrollTop?: number }).scrollTop ?? 0
-    selectedProjectName = name
+    savedScrollTop =
+      (scroller as HTMLElement & { scrollTop?: number }).scrollTop ?? 0
     history.pushState(null, '', `/projects/${name}${getFilterQuery(filter)}`)
-    this.refresh()
+    ctx.refresh(() => {
+      selectedProjectName = name
+    })
     // Scroll to top after expansion — runs after refresh
     requestAnimationFrame(() => {
-      getScrollParent(this.querySelector<HTMLElement>('.projects-container'))
-        .scrollTo({ top: 0, behavior: 'smooth' })
+      getScrollParent(
+        ctx.querySelector<HTMLElement>('.projects-container'),
+      ).scrollTo({ top: 0, behavior: 'smooth' })
     })
   }
 
-  function deselectProject() {
+  const deselectProject = () => {
     const restoreY = savedScrollTop
     savedScrollTop = null
-    selectedProjectName = ''
     history.pushState(null, '', `/projects${getFilterQuery(filter)}`)
-    this.refresh()
+    ctx.refresh(() => {
+      selectedProjectName = ''
+    })
     if (restoreY !== null) {
       requestAnimationFrame(() => {
-        getScrollParent(this.querySelector<HTMLElement>('.projects-container'))
-          .scrollTo({ top: restoreY, behavior: 'smooth' })
+        getScrollParent(
+          ctx.querySelector<HTMLElement>('.projects-container'),
+        ).scrollTo({ top: restoreY, behavior: 'smooth' })
       })
     }
   }
 
-  function setFilter(newFilter: string) {
-    filter = newFilter
-    selectedProjectName = ''
-    history.pushState(null, '', `/projects${getFilterQuery(filter)}`)
-    this.refresh()
+  const setFilter = (newFilter: string) => {
+    history.pushState(null, '', `/projects${getFilterQuery(newFilter)}`)
+    ctx.refresh(() => {
+      filter = newFilter
+      selectedProjectName = ''
+    })
   }
 
   for ({} of this) {
@@ -108,9 +118,16 @@ export function* Projects(this: Context) {
               <a
                 key={tag}
                 href={`/projects${getFilterQuery(tag)}`}
-                class={clsx('btn', 'p-0.5', 'text-center', 'font-white', 'font-bold', {
-                  active: filter === tag,
-                })}
+                class={clsx(
+                  'btn',
+                  'p-0.5',
+                  'text-center',
+                  'font-white',
+                  'font-bold',
+                  {
+                    active: filter === tag,
+                  },
+                )}
                 onclick={(e: MouseEvent) => {
                   e.preventDefault()
                   setFilter(tag)
@@ -137,7 +154,7 @@ export function* Projects(this: Context) {
 
         <div
           class="project-grid p-4 max-w-5xl mx-auto text-white"
-          crank-ref={animateCards}
+          ref={animateCards}
         >
           {projects.map((project) => {
             const isSelected = selectedProject?.name === project.name
@@ -154,9 +171,7 @@ export function* Projects(this: Context) {
               >
                 <div class="project-icon">{project.icon}</div>
                 <h3 class="project-title">{project.title}</h3>
-                {isSelected && (
-                  <div class="project-body">{project.body}</div>
-                )}
+                {isSelected && <div class="project-body">{project.body}</div>}
               </div>
             )
           })}

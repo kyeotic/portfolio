@@ -23,10 +23,10 @@ function seededRng(seed: number) {
 }
 
 const SEED = 42
+const rng = seededRng(SEED)
+const rand = (min: number, max: number) => min + rng() * (max - min)
 
 function generateBars(count: number): Bar[] {
-  const rng = seededRng(SEED)
-  const rand = (min: number, max: number) => min + rng() * (max - min)
   const now = Date.now() / 1000
 
   return Array.from({ length: count }, () => {
@@ -55,7 +55,7 @@ function barStyle(bar: Bar): string {
 export function* WaveBackground(this: Context) {
   let bars = generateBars(Math.ceil(window.innerWidth / BAR_WIDTH_PX))
 
-  let timer: ReturnType<typeof setTimeout>
+  let timer: ReturnType<typeof setTimeout> | undefined = undefined
   const onResize = () => {
     clearTimeout(timer)
     timer = setTimeout(() => {

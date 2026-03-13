@@ -12,12 +12,6 @@ export default defineConfig({
     rollupOptions: {
       input: {
         client: 'src/client.tsx',
-        'client-projects': 'src/client-projects.tsx',
-      },
-      output: {
-        dir: 'public',
-        entryFileNames: 'assets/[name].js',
-        assetFileNames: 'assets/[name][extname]',
       },
     },
   },
