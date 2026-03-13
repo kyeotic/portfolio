@@ -49,6 +49,53 @@ body {
   background-color: #1e1e1e;
 }
 
+/* Layout shell */
+
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+}
+
+.app-content {
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* Navbar */
+
+.navbar {
+  display: flex;
+  flex-shrink: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+.nav-tab {
+  flex: 1;
+  padding: 0.75rem;
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: color 0.15s;
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+}
+
+.nav-tab:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.nav-tab.active {
+  color: #fff;
+  border-top: 2px solid rgb(244, 114, 182);
+  margin-top: -1px;
+}
+
 /* Wave bars are rendered by WaveBackground React component */
 
 @keyframes waveBar {

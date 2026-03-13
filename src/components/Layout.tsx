@@ -21,9 +21,9 @@ export function Layout({
         <meta charset="UTF-8" />
         <title>{title} — Tim Kye</title>
         <link rel="icon" href="/favicon.ico" />
-        <link rel="stylesheet" href="/css/reset.css" />
         <link rel="stylesheet" href="/css/app.css" />
         <link rel="stylesheet" href="/css/projects.css" />
+        <link rel="stylesheet" href="/assets/client.css" />
         {clientUrls.map((url) => (
           <script src={url} type="module" />
         ))}
