@@ -9,7 +9,7 @@ This is a Crank-based project. For full framework documentation and component au
 ## Commands
 
 ```bash
-npm run dev       # Vite dev server (client-side only, no Workers runtime)
+npm run dev       # Vite dev server (vite with local cloudflare plugin for worker runtime)
 npm run preview   # Build + run via wrangler dev (full Workers environment)
 npm run build     # Vite build
 npm run deploy    # Build + deploy to Cloudflare Workers
