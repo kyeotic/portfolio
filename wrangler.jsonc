@@ -2,11 +2,12 @@
   "name": "portfolio",
   "main": "./src/server.tsx",
   "assets": {
-    "directory": "./public"
+    "directory": "./public",
+    "not_found_handling": "single-page-application",
   },
   "compatibility_flags": ["nodejs_compat"],
   "compatibility_date": "2025-11-17",
   "observability": {
-    "enabled": true
-  }
+    "enabled": true,
+  },
 }
