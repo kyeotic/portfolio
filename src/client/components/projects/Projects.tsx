@@ -1,5 +1,5 @@
 /** @jsxImportSource @b9g/crank */
-import { Context } from '@b9g/crank'
+import { Context, Element } from '@b9g/crank'
 import { animate } from 'motion'
 import { clsx } from 'clsx'
 
@@ -185,6 +185,21 @@ export function* Projects(
             )
           })}
         </div>
+      </div>
+    )
+  }
+}
+
+function* Project(
+  this: Context<typeof Project, { project: Project }>,
+  { project }: { project: Project },
+): Generator<Element> {
+  for ({ project } of this) {
+    yield (
+      <div class="project">
+        <div class="project-icon">{project.icon}</div>
+        <h3 class="project-title">{project.title}</h3>
+        <div class="project-body">{project.body}</div>
       </div>
     )
   }

@@ -9,31 +9,33 @@ This is a Crank-based project. For full framework documentation and component au
 ## Commands
 
 ```bash
-npm run dev       # Vite dev server (vite with local cloudflare plugin for worker runtime)
-npm run preview   # Build + run via wrangler dev (full Workers environment)
-npm run build     # Vite build
-npm run deploy    # Build + deploy to Cloudflare Workers
-npm run lint      # ESLint on src/
+npm run dev              # Vite dev server with Cloudflare Workers plugin (local)
+npm run preview          # Build + run via wrangler dev (full Workers environment)
+npm run build            # Build client (dist/client/) and server (dist/server/)
+npm run build:client     # Vite build for client only
+npm run build:server     # Vite SSR build for server only
+npm run deploy           # Build + deploy to Cloudflare Workers
+npm run lint             # ESLint on src/
+npm run wrangler:types   # Regenerate Wrangler/Workers type bindings
 ```
 
 No test suite exists currently.
 
 ## Architecture
 
-Vite is used for local/dev mode as well as building for the Cloudflare Workers runtime
+**Build system** — `@cloudflare/vite-plugin` integrates Vite with the Cloudflare Workers runtime for both dev and build. Client bundles go to `dist/client/`, server SSR bundle to `dist/server/`. Tailwind CSS is included via `@tailwindcss/vite`.
 
-**SSR + Island Hydration** — Pages are fully server-rendered via Hono + Crank's HTML renderer (`@b9g/crank/html`). Interactive components are hydrated client-side from two entry points:
+**SSR + Full-App Hydration** — The isomorphic root component (`src/app.tsx`) is rendered server-side via `@b9g/crank/html` and then re-hydrated client-side via `@b9g/crank/dom`. There is a single client entry point:
 
-- `src/client.tsx` — hydrates `WaveBackground` into `#wave-bg`
-- `src/client-projects.tsx` — hydrates `Projects` into `#projects-root`
+- `src/client/client.tsx` — mounts `<App />` into `#app-root`
 
-**Routing** — Hono handles 5 routes in `src/server.tsx`. Within `/projects`, client-side navigation uses `history.pushState` (no full page reloads). The server passes `path` to `Layout` for active nav highlighting.
+**Worker entry** — `src/server/worker.ts` is the Cloudflare Workers entry point. It uses Hono to handle all routes: fetches `index.html` from the `ASSETS` binding, calls `render()` from `src/server/server.tsx` to produce the SSR HTML, and injects it into the `<!--app-html-->` placeholder.
 
-**Hydration handoff** — SSR pages set `data-filter` and `data-project` attributes on the hydration root so client components can pick up initial state from the DOM.
+**Routing** — Client-side navigation is managed by the `Router` component (`src/client/components/Router.tsx`) using `history.pushState`. Routes: `/`, `/about`, `/kyeosis`, `/projects`. No full page reloads between routes.
 
 ## Crank Patterns Used
 
-**Generator components** are used for all stateful/interactive client components (e.g., `WaveBackground`, `Projects`). State lives in generator-scoped variables; re-renders are triggered via `this.refresh()`.
+**Generator components** are used for all stateful/interactive client components (e.g., `WaveBackground`, `Router`, `Projects`). State lives in generator-scoped variables; re-renders are triggered via `this.refresh()`.
 
 ```tsx
 function* MyComponent(this: Context) {
@@ -44,7 +46,7 @@ function* MyComponent(this: Context) {
 }
 ```
 
-**Function components** are used for stateless SSR components (e.g., `Navbar`, `Layout`, page components).
+**Function components** are used for stateless/SSR components (e.g., `Navbar`, page components).
 
 **Cleanup** is registered with `this.cleanup(fn)` for event listeners and timers (see `WaveBackground`).
 
@@ -66,12 +68,11 @@ Available tags: `Open Source`, `DevOps`, `Rust`, `Web Apps`, `Publications`.
 
 ## Styling
 
-Plain CSS in `public/css/` — no utility framework. Key conventions:
-- `app.css` — global layout, fonts, wave animation keyframes
-- `projects.css` — project grid and card styles
+Tailwind CSS (v4, via `@tailwindcss/vite`) plus plain CSS in `public/css/`. Key conventions:
+- `public/css/app.css` — global layout, fonts, wave animation keyframes
+- `public/css/projects.css` — project grid and card styles
 - Wave bars use CSS custom properties (`--max-scale`, `--duration`, `--delay`) set inline by `WaveBackground.tsx`
-- Project cards are `150px × 225px` by default; expanded card takes full width
 
 ## Deployment
 
-Cloudflare Workers via Wrangler. Static assets served from `public/`. Build output goes to `public/assets/`. Infrastructure is in `infra/` (Terraform).
+Cloudflare Workers via Wrangler (`wrangler.jsonc`). Static assets served from `dist/client/` via the `ASSETS` binding. Infrastructure is in `infra/` (Terraform).
