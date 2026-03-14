@@ -30,13 +30,13 @@ function Page({ pathname }: { pathname: string }) {
 export function* Router(this: Context) {
   let pathname = location.pathname
 
-  const navigate = (href: string) => {
-    const url = new URL(href, location.href)
-    pathname = url.pathname
-    history.pushState({}, '', href)
-    document.title = getTitle(pathname)
-    this.refresh()
-  }
+  const navigate = (href: string) =>
+    this.refresh(() => {
+      const url = new URL(href, location.href)
+      pathname = url.pathname
+      history.pushState({}, '', href)
+      document.title = getTitle(pathname)
+    })
 
   const onClick = (e: Event) => {
     const a = (e.target as Element).closest<HTMLAnchorElement>('a[href]')
@@ -72,12 +72,12 @@ export function* Router(this: Context) {
 
   for ({} of this) {
     yield (
-      <>
+      <div class="app-shell">
         <main class="app-content">
           <Page pathname={pathname} />
         </main>
         <Navbar path={pathname} />
-      </>
+      </div>
     )
   }
 }

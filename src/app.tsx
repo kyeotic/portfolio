@@ -5,9 +5,7 @@ export function App() {
   return (
     <>
       <WaveBackground />
-      <div class="app-shell">
-        <Router />
-      </div>
+      <Router />
     </>
   )
 }
