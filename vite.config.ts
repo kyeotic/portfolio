@@ -1,18 +1,14 @@
 import { defineConfig } from 'vite'
-import { cloudflare } from '@cloudflare/vite-plugin'
-import tailwindcss from '@tailwindcss/vite'
+import tailwind from '@tailwindcss/vite'
 
 export default defineConfig({
-  esbuild: {
-    jsx: 'automatic',
-    jsxImportSource: '@b9g/crank',
-  },
-  plugins: [tailwindcss(), cloudflare()],
+  plugins: [tailwind()],
+
   build: {
-    rollupOptions: {
-      input: {
-        client: 'src/client.tsx',
-      },
-    },
+    outDir: 'dist/client',
+  },
+
+  ssr: {
+    target: 'webworker',
   },
 })

@@ -1,9 +1,11 @@
 {
   "name": "portfolio",
-  "main": "./src/server.tsx",
+  "main": "src/server/worker.ts",
   "assets": {
-    "directory": "./public",
+    "directory": "./dist/client",
     "not_found_handling": "single-page-application",
+    "binding": "ASSETS",
+    "run_worker_first": true,
   },
   "compatibility_flags": ["nodejs_compat"],
   "compatibility_date": "2025-11-17",
