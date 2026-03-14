@@ -1,5 +1,3 @@
-/** @jsxImportSource @b9g/crank */
-
 export function Hero() {
   return (
     <div class="h-full flex items-center justify-center">
@@ -12,11 +10,7 @@ function HeroContent() {
   return (
     <div class="font-light leading-snug w-11/12 max-w-3xl bg-black/40 p-8 md:p-12 text-white text-[7vw] sm:text-[5vw] md:text-[4vw] lg:text-[3.5vw]">
       <div class="flex justify-center mb-6">
-        <img
-          src="/logo.svg"
-          alt="Tim Kye logo"
-          class="w-28 md:w-36 rounded"
-        />
+        <img src="/logo.svg" alt="Tim Kye logo" class="w-28 md:w-36 rounded" />
       </div>
       <h1 class="mb-2">
         My name is{' '}

@@ -1,4 +1,3 @@
-/** @jsxImportSource @b9g/crank */
 import { type Child } from '@b9g/crank'
 
 export function H2({ children }: { children: Child }) {

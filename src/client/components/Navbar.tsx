@@ -1,5 +1,3 @@
-/** @jsxImportSource @b9g/crank */
-
 function isActive(path: string, href: string): boolean {
   if (href === '/') return path === '/'
   return path.startsWith(href)
@@ -13,8 +11,11 @@ export function Navbar({ path = '/' }: { path?: string }) {
   ]
   return (
     <nav id="navbar" class="navbar" data-path={path}>
-      {tabs.map(tab => (
-        <a href={tab.href} class={`nav-tab ${isActive(path, tab.href) ? 'active' : ''}`}>
+      {tabs.map((tab) => (
+        <a
+          href={tab.href}
+          class={`nav-tab ${isActive(path, tab.href) ? 'active' : ''}`}
+        >
           {tab.label}
         </a>
       ))}

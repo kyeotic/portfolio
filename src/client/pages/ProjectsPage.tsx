@@ -1,4 +1,3 @@
-/** @jsxImportSource @b9g/crank */
 import { projects } from '../components/projects/manifest.js'
 
 export function ProjectsPage({

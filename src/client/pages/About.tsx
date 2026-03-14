@@ -1,5 +1,3 @@
-/** @jsxImportSource @b9g/crank */
-
 import Panel from './../components/Panel.js'
 import Link from './../components/Link.js'
 import { H2, BodyText } from './../components/Typography.js'
@@ -52,8 +50,7 @@ export function About() {
         In 2016 I legally changed my name from Timothy Moran to Timothy Kye.{' '}
         <br />
         In 2019 I changed my handle from Tyrsius to{' '}
-        <a href="/kyeosis">Kyeotic</a>
-        .
+        <a href="/kyeosis">Kyeotic</a>.
       </BodyText>
       <H2>External Links</H2>
       <ul class={`mt-4 max-w-screen-sm list-disc list-inside`}>

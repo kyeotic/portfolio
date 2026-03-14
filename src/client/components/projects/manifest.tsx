@@ -1,4 +1,3 @@
-/** @jsxImportSource @b9g/crank */
 import { type Child } from '@b9g/crank'
 import Link from '../../components/Link.js'
 

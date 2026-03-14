@@ -1,4 +1,3 @@
-/** @jsxImportSource @b9g/crank */
 import { type Child } from '@b9g/crank'
 
 export default function Panel({ children }: { children: Child }) {

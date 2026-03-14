@@ -1,4 +1,3 @@
-/** @jsxImportSource @b9g/crank */
 import { renderer } from '@b9g/crank/html'
 
 import { App } from '../app.tsx'

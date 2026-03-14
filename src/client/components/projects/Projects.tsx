@@ -1,4 +1,3 @@
-/** @jsxImportSource @b9g/crank */
 import { Context, Element } from '@b9g/crank'
 import { animate } from 'motion'
 import { clsx } from 'clsx'

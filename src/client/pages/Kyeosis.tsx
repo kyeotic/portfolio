@@ -1,5 +1,3 @@
-/** @jsxImportSource @b9g/crank */
-
 import Panel from './../components/Panel.js'
 import { H2, BodyText } from './../components/Typography.js'
 
@@ -63,10 +61,7 @@ export function Kyeosis() {
           is the opposite of <em>chaotic</em>.
         </BodyText>
 
-        <a
-          href="/about"
-          class={`mt-4 block underline underline-offset-2`}
-        >
+        <a href="/about" class={`mt-4 block underline underline-offset-2`}>
           Back to About
         </a>
       </>

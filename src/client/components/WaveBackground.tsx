@@ -1,5 +1,3 @@
-/** @jsxImportSource @b9g/crank */
-
 import { Context } from '@b9g/crank'
 
 const BAR_WIDTH_PX = 14 // target width per bar for consistent density

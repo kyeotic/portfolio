@@ -1,4 +1,3 @@
-/** @jsxImportSource @b9g/crank */
 import { Context } from '@b9g/crank'
 
 import { Hero } from '../pages/Hero.js'
@@ -15,7 +14,9 @@ const pageTitles: Record<string, string> = {
 }
 
 function getTitle(pathname: string): string {
-  const base = pathname.startsWith('/projects') ? 'Projects' : (pageTitles[pathname] ?? 'Home')
+  const base = pathname.startsWith('/projects')
+    ? 'Projects'
+    : (pageTitles[pathname] ?? 'Home')
   return `${base} — Tim Kye`
 }
 
@@ -41,11 +42,18 @@ export function* Router(this: Context) {
     const a = (e.target as Element).closest<HTMLAnchorElement>('a[href]')
     if (!a) return
     const href = a.getAttribute('href')!
-    if (!href || href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('#')) return
+    if (
+      !href ||
+      href.startsWith('http') ||
+      href.startsWith('mailto:') ||
+      href.startsWith('#')
+    )
+      return
     if (a.target === '_blank') return
     // Let Projects manage its own internal navigation
     const targetPath = new URL(href, location.href).pathname
-    if (pathname.startsWith('/projects') && targetPath.startsWith('/projects')) return
+    if (pathname.startsWith('/projects') && targetPath.startsWith('/projects'))
+      return
     e.preventDefault()
     navigate(href)
   }
