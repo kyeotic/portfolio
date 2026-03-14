@@ -4,34 +4,10 @@ import { animate } from 'motion'
 import { clsx } from 'clsx'
 
 import { projects as projectManifest, type Project } from './manifest.js'
+import { createEvent } from '../../utils/events.js'
 
 const tags = getProjectTags(projectManifest)
-
-function getScrollParent(el: HTMLElement | null): Element {
-  while (el) {
-    const { overflowY } = getComputedStyle(el)
-    if (overflowY === 'auto' || overflowY === 'scroll') return el
-    el = el.parentElement
-  }
-  return document.documentElement
-}
-
-function getFilterQuery(type: string): string {
-  if (type === 'All') return ''
-  return type ? `?type=${encodeURIComponent(type)}` : ''
-}
-
-function getProjectTags(projects: Project[]): string[] {
-  return Array.from(
-    projects.reduce(
-      (tagSet, project) => {
-        project.tags.forEach((t) => tagSet.add(t))
-        return tagSet
-      },
-      new Set(['All']),
-    ),
-  )
-}
+const onProjectSelect = createEvent<{ id: string }>('project.select')
 
 export function* Projects(
   this: Context<typeof Projects, void>,
@@ -60,6 +36,15 @@ export function* Projects(
       animate(card, { opacity: targetOpacity }, { duration: 0.2 })
     })
   }
+
+  onProjectSelect.listen(ctx, (e) => {
+    const { id } = e.detail
+    if (id === selectedProjectName) {
+      deselectProject()
+    } else {
+      selectProject(id)
+    }
+  })
 
   const selectProject = (name: string) => {
     const container = containerEl!.querySelector<HTMLElement>(
@@ -168,20 +153,14 @@ export function* Projects(
           {projects.map((project) => {
             const isSelected = selectedProject?.name === project.name
             return (
-              <div
-                key={project.name}
-                data-project={project.name}
-                class={clsx('project', { 'project-expanded': isSelected })}
-                onclick={() => {
-                  if (!isSelected) {
-                    selectProject(project.name)
-                  }
-                }}
-              >
-                <div class="project-icon">{project.icon}</div>
-                <h3 class="project-title">{project.title}</h3>
-                {isSelected && <div class="project-body">{project.body}</div>}
-              </div>
+              <>
+                <ProjectCard
+                  project={project}
+                  key={project.name}
+                  isSelected={isSelected}
+                  isHidden={!!selectedProjectName && !isSelected}
+                />
+              </>
             )
           })}
         </div>
@@ -190,17 +169,54 @@ export function* Projects(
   }
 }
 
-function* Project(
-  this: Context<typeof Project, { project: Project }>,
-  { project }: { project: Project },
+function* ProjectCard(
+  this: Context<typeof ProjectCard, { project: Project }>,
+  {
+    project,
+    isSelected = false,
+    isHidden = false,
+  }: { project: Project; isSelected?: boolean; isHidden?: boolean },
+  ctx: Context<typeof ProjectCard, { project: Project }>,
 ): Generator<Element> {
-  for ({ project } of this) {
+  for ({ project, isSelected = false, isHidden = false } of this) {
     yield (
-      <div class="project">
+      <div
+        class={clsx('project', {
+          'project-expanded': isSelected,
+        })}
+        hidden={isHidden}
+        onclick={() => onProjectSelect.dispatch(ctx, { id: project.name })}
+      >
         <div class="project-icon">{project.icon}</div>
         <h3 class="project-title">{project.title}</h3>
-        <div class="project-body">{project.body}</div>
+        {isSelected && <div class="project-body">{project.body}</div>}
       </div>
     )
   }
+}
+
+function getFilterQuery(type: string): string {
+  if (type === 'All') return ''
+  return type ? `?type=${encodeURIComponent(type)}` : ''
+}
+
+function getProjectTags(projects: Project[]): string[] {
+  return Array.from(
+    projects.reduce(
+      (tagSet, project) => {
+        project.tags.forEach((t) => tagSet.add(t))
+        return tagSet
+      },
+      new Set(['All']),
+    ),
+  )
+}
+
+function getScrollParent(el: HTMLElement | null): HTMLElement {
+  while (el) {
+    const { overflowY } = getComputedStyle(el)
+    if (overflowY === 'auto' || overflowY === 'scroll') return el
+    el = el.parentElement
+  }
+  return document.documentElement
 }
