@@ -53,7 +53,7 @@ export const projects = [
   {
     name: 'dockru',
     title: 'Dockru',
-    tags: ['Open Source', 'DevOps', 'Rust', 'Web Apps'],
+    tags: ['Open Source', 'DevOps', 'Web Apps'],
     icon: (
       <img
         style="padding: .3rem"
@@ -82,7 +82,7 @@ export const projects = [
   {
     name: 'stack-sync',
     title: 'Stack Sync',
-    tags: ['Open Source', 'DevOps', 'Rust'],
+    tags: ['Open Source', 'DevOps'],
     icon: (
       <img
         style="padding: .3rem"
@@ -111,7 +111,7 @@ export const projects = [
   {
     name: 'vault-sync',
     title: 'Vault Sync',
-    tags: ['Open Source', 'DevOps', 'Rust'],
+    tags: ['Open Source', 'DevOps'],
     icon: (
       <img
         style="padding: .3rem"
@@ -138,7 +138,7 @@ export const projects = [
   {
     name: 'stook',
     title: 'Stook',
-    tags: ['Open Source', 'DevOps', 'Rust'],
+    tags: ['Open Source', 'DevOps'],
     icon: (
       <img
         style="padding: .3rem"

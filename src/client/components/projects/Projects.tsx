@@ -33,8 +33,11 @@ function getProjectTags(projects: Project[]): string[] {
   )
 }
 
-export function* Projects(this: Context) {
-  const ctx = this
+export function* Projects(
+  this: Context<typeof Projects, void>,
+  _props: unknown,
+  ctx: Context<typeof Projects, void>,
+): Generator<Element> {
   const url = new URL(window.location.href)
   const pathParts = url.pathname.split('/').filter(Boolean)
   let filter = url.searchParams.get('type') ?? 'All'
@@ -44,6 +47,7 @@ export function* Projects(this: Context) {
   console.log('Selected project:', selectedProjectName, 'Filter:', filter)
 
   // Animate card opacities after each render based on current selection state.
+  let containerEl: HTMLDivElement | null = null
   let gridEl: HTMLDivElement | null = null
   const animateCards = (el: HTMLDivElement | null) => {
     gridEl = el
@@ -58,7 +62,9 @@ export function* Projects(this: Context) {
   }
 
   const selectProject = (name: string) => {
-    const container = ctx.querySelector<HTMLElement>('.projects-container')
+    const container = containerEl!.querySelector<HTMLElement>(
+      '.projects-container',
+    )
     const scroller = getScrollParent(container)
     savedScrollTop =
       (scroller as HTMLElement & { scrollTop?: number }).scrollTop ?? 0
@@ -69,7 +75,7 @@ export function* Projects(this: Context) {
     // Scroll to top after expansion — runs after refresh
     requestAnimationFrame(() => {
       getScrollParent(
-        ctx.querySelector<HTMLElement>('.projects-container'),
+        containerEl!.querySelector<HTMLElement>('.projects-container'),
       ).scrollTo({ top: 0, behavior: 'smooth' })
     })
   }
@@ -84,7 +90,7 @@ export function* Projects(this: Context) {
     if (restoreY !== null) {
       requestAnimationFrame(() => {
         getScrollParent(
-          ctx.querySelector<HTMLElement>('.projects-container'),
+          containerEl!.querySelector<HTMLElement>('.projects-container'),
         ).scrollTo({ top: restoreY, behavior: 'smooth' })
       })
     }
@@ -107,7 +113,10 @@ export function* Projects(this: Context) {
     )
 
     yield (
-      <div class="projects-container w-full relative min-h-screen mt-12">
+      <div
+        ref={(ref: HTMLDivElement) => (containerEl = ref)}
+        class="projects-container w-full relative min-h-screen mt-12"
+      >
         <h2 class="text-4xl text-center font-bold py-4 px-8 w-full text-white bg-black/40">
           Projects
         </h2>

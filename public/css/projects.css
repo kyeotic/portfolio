@@ -83,9 +83,9 @@
 
 .project img {
   width: 128px;
-  height: 130px;
-  width: 128px;
-  height: 130px;
+  max-width: 128px;
+  height: auto;
+  object-fit: contain;
   align-self: center;
   justify-self: center;
 }
