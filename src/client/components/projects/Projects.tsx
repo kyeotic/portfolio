@@ -21,19 +21,46 @@ export function* Projects(
 
   console.log('Selected project:', selectedProjectName, 'Filter:', filter)
 
-  // Animate card opacities after each render based on current selection state.
   let containerEl: HTMLDivElement | null = null
   let gridEl: HTMLDivElement | null = null
-  const animateCards = (el: HTMLDivElement | null) => {
-    gridEl = el
+  let prevPositions = new Map<string, DOMRect>()
+  let isFilterChange = false
+
+  const animateCards = () => {
     if (!gridEl) return
-    const cards = gridEl.querySelectorAll<HTMLElement>('.project')
-    cards.forEach((card) => {
+    const wasFilterChange = isFilterChange
+    isFilterChange = false
+    gridEl.querySelectorAll<HTMLElement>('.project').forEach((card) => {
       const cardName = card.dataset.project
       const isSelected = selectedProjectName === cardName
       const targetOpacity = !selectedProjectName || isSelected ? 1 : 0
-      animate(card, { opacity: targetOpacity }, { duration: 0.2 })
+
+      if (cardName && prevPositions.has(cardName)) {
+        // Existing card — FLIP to new position
+        const prev = prevPositions.get(cardName)!
+        const curr = card.getBoundingClientRect()
+        const dx = prev.left - curr.left
+        const dy = prev.top - curr.top
+        if (Math.abs(dx) > 0.5 || Math.abs(dy) > 0.5) {
+          animate(
+            card,
+            { x: [dx, 0], y: [dy, 0] },
+            { type: 'spring', stiffness: 300, damping: 25 },
+          )
+        }
+        animate(card, { opacity: targetOpacity }, { duration: 0.2 })
+      } else if (wasFilterChange) {
+        // Entering card — scale in
+        animate(
+          card,
+          { scale: [0, 1], opacity: [0, targetOpacity] },
+          { duration: 0.25 },
+        )
+      } else {
+        animate(card, { opacity: targetOpacity }, { duration: 0.2 })
+      }
     })
+    prevPositions.clear()
   }
 
   onProjectSelect.listen(ctx, (e) => {
@@ -56,8 +83,8 @@ export function* Projects(
     ctx.refresh(() => {
       selectedProjectName = name
     })
-    // Scroll to top after expansion — runs after refresh
     requestAnimationFrame(() => {
+      animateCards()
       getScrollParent(
         containerEl!.querySelector<HTMLElement>('.projects-container'),
       ).scrollTo({ top: 0, behavior: 'smooth' })
@@ -71,21 +98,53 @@ export function* Projects(
     ctx.refresh(() => {
       selectedProjectName = ''
     })
-    if (restoreY !== null) {
-      requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      animateCards()
+      if (restoreY !== null) {
         getScrollParent(
           containerEl!.querySelector<HTMLElement>('.projects-container'),
         ).scrollTo({ top: restoreY, behavior: 'smooth' })
-      })
-    }
+      }
+    })
   }
 
-  const setFilter = (newFilter: string) => {
+  const setFilter = async (newFilter: string) => {
+    if (gridEl) {
+      // Capture positions of all current cards for FLIP
+      prevPositions.clear()
+      gridEl.querySelectorAll<HTMLElement>('.project').forEach((card) => {
+        const name = card.dataset.project
+        if (name) prevPositions.set(name, card.getBoundingClientRect())
+      })
+
+      // Find cards that won't appear in the new filter
+      const exitingCards: HTMLElement[] = []
+      gridEl.querySelectorAll<HTMLElement>('.project').forEach((card) => {
+        const name = card.dataset.project
+        const project = projectManifest.find((p) => p.name === name)
+        if (project && newFilter !== 'All' && !project.tags.includes(newFilter)) {
+          exitingCards.push(card)
+          if (name) prevPositions.delete(name) // exclude from FLIP
+        }
+      })
+
+      // Shrink exiting cards before DOM removal
+      if (exitingCards.length > 0) {
+        await Promise.all(
+          exitingCards.map((card) =>
+            animate(card, { scale: 0, opacity: 0 }, { duration: 0.2 }),
+          ),
+        )
+      }
+    }
+
+    isFilterChange = true
     history.pushState(null, '', `/projects${getFilterQuery(newFilter)}`)
     ctx.refresh(() => {
       filter = newFilter
       selectedProjectName = ''
     })
+    requestAnimationFrame(animateCards)
   }
 
   for ({} of this) {
@@ -147,7 +206,9 @@ export function* Projects(
 
         <div
           class="project-grid p-4 max-w-5xl mx-auto text-white"
-          ref={animateCards}
+          ref={(el: HTMLDivElement) => {
+            gridEl = el
+          }}
         >
           {projects.map((project) => {
             const isSelected = selectedProject?.name === project.name
@@ -183,6 +244,7 @@ function* ProjectCard(
         class={clsx('project', {
           'project-expanded': isSelected,
         })}
+        data-project={project.name}
         hidden={isHidden}
         onclick={() => onProjectSelect.dispatch(ctx, { id: project.name })}
       >
