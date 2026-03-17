@@ -19,7 +19,31 @@ export function* Projects(
   let selectedProjectName = pathParts[1] ?? ''
   let savedScrollTop: number | null = null
 
-  console.log('Selected project:', selectedProjectName, 'Filter:', filter)
+  const onPopState = () => {
+    const u = new URL(window.location.href)
+    const parts = u.pathname.split('/').filter(Boolean)
+    const newFilter = u.searchParams.get('type') ?? 'All'
+    const newSelected = parts[1] ?? ''
+
+    if (gridEl) {
+      prevPositions.clear()
+      gridEl.querySelectorAll<HTMLElement>('.project').forEach((card) => {
+        const name = card.dataset.project
+        if (name) prevPositions.set(name, card.getBoundingClientRect())
+      })
+    }
+
+    if (newFilter !== filter) isFilterChange = true
+
+    ctx.refresh(() => {
+      filter = newFilter
+      selectedProjectName = newSelected
+    })
+    requestAnimationFrame(() => animateCards())
+  }
+
+  window.addEventListener('popstate', onPopState)
+  this.cleanup(() => window.removeEventListener('popstate', onPopState))
 
   let containerEl: HTMLDivElement | null = null
   let gridEl: HTMLDivElement | null = null
