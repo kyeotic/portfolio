@@ -142,7 +142,7 @@ export const projects = [
       <img
         style="padding: .3rem"
         alt="Stook"
-        src="/images/projects/stook.svg"
+        src="/images/projects/stook-crane.png"
       />
     ),
     height: 220,

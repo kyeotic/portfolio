@@ -1,6 +1,7 @@
 import { Context } from '@b9g/crank'
 
-const BAR_WIDTH_PX = 14 // target width per bar for consistent density
+// target width per bar for consistent density
+const BAR_WIDTH_PX = 14
 const BAR_CONFIG = {
   maxScale: { min: 0.35, max: 0.95 },
   duration: { min: 3.4, max: 6.4 },
@@ -24,7 +25,8 @@ const SEED = 42
 const rng = seededRng(SEED)
 const rand = (min: number, max: number) => min + rng() * (max - min)
 
-function generateBars(count: number): Bar[] {
+function generateBars(width: number): Bar[] {
+  const count = Math.ceil(width / BAR_WIDTH_PX)
   const now = Date.now() / 1000
 
   return Array.from({ length: count }, () => {
@@ -51,14 +53,14 @@ function barStyle(bar: Bar): string {
 }
 
 export function* WaveBackground(this: Context) {
-  let bars = generateBars(Math.ceil(window.innerWidth / BAR_WIDTH_PX))
+  let bars = generateBars(window.innerWidth)
 
   let timer: ReturnType<typeof setTimeout> | undefined = undefined
   const onResize = () => {
     clearTimeout(timer)
     timer = setTimeout(() => {
       this.refresh(() => {
-        bars = generateBars(Math.ceil(window.innerWidth / BAR_WIDTH_PX))
+        bars = generateBars(window.innerWidth)
       })
     }, 150)
   }

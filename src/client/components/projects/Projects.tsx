@@ -57,6 +57,7 @@ export function* Projects(
           { duration: 0.25 },
         )
       } else {
+        // Exiting card or no position change — fade
         animate(card, { opacity: targetOpacity }, { duration: 0.2 })
       }
     })
@@ -108,34 +109,28 @@ export function* Projects(
     })
   }
 
-  const setFilter = async (newFilter: string) => {
+  const setFilter = (newFilter: string) => {
+    const overlays: HTMLElement[] = []
+
     if (gridEl) {
-      // Capture positions of all current cards for FLIP
+      // Capture positions of staying cards for FLIP
       prevPositions.clear()
       gridEl.querySelectorAll<HTMLElement>('.project').forEach((card) => {
         const name = card.dataset.project
-        if (name) prevPositions.set(name, card.getBoundingClientRect())
-      })
-
-      // Find cards that won't appear in the new filter
-      const exitingCards: HTMLElement[] = []
-      gridEl.querySelectorAll<HTMLElement>('.project').forEach((card) => {
-        const name = card.dataset.project
         const project = projectManifest.find((p) => p.name === name)
-        if (project && newFilter !== 'All' && !project.tags.includes(newFilter)) {
-          exitingCards.push(card)
-          if (name) prevPositions.delete(name) // exclude from FLIP
+        const isExiting =
+          project && newFilter !== 'All' && !project.tags.includes(newFilter)
+        if (isExiting) {
+          // Clone exiting card as a fixed overlay so it can animate after DOM removal
+          const rect = card.getBoundingClientRect()
+          const clone = card.cloneNode(true) as HTMLElement
+          clone.style.cssText = `position:fixed;left:${rect.left}px;top:${rect.top}px;width:${rect.width}px;height:${rect.height}px;margin:0;z-index:9999;pointer-events:none;`
+          document.body.appendChild(clone)
+          overlays.push(clone)
+        } else if (name) {
+          prevPositions.set(name, card.getBoundingClientRect())
         }
       })
-
-      // Shrink exiting cards before DOM removal
-      if (exitingCards.length > 0) {
-        await Promise.all(
-          exitingCards.map((card) =>
-            animate(card, { scale: 0, opacity: 0 }, { duration: 0.2 }),
-          ),
-        )
-      }
     }
 
     isFilterChange = true
@@ -144,7 +139,16 @@ export function* Projects(
       filter = newFilter
       selectedProjectName = ''
     })
-    requestAnimationFrame(animateCards)
+
+    requestAnimationFrame(() => {
+      // FLIP staying cards and shrink overlays simultaneously
+      animateCards()
+      Promise.all(
+        overlays.map((el) =>
+          animate(el, { scale: 0, opacity: 0 }, { duration: 0.2 }),
+        ),
+      ).then(() => overlays.forEach((el) => el.remove()))
+    })
   }
 
   for ({} of this) {

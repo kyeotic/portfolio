@@ -58,10 +58,10 @@ export function* Router(this: Context) {
     navigate(href)
   }
 
-  const onPopstate = () => {
-    pathname = location.pathname
-    this.refresh()
-  }
+  const onPopstate = () =>
+    this.refresh(() => {
+      pathname = location.pathname
+    })
 
   document.addEventListener('click', onClick)
   window.addEventListener('popstate', onPopstate)
